@@ -15,6 +15,7 @@ class Tweet(db.Model):
 
     comments = db.relationship("Comment", back_populates="tweets", cascade="all, delete-orphan")
     user = db.relationship("User", back_populates="tweets")
+    image = db.relationship("Image", back_populates="tweets", cascade="all, delete-orphan")
 
     def to_dict(self):
         return {

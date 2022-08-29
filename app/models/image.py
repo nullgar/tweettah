@@ -8,13 +8,14 @@ class Image(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     tweet_id = db.Column(db.Integer, db.ForeignKey("tweets.id"), nullable=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=True)
     url = db.Column(db.String(350), nullable=False)
     createdAt = db.Column(db.DateTime(timezone=True), server_default=func.now())
     updatedAt = db.Column(db.DateTime(timezone=True), nullable=True, onupdate=func.now())
 
     # Dont need these
-    # tweets = db.relationship("Tweet", back_populates="image")
-    # user = db.relationship("User", back_populates="image")
+    tweets = db.relationship("Tweet", back_populates="image")
+    user = db.relationship("User", back_populates="image")
 
 
     def to_dict(self):
