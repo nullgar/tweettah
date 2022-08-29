@@ -14,8 +14,8 @@ class User(db.Model, UserMixin):
     profile_pic = db.Column(db.String(350), nullable=True, default='https://merriam-webster.com/assets/mw/images/article/art-wap-article-main/egg-3442-e1f6463624338504cd021bf23aef8441@1x.jpg')
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    createdAt = db.Column(db.DateTime(timezone=True), server_default=func.now())
-    updatedAt = db.Column(db.DateTime(timezone=True), nullable=True, onupdate=func.now())
+    created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
+    updated_at = db.Column(db.DateTime(timezone=True), nullable=True, onupdate=func.now())
 
 
     tweets = db.relationship("Tweet", back_populates="user", cascade="all, delete-orphan")
@@ -50,6 +50,6 @@ class User(db.Model, UserMixin):
             'email': self.email,
             "followers": [{"user_id": u.id, "user_name": u.name, "user_profile_pic": u.profile_pic} for u in self.following],
             "following": [{"user_id": u.id, "user_name": u.name, "user_profile_pic": u.profile_pic} for u in self.followers],
-            'created_at': self.created_at,
-            'updated_at': self.updated_at
+            "created_at": self.created_at,
+            "updated_at": self.updated_at
         }

@@ -10,8 +10,8 @@ class Image(db.Model):
     tweet_id = db.Column(db.Integer, db.ForeignKey("tweets.id"), nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=True)
     url = db.Column(db.String(350), nullable=False)
-    createdAt = db.Column(db.DateTime(timezone=True), server_default=func.now())
-    updatedAt = db.Column(db.DateTime(timezone=True), nullable=True, onupdate=func.now())
+    created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
+    updated_at = db.Column(db.DateTime(timezone=True), nullable=True, onupdate=func.now())
 
     # Dont need these
     tweets = db.relationship("Tweet", back_populates="image")
