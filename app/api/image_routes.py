@@ -17,6 +17,7 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{field} : {error}')
     return errorMessages
 
+#Get images for a tweet
 @image_routes.route("/<int:tweet_id>")
 @login_required
 def get_tweets_images(tweet_id):
@@ -25,10 +26,17 @@ def get_tweets_images(tweet_id):
     for image in query:
         if image not in load_images:
             load_images[image.id] = image.to_dict()
-    print(load_images)
-    return load_images
 
+    if load_images:
+        return load_images
+    else:
+        res = {
+            "message": "Tweet not found",
+            "statusCode": 404
+        }
+        return jsonify(res)
 
+#Create an Image for a tweet
 @image_routes.route("/<int:tweet_id>", methods=["POST"])
 @login_required
 def create_tweet_image(tweet_id):
@@ -42,9 +50,8 @@ def create_tweet_image(tweet_id):
         tweet_id = tweet_id,
         url = data["url"]
     )
-    print(new_image.to_dict())
 
-    if tweet and new_image and form.validate_on_submit():
+    if tweet and new_image and new_image.id == user_id and form.validate_on_submit():
         db.session.add(new_image)
         db.session.commit()
         return jsonify('Image created succesfully!')
@@ -57,4 +64,24 @@ def create_tweet_image(tweet_id):
         }
         return jsonify(res)
 
-    # return jsonify('Hi')
+#Delete an image from a tweet
+@image_routes.route("/<int:tweet_id>/<int:image_id>", methods=["DELETE"])
+@login_required
+def delete_tweet_image(tweet_id, image_id):
+    user_id = current_user.id
+    form = DeleteImageForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    tweet = Tweet.query.get(tweet_id)
+    image = Image.query.get(image_id)
+    # image = image.to_dict()
+    # print(tweet.to_dict())
+    if tweet and image and tweet.user_id == user_id and form.validate_on_submit():
+        db.session.delete(image)
+        db.session.commit()
+        return jsonify('Successfully deleted image!')
+    else:
+        res = {
+            "message": "Tweet not found",
+            "statusCode": 404
+        }
+        return jsonify(res)
