@@ -8,13 +8,14 @@ class Tweet(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     tweet = db.Column(db.String(150), nullable=False)
-    createdAt = db.Column(db.DateTime(timezone=True), server_default=func.now())
-    updatedAt = db.Column(db.DateTime(timezone=True), nullable=True, onupdate=func.now())
+    created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
+    updated_at = db.Column(db.DateTime(timezone=True), nullable=True, onupdate=func.now())
 
 
 
     comments = db.relationship("Comment", back_populates="tweets", cascade="all, delete-orphan")
     user = db.relationship("User", back_populates="tweets")
+    image = db.relationship("Image", back_populates="tweets", cascade="all, delete-orphan")
 
     def to_dict(self):
         return {
