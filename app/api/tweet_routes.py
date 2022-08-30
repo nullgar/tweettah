@@ -1,8 +1,9 @@
 from crypt import methods
 from flask import Blueprint, jsonify, request
-from app.models import comment, db, Tweet, user
+from app.models import comment, db, Tweet, Comment
 from flask_login import current_user, login_required
-from ..forms.tweet_form import TweetForm, DeleteForm
+from app.forms import TweetForm, DeleteForm
+from app.forms import CommentForm
 
 tweet_routes = Blueprint('tweet',__name__)
 
@@ -17,6 +18,7 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{field} : {error}')
     return errorMessages
 
+# Get current Users Tweets
 @tweet_routes.route('/')
 @login_required
 def get_current_user_tweets():
@@ -31,6 +33,7 @@ def get_current_user_tweets():
     return loadTweets
 
 
+#Get one users tweets
 @tweet_routes.route('/<int:user_id>')
 @login_required
 def get_a_users_tweets(user_id):
@@ -43,6 +46,7 @@ def get_a_users_tweets(user_id):
     return users_tweets
 
 
+#Create a new tweet
 @tweet_routes.route('/new', methods=["POST"])
 @login_required
 def create_a_new_tweet():
@@ -63,6 +67,7 @@ def create_a_new_tweet():
     return new_Tweet
 
 
+#Edit a tweet
 @tweet_routes.route('/edit/<int:tweet_id>', methods=["PUT"])
 @login_required
 def edit_a_tweet(tweet_id):
@@ -86,6 +91,8 @@ def edit_a_tweet(tweet_id):
         }
         return jsonify(res)
 
+
+#Delete a tweet
 @tweet_routes.route('/delete/<int:tweet_id>', methods=["Delete"])
 @login_required
 def delete_a_tweet(tweet_id):
@@ -105,3 +112,48 @@ def delete_a_tweet(tweet_id):
             "statusCode": 403
         }
         return jsonify(res)
+
+#Get comments
+@tweet_routes.route('/<int:tweet_id>/comments')
+@login_required
+def get_comments(tweet_id):
+    print(tweet_id)
+    comments = {}
+    query = Comment.query.filter(Comment.tweet_id == tweet_id)
+
+    for comment in query:
+        if comment not in comments:
+            comments[comment.id] = comment.to_dict()
+
+    if comments:
+        return comments
+    else:
+        res = {
+            "message": "No comments found",
+            "statusCode": 404
+        }
+        return res
+
+
+#Create a comment on Tweet
+@tweet_routes.route('/<int:tweet_id>/new-comment', methods=["POST"])
+@login_required
+def create_a_comment(tweet_id):
+    user_id = current_user.id
+    form = CommentForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    data = form.data
+    query = Tweet.query.get(tweet_id)
+
+    if query:
+        new_comment = Comment(
+            user_id = user_id,
+            tweet_id = tweet_id,
+            comment = data["comment"]
+        )
+        db.session.add(new_comment)
+        db.session.commit()
+        print(new_comment.to_dict())
+        return jsonify('Successfully created Comment!')
+
+    return jsonify('hi')

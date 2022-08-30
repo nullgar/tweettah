@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField
 from wtforms.validators import DataRequired, Length
-from app.models import Tweet, tweet
+from app.models import Tweet
 
 
 class TweetForm(FlaskForm):
