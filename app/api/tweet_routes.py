@@ -1,7 +1,8 @@
+from crypt import methods
 from flask import Blueprint, jsonify, request
-from app.models import comment, db, Tweet
+from app.models import comment, db, Tweet, user
 from flask_login import current_user, login_required
-from ..forms.tweet_form import TweetForm
+from ..forms.tweet_form import TweetForm, DeleteForm
 
 tweet_routes = Blueprint('tweet',__name__)
 
@@ -20,17 +21,25 @@ def validation_errors_to_error_messages(validation_errors):
 @login_required
 def get_current_user_tweets():
     user = current_user.to_dict()
-    loadTweets = Tweet.query.get(user['id'])
-    loadTweets = loadTweets.to_dict()
+    loadTweets = {}
+    query = Tweet.query.filter(Tweet.user_id == user['id'])
+    for tweet in query:
+        if tweet not in loadTweets:
+            loadTweets[tweet.id] = tweet.to_dict()
+
 
     return loadTweets
 
 
-@tweet_routes.route('/<int:userId>')
+@tweet_routes.route('/<int:user_id>')
 @login_required
-def get_a_users_tweets(userId):
-    users_tweets = Tweet.query.get(userId)
-    users_tweets = users_tweets.to_dict()
+def get_a_users_tweets(user_id):
+    users_tweets = {}
+    query = Tweet.query.filter(Tweet.user_id == user_id)
+    for tweet in query:
+        if tweet not in users_tweets:
+            users_tweets[tweet.id] = tweet.to_dict()
+
     return users_tweets
 
 
@@ -51,4 +60,48 @@ def create_a_new_tweet():
     db.session.commit()
     new_Tweet = new_Tweet.to_dict()
 
-    return jsonify(new_Tweet)
+    return new_Tweet
+
+
+@tweet_routes.route('/edit/<int:tweet_id>', methods=["PUT"])
+@login_required
+def edit_a_tweet(tweet_id):
+    user_id = current_user.id
+    form = TweetForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    data = form.data
+
+    tweet_to_be_edited = Tweet.query.get(tweet_id)
+
+    if tweet_to_be_edited and tweet_to_be_edited.user_id == user_id and form.validate_on_submit():
+        tweet_to_be_edited.tweet = data['tweet']
+        db.session.commit()
+        return jsonify("Success")
+    elif form.errors:
+        return jsonify(form.errors)
+    else:
+        res = {
+            "message": "Tweet not found",
+            "statusCode": 404
+        }
+        return jsonify(res)
+
+@tweet_routes.route('/delete/<int:tweet_id>', methods=["Delete"])
+@login_required
+def delete_a_tweet(tweet_id):
+    user_id = current_user.id
+    form = DeleteForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    to_be_deleted = Tweet.query.get(tweet_id)
+
+    if to_be_deleted and to_be_deleted.user_id == user_id and form.validate_on_submit():
+        db.session.delete(to_be_deleted)
+        db.session.commit()
+        return jsonify('Successfully deleted Tweet!')
+    else:
+        res = {
+            "message": "Permission Denied",
+            "statusCode": 403
+        }
+        return jsonify(res)

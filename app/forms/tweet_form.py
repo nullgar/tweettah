@@ -13,5 +13,7 @@ class TweetForm(FlaskForm):
         message="Tweet needs to be between 1 - 150 characters!"
     )
     ])
-    # created_at = StringField("Created At")
-    # updated_at = StringField("Updated At")
+
+
+class DeleteForm(FlaskForm):
+    pass
