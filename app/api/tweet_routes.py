@@ -5,7 +5,7 @@ from flask_login import current_user, login_required
 from app.forms import TweetForm, DeleteForm
 from app.forms import CommentForm
 
-tweet_routes = Blueprint('tweet',__name__)
+tweet_routes = Blueprint("tweet",__name__)
 
 
 def validation_errors_to_error_messages(validation_errors):
