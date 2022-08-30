@@ -32,6 +32,31 @@ def edit_a_comment(comment_id):
         query.comment = data['comment']
         db.session.commit()
         return jsonify('Successfully edited Comment!')
-    return jsonify(comment_id)
+    elif form.errors:
+        return jsonify(form.errors)
+    else:
+        res = {
+            "message": "Permission Denied",
+            "statusCode": 403
+        }
+        return jsonify(res)
 
 #Delete a comment
+@comment_routes.route('/<int:comment_id>', methods=["DELETE"])
+@login_required
+def delete_a_comment(comment_id):
+    user = current_user.id
+    to_be_deleted = Comment.query.get(comment_id)
+    form = DeleteCommentForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if to_be_deleted and to_be_deleted.user_id == user and form.validate_on_submit():
+        db.session.delete(to_be_deleted)
+        db.session.commit()
+        return jsonify('Successfully deleted Comment!')
+    else:
+        res = {
+            "message": "Permission Denied",
+            "statusCode": 403
+        }
+        return jsonify(res)
