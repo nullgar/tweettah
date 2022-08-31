@@ -35,7 +35,7 @@ def toggle_follow(id):
 
     if user_to_follow_id == current_user_id:
         res = {
-            "message": "Cannot follow yoursel"
+            "message": "Cannot follow yourself"
         }
         return jsonify(res)
 
