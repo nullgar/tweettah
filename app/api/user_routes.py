@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required, current_user
 from app.models import User, following, db
+from sqlalchemy.sql import delete
 
 user_routes = Blueprint('users', __name__)
 
@@ -22,33 +23,38 @@ def user(id):
 @login_required
 def toggle_follow(id):
     user_to_follow_id = id
-    user = User.query.get(current_user.id)
-    user = user.to_dict()
-    print(user['following'])
+    current_user_id = current_user.id
 
-    if current_user.id != id:
-        for follower in user['following']:
-            if id in follower:
-                from sqlalchemy import delete
-                sql = delete(following).where(following.c.user_id == current_user.id)
-                db.engine.execute(sql)
-                return jsonify(f'Un-Followed {user_to_follow_id}')
-    if current_user.id != id:
-        # if len(user['following']) == 0:
-        #     follow = (current_user.id, user_to_follow_id)
-        #     sql = following.insert().values(follow)
-        #     db.engine.execute(sql)
-        #     return jsonify(f'No length Following {user_to_follow_id}')
-        # else :
-            for follower in user['following']:
-                print('!!!!!!!!!!!!!!!', user['following'][0] == id)
-                follow = (current_user.id, user_to_follow_id)
-                sql = following.insert().values(follow)
-                db.engine.execute(sql)
-                return jsonify(f'Length Following {user_to_follow_id}')
+    check_user = User.query.get(user_to_follow_id)
+
+    if check_user:
+        follow = (current_user_id, user_to_follow_id)
+    else:
+        return jsonify('User not found')
+    # user = User.query.get(current_user.id)
+    # user = user.to_dict()
+    # form['csrf_token'].data = request.cookies['csrf_token']
+
+    if user_to_follow_id == current_user_id:
+        return jsonify({
+            'error':'Cannot follow yourself'
+        })
+
+    user = User.query.get(current_user_id).to_dict()
+    for check_if_following in user['following']:
+
+        if check_if_following['user_id'] == user_to_follow_id:
+            unFollow = delete(following).where(
+            following.c.user_id==current_user_id,
+            following.c.following_id==user_to_follow_id
+            )
+
+            db.engine.execute(unFollow)
+            return jsonify(f'Unfollowed {user_to_follow_id}')
+    newFollow = following.insert().values(follow)
+    db.engine.execute(newFollow)
 
 
-
-
+    return jsonify(f'Followed {user_to_follow_id}')
     # print(user ,user_to_follow_id)
-    return jsonify('hi')
+    # return jsonify('hi')
