@@ -1,6 +1,9 @@
 const LOAD_USER_TWEETS = 'session/LOAD_USER_TWEETS';
 const LOAD_SINGLE_USER_TWEETS = 'session/LOAD_SINGLE_USER_TWEETS';
 const CREATE_TWEET = 'session/CREATE_TWEET';
+const EDIT_TWEET = 'session/EDIT_TWEET';
+const DELETE_TWEET = 'session/DELETE_TWEET';
+
 
 const loadTweets = (tweets) => ({
     type: LOAD_USER_TWEETS,
@@ -14,6 +17,16 @@ const userTweets = (userTweets) => ({
 const buildTweet = (tweet) => ({
     type: CREATE_TWEET,
     tweet
+})
+
+const buildEditTweet = (editedTweet) => ({
+    type: EDIT_TWEET,
+    editedTweet
+})
+
+const buildDeleteTweet = (tweetId) => ({
+    type: DELETE_TWEET,
+    tweetId
 })
 
 export const getAllUsersFeedTweets = () => async (dispatch) => {
@@ -43,11 +56,10 @@ export const getSingleUserTweets = (userId) => async (dispatch) => {
 }
 
 export const createTweet = (tweet) => async (dispatch) => {
-    // console.log(tweet)
     const res = await fetch('/api/tweet/new', {
-        method: 'POST',
+        method: "POST",
         headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
         },
         body: JSON.stringify(
             tweet
@@ -60,7 +72,37 @@ export const createTweet = (tweet) => async (dispatch) => {
     }
 }
 
+export const editTweet = (payload) => async (dispatch) => {
 
+    const res = await fetch(`/api/tweet/edit/${payload.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        }
+        ,
+        body: JSON.stringify({
+            tweet: payload.tweet,
+            user_id: payload.user_id
+        })
+    })
+
+    if (res.ok) {
+        const data = await res.json()
+
+        dispatch(buildEditTweet(data))
+    }
+}
+
+export const deleteTweet = (tweetId) => async (dispatch) => {
+    const res = await fetch(`/api/tweet/delete/${tweetId}`, {
+        method: "DELETE"
+    })
+
+    if (res.ok) {
+        const data = await res.json()
+        dispatch(buildDeleteTweet(tweetId))
+    }
+}
 const tweetReducer = (state = {}, action) => {
     switch (action.type) {
         case LOAD_USER_TWEETS:
@@ -78,13 +120,18 @@ const tweetReducer = (state = {}, action) => {
             ))
             return allUserTweets;
         case CREATE_TWEET:
-            console.log('I am in the tweet reducer',action.tweet)
             const newTweets = {...state};
             newTweets[action.tweet.id] = action.tweet
-
             return newTweets;
-
-
+        case EDIT_TWEET:
+            const editedTweets = {...state}
+            console.log('I am in the tweet reducer', editedTweets[action.editedTweet.id])
+            editedTweets[action.editedTweet.id] = {...action.editedTweet}
+            return editedTweets
+        case DELETE_TWEET:
+            const updatedTweets = {...state}
+            delete updatedTweets[action.tweetId]
+            return updatedTweets
         default:
             return state;
     }

@@ -20,13 +20,16 @@ const Feed = () => {
 
 
     return (
-        loaded ? <div>
+        <div>
+
             <CreateTweet />
+            {loaded ? <div>
             {Object.values(tweets).map(tweet => (
                 <div key={tweet.id}>
                     <Link to={`/${tweet.user_id}`}>{tweet.username}</Link>: {tweet.tweet}</div>
             ))}
-        </div> : <h1>Loading</h1>
+            </div> : <h1>Loading</h1>}
+        </div>
     )
 }
 
