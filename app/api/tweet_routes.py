@@ -53,7 +53,18 @@ def get_a_users_tweets(user_id):
 
     return users_tweets
 
-
+@tweet_routes.route('/<int:user_id>/<int:tweet_id>')
+@login_required
+def get_a_tweet(user_id, tweet_id):
+    tweet = Tweet.query.get(tweet_id)
+    if tweet.user_id == user_id:
+        return tweet.to_dict()
+    else:
+        res = {
+            "message": "Tweet not found",
+            "statusCode": 404
+        }
+        return res
 #Create a new tweet
 @tweet_routes.route('/new', methods=["POST"])
 @login_required
@@ -73,7 +84,7 @@ def create_a_new_tweet():
     db.session.commit()
     new_Tweet = new_Tweet.to_dict()
 
-    return jsonify('Success')
+    return jsonify(new_Tweet)
 
 
 #Edit a tweet

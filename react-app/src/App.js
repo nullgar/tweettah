@@ -10,6 +10,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import Feed from './components/Feed';
 import CreateTweet from './components/CreateTweet';
+import SeeTweet from './components/SeeTweet';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -39,9 +40,13 @@ function App() {
         {/* <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
         </ProtectedRoute> */}
-        <ProtectedRoute path='/users/:userId' exact={true} >
+        <ProtectedRoute path='/:userId' exact={true} >
           <User />
         </ProtectedRoute>
+        <ProtectedRoute path='/:userId/:tweetId' exact={true} >
+          <SeeTweet />
+        </ProtectedRoute>
+
         <ProtectedRoute path='/' exact={true} >
           <Feed />
         </ProtectedRoute>
