@@ -24,21 +24,21 @@ def user(id):
 def toggle_follow(id):
     user_to_follow_id = id
     current_user_id = current_user.id
-
+    # form['csrf_token'].data = request.cookies['csrf_token']
     check_user = User.query.get(user_to_follow_id)
+
 
     if check_user:
         follow = (current_user_id, user_to_follow_id)
     else:
         return jsonify('User not found')
-    # user = User.query.get(current_user.id)
-    # user = user.to_dict()
-    # form['csrf_token'].data = request.cookies['csrf_token']
 
     if user_to_follow_id == current_user_id:
-        return jsonify({
-            'error':'Cannot follow yourself'
-        })
+        res = {
+            "message": "Cannot follow yoursel"
+        }
+        return jsonify(res)
+
 
     user = User.query.get(current_user_id).to_dict()
     for check_if_following in user['following']:
@@ -56,5 +56,3 @@ def toggle_follow(id):
 
 
     return jsonify(f'Followed {user_to_follow_id}')
-    # print(user ,user_to_follow_id)
-    # return jsonify('hi')
