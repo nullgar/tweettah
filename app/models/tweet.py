@@ -22,7 +22,6 @@ class Tweet(db.Model):
             'id': self.id,
             'user_id': self.user_id,
             'tweet': self.tweet,
-            'images': self.images_id,
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }

@@ -1,3 +1,4 @@
+from app.models import tweet
 from .db import db
 from sqlalchemy import func
 from datetime import datetime, timezone
@@ -21,6 +22,8 @@ class Image(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
+            'tweet_id': self.tweet_id,
+            'user_id': self.user_id,
             'url': self.url,
             'created_at': self.created_at,
             'updated_at': self.updated_at
