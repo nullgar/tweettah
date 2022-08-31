@@ -68,10 +68,10 @@ def create_a_new_tweet():
         tweet = data["tweet"]
     )
 
-    print('!!!!!!!!!!', new_Tweet)
-    # db.session.add(new_Tweet)
-    # db.session.commit()
-    # new_Tweet = new_Tweet.to_dict()
+
+    db.session.add(new_Tweet)
+    db.session.commit()
+    new_Tweet = new_Tweet.to_dict()
 
     return jsonify('Success')
 
