@@ -59,7 +59,6 @@ def get_a_users_tweets(user_id):
 @login_required
 def create_a_new_tweet():
     user = current_user.to_dict()
-    print(user)
     id = user['id']
     form = TweetForm()
     data = form.data
@@ -68,11 +67,13 @@ def create_a_new_tweet():
         user_id = id,
         tweet = data["tweet"]
     )
-    db.session.add(new_Tweet)
-    db.session.commit()
-    new_Tweet = new_Tweet.to_dict()
 
-    return new_Tweet
+    print('!!!!!!!!!!', new_Tweet)
+    # db.session.add(new_Tweet)
+    # db.session.commit()
+    # new_Tweet = new_Tweet.to_dict()
+
+    return jsonify('Success')
 
 
 #Edit a tweet

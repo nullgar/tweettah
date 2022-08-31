@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import Feed from './components/Feed';
+import CreateTweet from './components/CreateTweet';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -43,6 +44,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <Feed />
+        </ProtectedRoute>
+        <ProtectedRoute path='/new' exact={true}>
+          <CreateTweet />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
