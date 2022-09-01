@@ -1,4 +1,5 @@
 from .db import db
+from .user import User
 from sqlalchemy import func
 from datetime import datetime, timezone
 
@@ -17,12 +18,15 @@ class Tweet(db.Model):
     user = db.relationship("User", back_populates="tweets")
     image = db.relationship("Image", back_populates="tweets", cascade="all, delete-orphan")
 
+
     def to_dict(self):
+        tweet_user = User.query.get(self.user_id)
         return {
             'id': self.id,
             'user_id': self.user_id,
+            'username': tweet_user.username,
+            'profile_pic': tweet_user.profile_pic,
             'tweet': self.tweet,
-            'images': self.images_id,
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }

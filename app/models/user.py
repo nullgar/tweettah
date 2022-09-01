@@ -48,8 +48,8 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'profile_pic': self.profile_pic,
             'email': self.email,
-            "followers": [{"user_id": u.id, "user_name": u.name, "user_profile_pic": u.profile_pic} for u in self.following],
-            "following": [{"user_id": u.id, "user_name": u.name, "user_profile_pic": u.profile_pic} for u in self.followers],
+            "followers": [{"user_id": u.id, "user_name": u.username, "user_profile_pic": u.profile_pic} for u in self.following],
+            "following": [{"user_id": u.id, "user_name": u.username, "user_profile_pic": u.profile_pic} for u in self.followers],
             "created_at": self.created_at,
             "updated_at": self.updated_at
         }
