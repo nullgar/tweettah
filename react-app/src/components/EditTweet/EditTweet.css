@@ -1,0 +1,43 @@
+.tweet-edit-text-area {
+    padding: 1%;
+    border: 1px solid  rgb(154, 212, 241);
+    border-radius: 10px;
+}
+.tweet-edit-master-div {
+    border: 1px solid  rgb(240, 240, 240);
+    width: 60%;
+    min-width: 600px;
+}
+
+.tweet-edit-buttons-div {
+    display: flex;
+    padding: 1%;
+    justify-content: space-around;
+}
+.tweet-edit-button{
+    background-color: #1b9bee;
+    margin-left: 12px;
+    min-width: 36px;
+    min-height: 36px;
+    height: 10%;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-color: rgba(0, 0, 0, 0);
+    border-width: 1px;
+    border-radius: 9999px;
+    color: white;
+}
+
+.tweet-edit-delete-button {
+    background-color: red;
+    margin-left: 12px;
+    min-width: 36px;
+    min-height: 36px;
+    height: 10%;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-color: rgba(0, 0, 0, 0);
+    border-width: 1px;
+    border-radius: 9999px;
+    color: white;
+}

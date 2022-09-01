@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { deleteTweet, editTweet } from "../../store/tweets";
-
+import './EditTweet.css'
 
 const EditTweet = ({tweet}) => {
     const [editedTweet, setEditedTweet] = useState(tweet.tweet)
@@ -11,6 +11,9 @@ const EditTweet = ({tweet}) => {
     const history = useHistory()
     const user = useSelector(state => state.session.user)
 
+    useEffect(() => {
+        document.querySelector('.tweet-edit-text-area').innerHTML = editedTweet
+    }, [])
     const handleEditTweet = async (e) => {
         e.preventDefault()
 
@@ -20,7 +23,11 @@ const EditTweet = ({tweet}) => {
             tweet: editedTweet
         }
 
-        dispatch(editTweet(changedtweet))
+        const res = dispatch(editTweet(changedtweet))
+
+        if (res) {
+            document.querySelector('.tweet-edit-text-area').innerHTML = editedTweet
+        }
     }
     const handleDeleteTweet = async (e, tweetId) => {
         e.preventDefault()
@@ -29,19 +36,26 @@ const EditTweet = ({tweet}) => {
         if (res) history.push(`/${user.id}`)
     }
     return (
-        <div>
+        <div className="tweet-edit-master-div">
 
-            <form action="PUT" onSubmit={handleEditTweet}>
+            <form action="PUT">
 
-                <textarea
-                value={editedTweet}
-                onChange={e => setEditedTweet(e.target.value)}>
+                <div
+                contentEditable={true}
+                className='tweet-edit-text-area'
+                type="textbox"
+                // value={editedTweet}
+                // onChange={e => setEditedTweet(e.target.value)}
+                onInput={(e) => setEditedTweet(e.target.innerHTML)}
+                >
 
-
-                </textarea>
-                <button>Edit Tweet</button>
+                </div>
             </form>
-            <button onClick={(e) => handleDeleteTweet(e, tweet.id)}>Delete Tweet</button>
+            <div className="tweet-edit-buttons-div">
+                <button className="tweet-edit-button" onClick={(e) => handleEditTweet(e)}>Edit Tweet</button>
+                <button className="tweet-edit-delete-button" onClick={(e) => handleDeleteTweet(e, tweet.id)}>Delete Tweet</button>
+
+            </div>
         </div>
     )
 }
