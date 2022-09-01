@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { getSingleUserTweets } from '../store/tweets';
+import Spinner from './Spinner';
 
 function User() {
   const [user, setUser] = useState({});
@@ -24,7 +25,7 @@ function User() {
 
     const clear = setTimeout(() => {
       setLoaded(true)
-    }, 150)
+    }, 1000)
 
     return () => clearTimeout(clear)
 
@@ -53,7 +54,7 @@ function User() {
             ))}
         </div>
     </div>
-    : <h1>Loading</h1>
+    : <Spinner />
   );
 }
 export default User;
