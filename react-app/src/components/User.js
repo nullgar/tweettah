@@ -40,10 +40,9 @@ function User() {
     <div>
         <div className='user-info'>
           <div>
-            <img src={user.profile_pic} />
+            <img src={user.profile_pic} style={{'width': '500px'}} />
           </div>
-          <p>Username</p> {user.username}
-          <p>Email</p> {user.email}
+          <p>{user.username}</p>
         </div>
         <div className='tweet-container'>
 
