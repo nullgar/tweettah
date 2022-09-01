@@ -21,10 +21,18 @@ def validation_errors_to_error_messages(validation_errors):
 # Get current Users Tweets
 @tweet_routes.route('/')
 @login_required
-def get_current_user_tweets():
+def get_current_user_tweets_for_feed():
     user = current_user.to_dict()
     loadTweets = {}
     query = Tweet.query.filter(Tweet.user_id == user['id'])
+    for follower in user['following']:
+        following_tweets = Tweet.query.filter(Tweet.user_id == follower['user_id'])
+        for tweet in following_tweets:
+            if tweet not in loadTweets:
+                loadTweets[tweet.id] = tweet.to_dict()
+
+
+    # return user
     for tweet in query:
         if tweet not in loadTweets:
             loadTweets[tweet.id] = tweet.to_dict()
@@ -45,13 +53,24 @@ def get_a_users_tweets(user_id):
 
     return users_tweets
 
+@tweet_routes.route('/<int:user_id>/<int:tweet_id>')
+@login_required
+def get_a_tweet(user_id, tweet_id):
+    tweet = Tweet.query.get(tweet_id)
+    if tweet.user_id == user_id:
+        return tweet.to_dict()
+    else:
+        res = {
+            "message": "Tweet not found",
+            "statusCode": 404
+        }
+        return res
 
 #Create a new tweet
 @tweet_routes.route('/new', methods=["POST"])
 @login_required
 def create_a_new_tweet():
     user = current_user.to_dict()
-    print(user)
     id = user['id']
     form = TweetForm()
     data = form.data
@@ -60,11 +79,13 @@ def create_a_new_tweet():
         user_id = id,
         tweet = data["tweet"]
     )
+
+    # if form.validate_on_submit():
     db.session.add(new_Tweet)
     db.session.commit()
     new_Tweet = new_Tweet.to_dict()
 
-    return new_Tweet
+        # return jsonify(new_Tweet)
 
 
 #Edit a tweet
@@ -77,11 +98,10 @@ def edit_a_tweet(tweet_id):
     data = form.data
 
     tweet_to_be_edited = Tweet.query.get(tweet_id)
-
     if tweet_to_be_edited and tweet_to_be_edited.user_id == user_id and form.validate_on_submit():
         tweet_to_be_edited.tweet = data['tweet']
         db.session.commit()
-        return jsonify("Success")
+        return tweet_to_be_edited.to_dict()
     elif form.errors:
         return jsonify(form.errors)
     else:
@@ -93,7 +113,7 @@ def edit_a_tweet(tweet_id):
 
 
 #Delete a tweet
-@tweet_routes.route('/delete/<int:tweet_id>', methods=["Delete"])
+@tweet_routes.route('/delete/<int:tweet_id>', methods=["DELETE"])
 @login_required
 def delete_a_tweet(tweet_id):
     user_id = current_user.id
@@ -105,7 +125,7 @@ def delete_a_tweet(tweet_id):
     if to_be_deleted and to_be_deleted.user_id == user_id and form.validate_on_submit():
         db.session.delete(to_be_deleted)
         db.session.commit()
-        return jsonify('Successfully deleted Tweet!')
+        return jsonify(to_be_deleted.id)
     else:
         res = {
             "message": "Permission Denied",
