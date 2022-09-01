@@ -1,12 +1,14 @@
+.tweet-edit-master-div {
+    border-radius: 10px;
+    border: 1px solid  rgb(240, 240, 240);
+    width: 60%;
+    min-width: 800px;
+}
+
 .tweet-edit-text-area {
     padding: 1%;
     border: 1px solid  rgb(154, 212, 241);
     border-radius: 10px;
-}
-.tweet-edit-master-div {
-    border: 1px solid  rgb(240, 240, 240);
-    width: 60%;
-    min-width: 600px;
 }
 
 .tweet-edit-buttons-div {

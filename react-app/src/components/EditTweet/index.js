@@ -46,7 +46,14 @@ const EditTweet = ({tweet}) => {
                 type="textbox"
                 // value={editedTweet}
                 // onChange={e => setEditedTweet(e.target.value)}
-                onInput={(e) => setEditedTweet(e.target.innerHTML)}
+                onInput={(e) => {
+                    setEditedTweet(e.target.innerHTML)
+                    // console.log(e.target.innerHTML.length > 20)
+                    // if (e.target.innerHTML> 20) {
+
+                    // }
+                }}
+
                 >
 
                 </div>

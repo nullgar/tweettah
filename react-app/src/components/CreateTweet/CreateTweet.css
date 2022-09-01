@@ -1,6 +1,7 @@
 .create-tweet-master-div{
     display: flex;
     align-items: center;
+    flex-flow: row;
     margin: auto;
     padding: 2.5%;
     padding-top: 7%;
