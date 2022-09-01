@@ -86,7 +86,8 @@ def create_a_new_tweet():
         new_Tweet = new_Tweet.to_dict()
 
         return jsonify(new_Tweet)
-
+    else:
+        return jsonify(form.errors)
 
 #Edit a tweet
 @tweet_routes.route('/edit/<int:tweet_id>', methods=["PUT"])

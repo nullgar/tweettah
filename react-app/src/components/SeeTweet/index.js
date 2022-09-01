@@ -14,8 +14,7 @@ const SeeTweet = () => {
     const user = useSelector(state => state.session.user)
     const tweets = useSelector(state => state.tweets)
     const tweet = tweets[tweetId]
-    // const checkIfTweet = useSelector(state => state.tweets[tweetId])
-    // console.log(user)
+
     useEffect(() => {
 
         dispatch(getSingleUserTweets(userId))
@@ -24,18 +23,7 @@ const SeeTweet = () => {
         }, 150)
 
         return () => clearTimeout(clear)
-            // (async () => {
-            //     const response = await fetch(`/api/tweet/${userId}/${tweetId}`);
-            //     // if (!response.ok) return history.push('/')
-            //     const data = await response.json();
-            //     setTweet(data)
-            //     const clear = setTimeout(() => {
-            //         setLoaded(true)
-            //       }, 150)
 
-            //     return () => clearTimeout(clear)
-
-            // })();
 
     }, [])
 
