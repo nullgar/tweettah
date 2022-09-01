@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getAllUsersFeedTweets } from "../../store/tweets";
 import CreateTweet from "../CreateTweet";
+import LoadingSpinner from "../Spinner";
 
 const Feed = () => {
     const dispatch = useDispatch()
@@ -12,7 +13,7 @@ const Feed = () => {
         dispatch(getAllUsersFeedTweets())
         const clear = setTimeout(() => {
             setLoaded(true)
-          }, 150)
+          }, 1000)
 
         return () => clearTimeout(clear)
 
@@ -28,7 +29,7 @@ const Feed = () => {
                 <div key={tweet.id}>
                     <Link to={`/${tweet.user_id}`}>{tweet.username}</Link>: {tweet.tweet}</div>
             ))}
-            </div> : <h1>Loading</h1>}
+            </div> : <LoadingSpinner />}
         </div>
     )
 }

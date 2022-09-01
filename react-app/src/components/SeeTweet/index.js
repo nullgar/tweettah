@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getSingleUserTweets } from "../../store/tweets";
 import EditTweet from "../EditTweet";
+import Spinner from "../Spinner";
 import './SeeTweet.css'
 
 
@@ -22,7 +23,7 @@ const SeeTweet = () => {
         dispatch(getSingleUserTweets(userId))
         const clear = setTimeout(() => {
             setLoaded(true)
-        }, 150)
+        }, 1000)
 
         return () => clearTimeout(clear)
 
@@ -67,7 +68,7 @@ const SeeTweet = () => {
 
         </div>
         </>
-        : <h1>Loading</h1>
+        : <Spinner />
     )
 }
 
