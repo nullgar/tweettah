@@ -10,7 +10,6 @@
     /* position: absolute; */
     width: 70px;
     height: 50px;
-    border: 5px solid rgb(240, 240, 240);
     border: 5px solid #1b9bee;
     border-radius: 50%;
 }
