@@ -56,6 +56,8 @@ const EditTweet = ({tweet, setShow}) => {
                 type="text"
                 value={editedTweet}
                 onChange={e => setEditedTweet(e.target.value)}
+                minLength={1}
+                maxLength={150}
                 onInput={(e) => {
                     const area = document.querySelector('.tweet-edit-text-area')
                     area.setAttribute("style", "height:" + (0) + "px;overflow-y:hidden;");
