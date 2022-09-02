@@ -155,11 +155,7 @@ def get_comments(tweet_id):
     if comments:
         return comments
     else:
-        res = {
-            "message": "No comments found",
-            "statusCode": 404
-        }
-        return res
+        return {'errors': 'No comments found!'}, 404
 
 
 #Create a comment on Tweet

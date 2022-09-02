@@ -99,7 +99,6 @@ export const editTweet = (payload) => async (dispatch) => {
     } else if (res.status < 500) {
         const data = await res.json();
         if (data) {
-            console.log('data in api route', data)
             return data;
         }
     }

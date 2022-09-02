@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { getAllTweetsComments } from "../../store/comments";
 import { getSingleUserTweets } from "../../store/tweets";
 import EditTweet from "../EditTweet";
+import SeeComments from "../SeeComments";
 import Spinner from "../Spinner";
 import './SeeTweet.css'
 
@@ -60,6 +62,7 @@ const SeeTweet = () => {
             {show && tweet.user_id == user.id ? <EditTweet setShow={setShow} tweet={tweet}/> : null}
 
         </div>
+        <SeeComments tweetId={tweetId} />
         </>
         : <Spinner />
     )
