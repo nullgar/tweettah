@@ -21,7 +21,10 @@ const SeeComments = () => {
         comments && loaded ?
         <div>
             {Object.values(comments).length > 0 ? Object.values(comments).map(comment => (
-                <div key={comment.id}>{comment.comment}</div>
+                <div key={comment.id}>
+                    <div>{comment.comment}</div>
+
+                </div>
             )) : <h1>No Comments</h1>}
         </div> : <Spinner />
     )

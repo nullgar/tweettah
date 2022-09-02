@@ -55,9 +55,11 @@ const SeeTweet = () => {
 
             {/* <p>{tweet.created_at.split(' ').slice(0, 4).join(' ')}</p> */}
             </div>
-            <i
+
+            {tweet.user_id == user.id ? <i
             onClick={e => setShow(!show)}
-            className="fa-solid fa-ellipsis see-tweet-edit-icon"></i>
+            className="fa-solid fa-ellipsis see-tweet-edit-icon">
+            </i> : null}
         </div>
         <div className="see-tweet-edit-div">
             {show && tweet.user_id == user.id ? <EditTweet setShow={setShow} tweet={tweet}/> : null}

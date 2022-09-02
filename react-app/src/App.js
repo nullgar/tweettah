@@ -12,6 +12,7 @@ import Feed from './components/Feed';
 import CreateTweet from './components/CreateTweet';
 import SeeTweet from './components/SeeTweet';
 
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ function App() {
           <SignUpForm />
         </Route>
         <Route path='/login' exact={true}>
+          {/* <LoginFormModal /> */}
           <LoginForm />
         </Route>
         {/* <ProtectedRoute path='/users' exact={true} >
