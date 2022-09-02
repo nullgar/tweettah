@@ -70,6 +70,7 @@
 .see-tweet-edit-div {
     display: flex;
     justify-content: center;
+    min-width: 800px;
 }
 .see-tweet-edit-icon {
     position: absolute;

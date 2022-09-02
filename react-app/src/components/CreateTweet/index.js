@@ -1,42 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createTweet } from "../../store/tweets";
+import Spinner from "../Spinner";
 import './CreateTweet.css'
 const CreateTweet = () => {
     const [tweet, setTweet] = useState('')
     const dispatch = useDispatch()
+    const [errors, setErrors] = useState([]);
     const profile_pic = useSelector(state => state.session.user.profile_pic)
-    const handleTweet = (e) => {
+
+    const handleTweet = async (e) => {
         e.preventDefault()
 
         const newTweet = {
-            tweet: tweet
+            tweet: tweet.trimStart()
         }
 
+        const res = await dispatch(createTweet(newTweet))
 
-        const res = dispatch(createTweet(newTweet))
-
-        if (res) {
-            document.querySelector('.create-tweet-text-area').innerHTML = ''
-
+        if (res.errors) {
+            setErrors(res.errors)
+        } else if (res) {
+            setErrors([])
+            setTweet('')
         }
     }
 
-    const handleChange = (e) => {
-        // e.preventDefault()
+    useEffect(() => {
+        return
+    }, [tweet])
 
-        console.log(e.target.value)
-    }
-    // const resizeField = () => {
-    //     const field = document.querySelector('.create-tweet-text-area')
-
-    //     if (field.value.length === field.scrollWidth / 10)
-    //     {
-    //         field.style.height = `${field.scrollHeight * 2}px`
-    //         // field.style.height =('height', `${field.value.length}px`)
-    //     }
-    //     console.log(field.value.length, field.scrollWidth / 10)
-    // }
 
     return (
         profile_pic ?
@@ -46,19 +39,29 @@ const CreateTweet = () => {
                 <img src={profile_pic} className='create-tweet-image' />
             </div>
             <div className="create-tweet-inner-div">
-
+                <div className="create-tweet-errors-div">
+                    { errors ? errors.map((error, ind) => (
+                        <div key={ind}>{error}</div>
+                    )) : null}
+                </div>
 
                 <form className="create-tweet-form" action="POST" >
 
-                    <div
-                    contentEditable={true}
+                    <textarea
                     className="create-tweet-text-area"
-                    type="textbox"
-                    onInput={(e) => setTweet(e.target.innerHTML)}
+                    value={tweet}
+                    onChange={(e) => setTweet(e.target.value)}
                     placeholder="What's happening?"
+                    minLength={1}
+                    maxLength={150}
+                    onInput={(e) => {
+                        const area = document.querySelector('.create-tweet-text-area')
+                        area.setAttribute("style", "height:" + (0) + "px;overflow-y:hidden;");
+                        area.setAttribute("style", "height:" + (area.scrollHeight) + "px;overflow-y:hidden;");
+                    }}
                     >
 
-                    </div>
+                    </textarea>
 
                 </form>
                 <div className="create-tweet-submit-div">
@@ -67,7 +70,7 @@ const CreateTweet = () => {
                 </div>
             </div>
         </div>
-        : 'Loading'
+        : <Spinner />
 
     )
 }

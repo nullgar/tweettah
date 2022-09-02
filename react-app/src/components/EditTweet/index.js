@@ -4,15 +4,19 @@ import { useHistory, useParams } from "react-router-dom";
 import { deleteTweet, editTweet } from "../../store/tweets";
 import './EditTweet.css'
 
-const EditTweet = ({tweet}) => {
+const EditTweet = ({tweet, setShow}) => {
     const [editedTweet, setEditedTweet] = useState(tweet.tweet)
     const {tweetId} = useParams()
+    const [errors, setErrors] = useState([])
     const dispatch = useDispatch()
     const history = useHistory()
     const user = useSelector(state => state.session.user)
 
+
     useEffect(() => {
-        document.querySelector('.tweet-edit-text-area').innerHTML = editedTweet
+        const area = document.querySelector('.tweet-edit-text-area')
+        area.setAttribute("style", "height:" + (0) + "px;overflow-y:hidden;");
+        area.setAttribute("style", "height:" + (area.scrollHeight) + "px;overflow-y:hidden;");
     }, [])
     const handleEditTweet = async (e) => {
         e.preventDefault()
@@ -20,13 +24,16 @@ const EditTweet = ({tweet}) => {
         const changedtweet = {
             user_id: user.id,
             id: tweetId,
-            tweet: editedTweet
+            tweet: editedTweet.trimStart()
         }
 
-        const res = dispatch(editTweet(changedtweet))
+        const res = await dispatch(editTweet(changedtweet))
 
-        if (res) {
-            document.querySelector('.tweet-edit-text-area').innerHTML = editedTweet
+        if (res.errors) {
+            setErrors(res.errors)
+        } else if (res) {
+            setErrors([])
+            setShow(false)
         }
     }
     const handleDeleteTweet = async (e, tweetId) => {
@@ -37,26 +44,28 @@ const EditTweet = ({tweet}) => {
     }
     return (
         <div className="tweet-edit-master-div">
+            <div className="edit-tweet-errors-div">
+                    { errors ? errors.map((error, ind) => (
+                        <div key={ind}>{error}</div>
+                    )) : null}
+            </div>
 
             <form action="PUT">
-
-                <div
-                contentEditable={true}
+                <textarea
                 className='tweet-edit-text-area'
-                type="textbox"
-                // value={editedTweet}
-                // onChange={e => setEditedTweet(e.target.value)}
+                type="text"
+                value={editedTweet}
+                onChange={e => setEditedTweet(e.target.value)}
+                minLength={1}
+                maxLength={150}
                 onInput={(e) => {
-                    setEditedTweet(e.target.innerHTML)
-                    // console.log(e.target.innerHTML.length > 20)
-                    // if (e.target.innerHTML> 20) {
-
-                    // }
+                    const area = document.querySelector('.tweet-edit-text-area')
+                    area.setAttribute("style", "height:" + (0) + "px;overflow-y:hidden;");
+                    area.setAttribute("style", "height:" + (area.scrollHeight) + "px;overflow-y:hidden;");
                 }}
-
                 >
 
-                </div>
+                </textarea>
             </form>
             <div className="tweet-edit-buttons-div">
                 <button className="tweet-edit-button" onClick={(e) => handleEditTweet(e)}>Edit Tweet</button>
