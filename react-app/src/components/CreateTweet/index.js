@@ -8,30 +8,26 @@ const CreateTweet = () => {
     const dispatch = useDispatch()
     const [errors, setErrors] = useState([]);
     const profile_pic = useSelector(state => state.session.user.profile_pic)
+
     const handleTweet = async (e) => {
         e.preventDefault()
 
         const newTweet = {
-            tweet: tweet
+            tweet: tweet.trimStart()
         }
 
-
         const res = await dispatch(createTweet(newTweet))
-
-
 
         if (res.errors) {
             setErrors(res.errors)
         } else if (res) {
             setErrors([])
-            document.querySelector('.create-tweet-text-area').innerHTML = ''
             setTweet('')
         }
     }
 
     useEffect(() => {
         return
-        // (async () => {setErrors([])})();
     }, [tweet])
 
 
@@ -51,15 +47,19 @@ const CreateTweet = () => {
 
                 <form className="create-tweet-form" action="POST" >
 
-                    <div
-                    contentEditable={true}
+                    <textarea
                     className="create-tweet-text-area"
-                    type="textbox"
-                    onInput={(e) => setTweet(e.target.innerHTML)}
+                    value={tweet}
+                    onChange={(e) => setTweet(e.target.value)}
                     placeholder="What's happening?"
+                    onInput={(e) => {
+                        const area = document.querySelector('.create-tweet-text-area')
+                        area.setAttribute("style", "height:" + (0) + "px;overflow-y:hidden;");
+                        area.setAttribute("style", "height:" + (area.scrollHeight) + "px;overflow-y:hidden;");
+                    }}
                     >
 
-                    </div>
+                    </textarea>
 
                 </form>
                 <div className="create-tweet-submit-div">

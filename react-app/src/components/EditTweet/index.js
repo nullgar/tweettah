@@ -20,11 +20,10 @@ const EditTweet = ({tweet, setShow}) => {
     const handleEditTweet = async (e) => {
         e.preventDefault()
 
-
         const changedtweet = {
             user_id: user.id,
             id: tweetId,
-            tweet: editedTweet
+            tweet: editedTweet.trimStart()
         }
 
         const res = await dispatch(editTweet(changedtweet))
@@ -32,7 +31,6 @@ const EditTweet = ({tweet, setShow}) => {
         if (res.errors) {
             setErrors(res.errors)
         } else if (res) {
-            document.querySelector('.tweet-edit-text-area').innerHTML = editedTweet
             setErrors([])
             setShow(false)
         }
@@ -53,7 +51,6 @@ const EditTweet = ({tweet, setShow}) => {
 
             <form action="PUT">
                 <textarea
-                contentEditable={true}
                 className='tweet-edit-text-area'
                 type="text"
                 value={editedTweet}

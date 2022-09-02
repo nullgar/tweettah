@@ -8,7 +8,7 @@
     width: 55%;
     min-width: 800px;
     height: 40%;
-    min-height: 200px;
+    min-height: 300px;
     height: fit-content;
     /* background-color: red; */
     border: 1px solid  rgb(240, 240, 240);
@@ -20,7 +20,7 @@
     /* position: relative; */
     flex-flow: column;
     /* min-width: 800px; */
-
+    min-height: 180px;
     width: 100%;
     display: flex;
 
@@ -49,6 +49,8 @@
     display: flex;
     margin: 0%;
     width: 90%;
+    height: 0;
+    min-height: 100px;
     min-width: 90%;
     justify-content: center;
     align-items: center;
@@ -56,10 +58,10 @@
 
 }
 
-.create-tweet-text-area:empty:before {
+/* .create-tweet-text-area:empty:before {
     content: attr(placeholder);
     opacity: 0.6;
-}
+} */
 
 .create-tweet-text-area{
     /* display: flex; */
@@ -71,17 +73,19 @@
     /* transform: translateY(50%); */
     border-bottom: 1px solid  rgb(240, 240, 240);
     padding-bottom: 5%;
+    margin-left: 2%;
     /* border: 0 solid white; */
-    width: 80%;
+    width: 83%;
     min-width: 0px;
-    max-height: max-content;
-    height: fit-content;
+    /* height: fit-content; */
     resize: none;
     word-wrap: break-word;
     line-height: 24px;
-    font-size: 20px;
-    position: relative;
+    font-size: 23px;
+    /* position: relative; */
     top: 10px;
+    border: 1px solid  white;
+    border-radius: 10px;
     /* overflow: hidden; */
 
 }
