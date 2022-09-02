@@ -1,0 +1,30 @@
+.spinner-div {
+    display: flex;
+    justify-content: center;
+    padding: 5%;
+}
+.loading-div {
+    /* The Egg */
+    animation: spinner 1s linear infinite;
+    /* animation: spinner both 3s linear infinite; */
+    /* position: absolute; */
+    width: 70px;
+    height: 50px;
+    border: 5px solid #1b9bee;
+    border-radius: 50%;
+}
+@keyframes spinner {
+    0% {
+      transform: rotate(90deg);
+      /* right: 0%; */
+    }
+    /* 50% {
+      transform: rotate(360deg);
+      right: 95%;
+
+    } */
+    100% {
+        transform: rotate(450deg);
+        /* right: 0%; */
+      }
+}

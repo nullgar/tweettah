@@ -69,6 +69,12 @@ export const createTweet = (tweet) => async (dispatch) => {
     if (res.ok) {
         const data = await res.json()
         dispatch(buildTweet(data))
+        return data
+    } else if (res.status < 500) {
+        const data = await res.json();
+        if (data) {
+            return data;
+        }
     }
 }
 
@@ -88,8 +94,14 @@ export const editTweet = (payload) => async (dispatch) => {
 
     if (res.ok) {
         const data = await res.json()
-
         dispatch(buildEditTweet(data))
+        return data
+    } else if (res.status < 500) {
+        const data = await res.json();
+        if (data) {
+            console.log('data in api route', data)
+            return data;
+        }
     }
 }
 
