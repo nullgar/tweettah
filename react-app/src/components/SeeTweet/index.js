@@ -30,7 +30,6 @@ const SeeTweet = () => {
 
     }, [])
 
-    console.log(tweet)
     return (
 
         loaded && tweet ?
@@ -64,7 +63,7 @@ const SeeTweet = () => {
             className="fa-solid fa-ellipsis see-tweet-edit-icon"></i>
         </div>
         <div className="see-tweet-edit-div">
-            {show && tweet.user_id == user.id ? <EditTweet tweet={tweet}/> : null}
+            {show && tweet.user_id == user.id ? <EditTweet setShow={setShow} tweet={tweet}/> : null}
 
         </div>
         </>

@@ -15,7 +15,7 @@ def validation_errors_to_error_messages(validation_errors):
     errorMessages = []
     for field in validation_errors:
         for error in validation_errors[field]:
-            errorMessages.append(f'{field} : {error}')
+            errorMessages.append(f'{error}')
     return errorMessages
 
 # Get current Users Tweets
@@ -37,8 +37,14 @@ def get_current_user_tweets_for_feed():
         if tweet not in loadTweets:
             loadTweets[tweet.id] = tweet.to_dict()
 
-
-    return loadTweets
+    if query:
+        return loadTweets
+    else:
+        res = {
+            "message": "Tweets not found",
+            "statusCode": 404
+        }
+        return res
 
 
 #Get one users tweets
@@ -61,7 +67,7 @@ def get_a_tweet(user_id, tweet_id):
         return tweet.to_dict()
     else:
         res = {
-            "message": "Tweet not found",
+            "message": "Tweets not found",
             "statusCode": 404
         }
         return res
@@ -81,13 +87,13 @@ def create_a_new_tweet():
     )
 
     if form.validate_on_submit():
+
         db.session.add(new_Tweet)
         db.session.commit()
         new_Tweet = new_Tweet.to_dict()
-
         return jsonify(new_Tweet)
     else:
-        return jsonify(form.errors)
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 #Edit a tweet
 @tweet_routes.route('/edit/<int:tweet_id>', methods=["PUT"])
@@ -103,14 +109,14 @@ def edit_a_tweet(tweet_id):
         tweet_to_be_edited.tweet = data['tweet']
         db.session.commit()
         return tweet_to_be_edited.to_dict()
-    elif form.errors:
-        return jsonify(form.errors)
-    else:
+    elif not tweet_to_be_edited:
         res = {
             "message": "Tweet not found",
             "statusCode": 404
         }
         return jsonify(res)
+    else:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 #Delete a tweet

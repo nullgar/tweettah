@@ -1,12 +1,16 @@
 .tweet-edit-master-div {
     border-radius: 10px;
     border: 1px solid  rgb(240, 240, 240);
-    width: 60%;
+    width: 55%;
     min-width: 800px;
+    margin: auto;
 }
 
 .tweet-edit-text-area {
     padding: 1%;
+    width: 98%;
+    font-size: 23px;
+    resize: none;
     border: 1px solid  rgb(154, 212, 241);
     border-radius: 10px;
 }
@@ -28,6 +32,7 @@
     border-width: 1px;
     border-radius: 9999px;
     color: white;
+    cursor: pointer;
 }
 
 .tweet-edit-delete-button {
@@ -42,4 +47,12 @@
     border-width: 1px;
     border-radius: 9999px;
     color: white;
+    cursor: pointer;
+}
+.edit-tweet-errors-div {
+    display: flex;
+    justify-content: center;
+    color: red;
+    border-color: red;
+    border-width: 1px;
 }
