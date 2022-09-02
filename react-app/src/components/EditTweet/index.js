@@ -14,8 +14,9 @@ const EditTweet = ({tweet, setShow}) => {
 
 
     useEffect(() => {
-        document.querySelector('.tweet-edit-text-area').innerHTML = editedTweet
-
+        const area = document.querySelector('.tweet-edit-text-area')
+        area.setAttribute("style", "height:" + (0) + "px;overflow-y:hidden;");
+        area.setAttribute("style", "height:" + (area.scrollHeight) + "px;overflow-y:hidden;");
     }, [])
     const handleEditTweet = async (e) => {
         e.preventDefault()

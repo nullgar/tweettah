@@ -52,6 +52,8 @@ const CreateTweet = () => {
                     value={tweet}
                     onChange={(e) => setTweet(e.target.value)}
                     placeholder="What's happening?"
+                    minLength={1}
+                    maxLength={150}
                     onInput={(e) => {
                         const area = document.querySelector('.create-tweet-text-area')
                         area.setAttribute("style", "height:" + (0) + "px;overflow-y:hidden;");
