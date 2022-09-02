@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getAllTweetsComments } from "../../store/comments";
 import { getSingleUserTweets } from "../../store/tweets";
+import CreateComment from "../CreateComment";
 import EditTweet from "../EditTweet";
 import SeeComments from "../SeeComments";
 import Spinner from "../Spinner";
@@ -62,6 +63,7 @@ const SeeTweet = () => {
             {show && tweet.user_id == user.id ? <EditTweet setShow={setShow} tweet={tweet}/> : null}
 
         </div>
+        <CreateComment tweetId={tweetId}/>
         <SeeComments tweetId={tweetId} />
         </>
         : <Spinner />

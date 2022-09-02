@@ -144,7 +144,6 @@ def delete_a_tweet(tweet_id):
 @tweet_routes.route('/<int:tweet_id>/comments')
 @login_required
 def get_comments(tweet_id):
-    print(tweet_id)
     comments = {}
     query = Comment.query.filter(Comment.tweet_id == tweet_id)
 
@@ -176,7 +175,7 @@ def create_a_comment(tweet_id):
         )
         db.session.add(new_comment)
         db.session.commit()
-        print(new_comment.to_dict())
-        return jsonify('Successfully created Comment!')
+
+        return jsonify(new_comment.to_dict())
 
     return jsonify('hi')
