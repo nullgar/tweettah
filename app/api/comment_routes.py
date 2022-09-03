@@ -31,7 +31,7 @@ def edit_a_comment(comment_id):
     if query and query.user_id == user and form.validate_on_submit():
         query.comment = data['comment']
         db.session.commit()
-        return jsonify('Successfully edited Comment!')
+        return jsonify(query.to_dict())
     elif form.errors:
         return jsonify(form.errors)
     else:
@@ -53,7 +53,7 @@ def delete_a_comment(comment_id):
     if to_be_deleted and to_be_deleted.user_id == user and form.validate_on_submit():
         db.session.delete(to_be_deleted)
         db.session.commit()
-        return jsonify('Successfully deleted Comment!')
+        return jsonify(comment_id)
     else:
         res = {
             "message": "Permission Denied",

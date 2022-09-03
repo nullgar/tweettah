@@ -13,6 +13,16 @@ const buildComment = (comment) => ({
     comment
 })
 
+const buildEditComment = (edited) => ({
+    type: EDIT_TWEET_COMMENT,
+    edited
+})
+
+const builddeleteComment = (comment_id) => ({
+    type: DELETE_TWEET_COMMENT,
+    comment_id
+})
+
 export const getAllTweetsComments = (tweetId) => async (dispatch) => {
     const res = await fetch(`/api/tweet/${tweetId}/comments`)
 
@@ -25,7 +35,7 @@ export const getAllTweetsComments = (tweetId) => async (dispatch) => {
 }
 
 export const createTweetComment = (payload) => async (dispatch) => {
-    console.log('In action creator',payload)
+
     const res = await fetch(`/api/tweet/${payload.tweetId}/new-comment`, {
         method: 'POST',
         headers: {
@@ -45,7 +55,36 @@ export const createTweetComment = (payload) => async (dispatch) => {
 
 }
 
+export const createEditedComment = (payload) => async (dispatch) => {
 
+    const res = await fetch(`/api/comment/${payload.commentId}`, {
+        method: 'PUT',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            comment: payload.comment,
+            comment_id: payload.commentId
+        })
+    })
+
+    if (res.ok) {
+        const data = await res.json()
+        dispatch(buildEditComment(data))
+    }
+}
+
+export const deleteComment = (comment_id) => async (dispatch) => {
+
+    const res = await fetch(`/api/comment/${comment_id}`, {
+        method: "DELETE",
+    })
+
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(builddeleteComment(data))
+    }
+}
 const commentReducer = (state = {}, action) => {
 
     switch (action.type) {
@@ -60,6 +99,14 @@ const commentReducer = (state = {}, action) => {
             const allTweetComments = {...state};
             allTweetComments[action.comment.id] = action.comment;
             return allTweetComments;
+        case EDIT_TWEET_COMMENT:
+            const editedComments = {...state};
+            editedComments[action.edited.id] = {...action.edited};
+            return editedComments;
+        case DELETE_TWEET_COMMENT:
+            const updatedComments = {...state};
+            delete updatedComments[action.comment_id];
+            return updatedComments;
         default:
             return state;
     }
