@@ -42,7 +42,7 @@ const CreateComment = ({tweetId}) => {
                     area.setAttribute("style", "height:" + (0) + "px;overflow-y:hidden;");
                     area.setAttribute("style", "height:" + (area.scrollHeight) + "px;overflow-y:hidden;");
                 }}
-                placeholder='Comment Your Reply'
+                placeholder='Post Your Comment'
                 >
 
                 </textarea>

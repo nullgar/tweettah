@@ -1,0 +1,94 @@
+.edit-comment-modal-div {
+    display: flex;
+    /* flex-flow: column; */
+    align-items: center;
+    justify-content: center;
+    /* justify-content: flex-end; */
+    margin: auto;
+    /* padding-left: 2.5%; */
+    /* padding: 2% 0 2% 0; */
+    width: 55%;
+    min-width: 800px;
+    min-height: 500px;
+    height: 500px;
+    /* max-height: max-content; */
+    /* height: max-content; */
+    /* background-color: red; */
+    border: 1px solid  rgb(240, 240, 240);
+    /* border-right: 1px solid  rgb(240, 240, 240); */
+    box-sizing: border-box;
+    position: relative;
+}
+.edit-comment-modal-form {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+.edit-comment-modal-text-area {
+    text-align: left;
+    color: black;
+    white-space: pre-wrap;
+    align-items: center;
+    overflow-wrap: break-word;
+    margin: 2%;
+    padding: 5%;
+    /* padding-bottom: 2px; */
+    /* padding-top: 2px; */
+    overflow: hidden;
+    width: 100%;
+    min-width: 0px;
+    height: 200px;
+    resize: none;
+    word-wrap: break-word;
+    line-height: 24px;
+    font-size: 24px;
+    position: relative;
+    /* border: 1px solid  white; */
+    border-radius: 10px;
+    border: 2px rgb(240, 240, 240) solid;
+}
+.edit-comment-modal-text-area:active,
+.edit-comment-modal-text-area:hover,
+.edit-comment-modal-text-area:not(:hover){
+    outline:0px;
+    box-shadow: none;
+}
+.edit-comment-modal-submit-button{
+    background-color: #1b9bee;
+    margin-left: 12px;
+    min-width: 36px;
+    max-width: 120px;
+    min-height: 36px;
+    height: 10%;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-color: rgba(0, 0, 0, 0);
+    border-width: 1px;
+    border-radius: 9999px;
+    color: white;
+    cursor: pointer;
+    margin: 2%;
+    /* position: relative;
+    bottom: 50%;
+    left: 50%; */
+}
+
+.edit-comment-modal-delete-button {
+    background-color: red;
+    margin-left: 12px;
+    min-width: 36px;
+    max-width: 120px;
+    /* min-width: 0px; */
+    min-height: 36px;
+    height: 10%;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-color: rgba(0, 0, 0, 0);
+    border-width: 1px;
+    border-radius: 9999px;
+    color: white;
+    cursor: pointer;
+    margin: 2%;
+
+}
