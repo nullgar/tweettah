@@ -1,14 +1,15 @@
-.create-tweet-master-div{
+.create-comment-master-div {
     display: flex;
+    justify-content: center;
     align-items: center;
     flex-flow: row;
     margin: auto;
     padding: 2.5%;
-    padding-top: 7%;
+    /* padding-top: 7%; */
     width: 55%;
     min-width: 800px;
     height: 40%;
-    min-height: 300px;
+    min-height: 150px;
     height: fit-content;
     /* background-color: red; */
     border: 1px solid  rgb(240, 240, 240);
@@ -16,27 +17,7 @@
     position: relative;
 }
 
-.create-tweet-inner-div {
-    /* position: relative; */
-    flex-flow: column;
-    /* min-width: 800px; */
-    min-height: 180px;
-    width: 100%;
-    display: flex;
-
-}
-.create-tweat-image-div {
-    display: flex;
-    justify-content: start;
-    position: absolute;
-    top: 0%;
-    margin-top: 2%;
-    /* flex-flow: column; */
-    /* margin-bottom: 10%; */
-
-}
-
-.create-tweet-image{
+.create-comment-image {
     width: 55px;
     height: 55px;
     border-radius: 250px;
@@ -44,7 +25,7 @@
 
 }
 
-.create-tweet-form {
+.create-comment-form {
     position: relative;
     display: flex;
     margin: 0%;
@@ -55,58 +36,39 @@
     justify-content: center;
     align-items: center;
     height: fit-content;
-
 }
 
-/* .create-tweet-text-area:empty:before {
-    content: attr(placeholder);
-    opacity: 0.6;
-} */
-
-.create-tweet-text-area{
-    /* display: flex; */
+.create-comment-text-area {
     text-align: left;
     color: black;
-    overflow: hidden;
-    /* justify-content: center; */
+    white-space: pre-wrap;
     align-items: center;
     overflow-wrap: break-word;
-    /* transform: translateY(50%); */
     border-bottom: 1px solid  rgb(240, 240, 240);
-    padding-bottom: 5%;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    overflow: hidden;
     margin-left: 2%;
-    /* border: 0 solid white; */
     width: 83%;
     min-width: 0px;
-    /* height: fit-content; */
+    height: 28px;
     resize: none;
     word-wrap: break-word;
     line-height: 24px;
-    font-size: 23px;
-    /* position: relative; */
-    top: 10px;
+    font-size: 20px;
+    position: relative;
     border: 1px solid  white;
     border-radius: 10px;
-    /* overflow: hidden; */
-
 }
-.create-tweet-text-area:active,
-.create-tweet-text-area:hover,
-.create-tweet-text-area:not(:hover){
+
+.create-comment-text-area:active,
+.create-comment-text-area:hover,
+.create-comment-text-area:not(:hover){
     outline:0px;
     box-shadow: none;
 }
 
-
-.create-tweet-text-area::placeholder {
-    cursor: text;
-    text-align:left;
-
-    font-size: 24px;
-    word-wrap: break-word;
-    /* transform: translateY(50%); */
-}
-.create-tweet-submit-button {
+.create-comment-submit-button {
     background-color: #1b9bee;
     margin-left: 12px;
     min-width: 36px;
@@ -124,15 +86,7 @@
     bottom: 50%;
     left: 50%; */
 }
-
-.create-tweet-submit-div {
-    display: flex;
-    margin-top: 4%;
-    justify-content: end;
-    width: 95%;
-}
-
-.create-tweet-errors-div {
+.create-comment-errors-div {
     display: flex;
     justify-content: center;
     color: red;

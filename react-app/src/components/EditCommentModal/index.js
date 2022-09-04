@@ -4,12 +4,12 @@ import EditComment from './EditComment';
 
 
 
-function EditCommentModal({comment}) {
-  const [showModal, setShowModal] = useState(false);
+function EditCommentModal({showModal, setShowModal, comment}) {
+  // const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Edit Comment</button>
+      {/* <button onClick={() => setShowModal(true)}>Edit Comment</button> */}
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
             <EditComment comment={comment} setShowModal={setShowModal} />

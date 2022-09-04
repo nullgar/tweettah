@@ -8,7 +8,8 @@ import Spinner from "../Spinner";
 const SeeComments = () => {
     const {tweetId} = useParams()
     const dispatch = useDispatch()
-    const [loaded, setLoaded] = useState(false)
+    const [loaded, setLoaded] = useState(false);
+    const [showModal, setShowModal] = useState(false);
     const comments = useSelector(state => state.comments)
     const userId = useSelector(state => state.session.user.id)
     useEffect(() => {
@@ -21,11 +22,12 @@ const SeeComments = () => {
 
     return (
         comments && loaded ?
-        <div>
+        <div className="see-comments-master-div">
             {Object.values(comments).length > 0 ? Object.values(comments).map(comment => (
                 <div key={comment.id}>
                     <div>{comment.comment}</div>
-                    { userId === comment.user_id ? <EditCommentModal comment={comment} /> : null}
+                    <i onClick={() => setShowModal(true)} className="fa-solid fa-ellipsis"></i>
+                    { userId === comment.user_id ? <EditCommentModal showModal={showModal} setShowModal={setShowModal} comment={comment} /> : null}
                 </div>
             )) : <h1>No Comments</h1>}
         </div> : <Spinner />
