@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import Feed from './components/Feed';
 import CreateTweet from './components/CreateTweet';
 import SeeTweet from './components/SeeTweet';
+// import LoginFormModal from './components/LoginFormModal';
 
 
 function App() {
