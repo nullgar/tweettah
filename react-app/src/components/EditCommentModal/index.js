@@ -12,7 +12,7 @@ function EditCommentModal({showModal, setShowModal, comment}) {
       {/* <button onClick={() => setShowModal(true)}>Edit Comment</button> */}
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-            <EditComment comment={comment} setShowModal={setShowModal} />
+            <EditComment  setShowModal={setShowModal} comment={comment} />
         </Modal>
       )}
     </>
