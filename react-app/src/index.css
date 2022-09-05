@@ -2,6 +2,7 @@
 body {
     margin: 0;
     background-color: #ffffff;
+    overscroll-behavior: none;
 }
 * {
     font-family: 'Montserrat', sans-serif;

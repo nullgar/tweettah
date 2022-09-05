@@ -1,0 +1,17 @@
+.login-form-modal-button {
+    width: 300px;
+    height: 40px;
+    /* background-color: #1b9bee; */
+    margin-left: 12px;
+    min-width: 300px;
+    max-width: 100px;
+    min-height: 40px;
+    height: 10%;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-color: 1px solid rgb(207, 217, 222);
+    border-radius: 9999px;
+    color: #1b9bee;
+    cursor: pointer;
+    margin: 2%;
+}
