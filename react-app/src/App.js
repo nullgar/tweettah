@@ -11,6 +11,8 @@ import { authenticate } from './store/session';
 import Feed from './components/Feed';
 import CreateTweet from './components/CreateTweet';
 import SeeTweet from './components/SeeTweet';
+// import LoginFormModal from './components/LoginFormModal';
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -35,6 +37,7 @@ function App() {
           <SignUpForm />
         </Route>
         <Route path='/login' exact={true}>
+          {/* <LoginFormModal /> */}
           <LoginForm />
         </Route>
         {/* <ProtectedRoute path='/users' exact={true} >

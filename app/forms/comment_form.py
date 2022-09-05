@@ -8,11 +8,10 @@ class CommentForm(FlaskForm):
     user_id = IntegerField("User Id")
     tweet_id = IntegerField("Tweet Id")
     comment = StringField("Comment", validators=[
-        DataRequired(),
         Length(
             min=1,
             max=150,
-            message="Comment needs to be between 1 - 150 characters!"
+            message="Comments needs to be between 1 - 150 characters!"
         )
     ])
 

@@ -99,7 +99,6 @@ export const editTweet = (payload) => async (dispatch) => {
     } else if (res.status < 500) {
         const data = await res.json();
         if (data) {
-            console.log('data in api route', data)
             return data;
         }
     }
@@ -137,7 +136,6 @@ const tweetReducer = (state = {}, action) => {
             return newTweets;
         case EDIT_TWEET:
             const editedTweets = {...state}
-            console.log('I am in the tweet reducer', editedTweets[action.editedTweet.id])
             editedTweets[action.editedTweet.id] = {...action.editedTweet}
             return editedTweets
         case DELETE_TWEET:

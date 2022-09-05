@@ -1,4 +1,5 @@
 from .db import db
+from .user import User
 from sqlalchemy import func
 from datetime import datetime, timezone
 
@@ -17,10 +18,13 @@ class Comment(db.Model):
     tweets = db.relationship("Tweet", back_populates="comments")
 
     def to_dict(self):
+        comment_user = User.query.get(self.user_id)
         return {
             'id': self.id,
             'user_id': self.user_id,
             'tweet_id': self.tweet_id,
+            'profile_pic': comment_user.profile_pic,
+            'username': comment_user.username,
             'comment': self.comment,
             'created_at': self.created_at,
             'updated_at': self.updated_at
