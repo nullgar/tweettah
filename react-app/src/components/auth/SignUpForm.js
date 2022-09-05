@@ -13,27 +13,19 @@ const SignUpForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
-//   useEffect(() => {
-//     if (username.length > 0) {
-//         const placeholder = document.querySelector('#username');
-//         placeholder?.setAttribute('class', 'signup-form-place-holder-focused');
-//     } else {
-//         const placeholder = document.querySelector('#username');
-//         placeholder?.setAttribute('class', 'signup-form-place-holder');
-//     }
 
-//   }, [username])
 
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    console.log('signup fire off', username, email, password)
-    if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+    // console.log('signup fire off', username, email, password)
+    // if (password === repeatPassword) {
+      const data = await dispatch(signUp(username.trimStart(), email.trimStart(), password.trimStart(), repeatPassword.trimStart()));
       if (data) {
+        console.log(data)
         setErrors(data)
       }
-    }
+    // }
   };
 
   const updateUsername = (e) => {
@@ -67,7 +59,7 @@ const SignUpForm = () => {
         <form className='signup-modal-form' onSubmit={onSignUp}>
           <div>
             {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
+              <div className='signup-form-errors' key={ind}>{error}</div>
             ))}
           </div>
           <div>
@@ -126,7 +118,7 @@ const SignUpForm = () => {
               name='repeat_password'
               onChange={updateRepeatPassword}
               value={repeatPassword}
-              required={true}
+              // required={true}
             ></input>
           </div>
           <button className='signup-button' type='submit'>Sign Up</button>

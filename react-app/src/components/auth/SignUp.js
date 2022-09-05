@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import LoginFormModal from '../LoginFormModal';
-import SignUpFormModal from '../SignUpFromModal';
+import SignUpFormModal from '../SignUpFormModal';
 import './SignUp.css'
 
 const SignUp = () => {
