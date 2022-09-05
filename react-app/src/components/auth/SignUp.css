@@ -14,3 +14,28 @@
     background-image:url('../../images/logo.png');
     /* background-color: blue; */
 }
+.signup-second-div {
+    display: flex;
+    flex-flow: column;
+    margin-top: 8%;
+    margin-left: 2%;
+
+}
+.signup-main-title {
+    font-size: 70px;
+    font-weight: 900;
+    text-decoration: solid;
+}
+.signup-second-title {
+    font-size: 30px;
+    font-weight: 900;
+    text-decoration: solid;
+}
+.signup-inner-div {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: column;
+    width: 100%;
+    min-width: 100%;
+    max-width: 1000%;
+}

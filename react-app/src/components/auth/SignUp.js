@@ -18,11 +18,15 @@ const SignUp = () => {
   return (
     <div className='signup-master-div'>
 
-      <div className='signup-logo-div'>Logo</div>
-      <div>
-        <button onClick={() => setShowModal(true)}>Sign Up</button>
-        <SignUpFormModal showModal={showModal} setShowModal={setShowModal} />
-        <LoginFormModal showModal={showModal} setShowModal={setShowModal} />
+      <div className='signup-logo-div'></div>
+      <div className='signup-second-div'>
+        <p className='signup-main-title'>Happening now</p>
+        <p className='signup-second-title'>Join Tweettah today.</p>
+        <div className='signup-inner-div'>
+          <SignUpFormModal showModal={showModal} setShowModal={setShowModal} />
+          <LoginFormModal showModal={showModal} setShowModal={setShowModal} />
+
+        </div>
       </div>
     </div>
   );
