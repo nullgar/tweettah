@@ -36,7 +36,8 @@
     /* padding-bottom: 2px; */
     /* padding-top: 2px; */
     overflow: hidden;
-    width: 100%;
+    /* width: 100%; */
+    width: 365px;
     min-width: 0px;
     height: 200px;
     resize: none;
@@ -91,4 +92,11 @@
     cursor: pointer;
     margin: 2%;
 
+}
+.edit-comment-modal-errors {
+    display: flex;
+    max-height: 26px;
+    justify-content: center;
+    color: red;
+    padding: 0%;
 }

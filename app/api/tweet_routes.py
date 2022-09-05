@@ -93,7 +93,7 @@ def create_a_new_tweet():
         new_Tweet = new_Tweet.to_dict()
         return jsonify(new_Tweet)
     else:
-        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 #Edit a tweet
 @tweet_routes.route('/edit/<int:tweet_id>', methods=["PUT"])
@@ -116,7 +116,7 @@ def edit_a_tweet(tweet_id):
         }
         return jsonify(res)
     else:
-        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
 #Delete a tweet
@@ -167,7 +167,7 @@ def create_a_comment(tweet_id):
     data = form.data
     query = Tweet.query.get(tweet_id)
 
-    if query:
+    if query and form.validate_on_submit():
         new_comment = Comment(
             user_id = user_id,
             tweet_id = tweet_id,
@@ -177,5 +177,5 @@ def create_a_comment(tweet_id):
         db.session.commit()
 
         return jsonify(new_comment.to_dict())
-
-    return jsonify('hi')
+    else:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 400

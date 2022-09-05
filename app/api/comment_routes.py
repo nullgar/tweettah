@@ -13,7 +13,7 @@ def validation_errors_to_error_messages(validation_errors):
     errorMessages = []
     for field in validation_errors:
         for error in validation_errors[field]:
-            errorMessages.append(f'{field} : {error}')
+            errorMessages.append(f'{error}')
     return errorMessages
 
 
@@ -32,14 +32,8 @@ def edit_a_comment(comment_id):
         query.comment = data['comment']
         db.session.commit()
         return jsonify(query.to_dict())
-    elif form.errors:
-        return jsonify(form.errors)
     else:
-        res = {
-            "message": "Permission Denied",
-            "statusCode": 403
-        }
-        return jsonify(res)
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 #Delete a comment
 @comment_routes.route('/<int:comment_id>', methods=["DELETE"])

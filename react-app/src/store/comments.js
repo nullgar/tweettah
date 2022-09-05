@@ -51,6 +51,11 @@ export const createTweetComment = (payload) => async (dispatch) => {
             const data = await res.json()
             dispatch(buildComment(data))
 
+    } else if (res.status < 500) {
+        const data = await res.json();
+        if (data) {
+            return data;
+        }
     }
 
 }
@@ -71,6 +76,11 @@ export const createEditedComment = (payload) => async (dispatch) => {
     if (res.ok) {
         const data = await res.json()
         dispatch(buildEditComment(data))
+    } else if (res.status < 500) {
+        const data = await res.json();
+        if (data) {
+            return data;
+        }
     }
 }
 

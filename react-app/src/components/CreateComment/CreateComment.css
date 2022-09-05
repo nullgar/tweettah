@@ -22,15 +22,20 @@
     height: 55px;
     border-radius: 250px;
     display: inline;
-
+    /* margin-bottom: 10%; */
+    position: absolute;
+    left: 20px;
+    top: 30px;
 }
 
 .create-comment-form {
     position: relative;
     display: flex;
+    flex-flow: column;
     margin: 0%;
     width: 90%;
     height: 0;
+    /* padding-top: 30px; */
     min-height: 100px;
     min-width: 90%;
     justify-content: center;
@@ -70,8 +75,8 @@
 
 .create-comment-submit-button {
     background-color: #1b9bee;
-    margin-left: 12px;
-    min-width: 36px;
+    margin: 12px 0 0 12px;
+    min-width: 100px;
     /* min-width: 0px; */
     min-height: 36px;
     height: 10%;
@@ -82,13 +87,15 @@
     border-radius: 9999px;
     color: white;
     cursor: pointer;
-    /* position: relative;
+    position: relative;
     bottom: 50%;
-    left: 50%; */
+    left: 40%;
 }
+
 .create-comment-errors-div {
     display: flex;
+    max-height: 26px;
     justify-content: center;
     color: red;
-    padding-bottom: 2%;
+    padding: 0%;
 }

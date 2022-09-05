@@ -7,7 +7,7 @@ import './CreateComment.css'
 const CreateComment = ({tweetId}) => {
     const dispatch = useDispatch();
     const [comment, setComment] = useState('');
-    const [errors, setErrors] = useState([])
+    const [errors, setErrors] = useState([]);
     const profile_pic = useSelector(state => state.session.user.profile_pic);
     const handleComment = async (e) => {
         e.preventDefault()
@@ -19,16 +19,23 @@ const CreateComment = ({tweetId}) => {
 
         const res = await dispatch(createTweetComment(newTweet))
 
-        setComment('')
+        if (res?.errors) {
+            setErrors(res.errors)
+        } else if (!res?.errors) {
+            setComment('')
+            setErrors([])
+
+        }
+
     }
     return (
         profile_pic ?
         <div className="create-comment-master-div">
             <img className="create-comment-image" src={profile_pic}/>
             <form className="create-comment-form" action="POST" onSubmit={handleComment}>
-                <div className="create-tweet-errors-div">
+                <div>
                     { errors ? errors.map((error, ind) => (
-                        <div key={ind}>{error}</div>
+                        <div className='create-comment-errors-div' key={ind}>{error}</div>
                     )) : null}
                 </div>
                 <textarea
