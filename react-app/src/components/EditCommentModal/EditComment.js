@@ -4,28 +4,43 @@ import { createEditedComment, deleteComment } from "../../store/comments";
 import './EditComment.css'
 const EditComment = ({setShowModal, comment}) => {
     const [editedComment, setEditedComment] = useState(comment.comment)
+    const [errors, setErrors] = useState([])
     const dispatch = useDispatch()
-    const handleEditTweet = (e) => {
+
+    const handleEditTweet = async (e) => {
         e.preventDefault()
         const newComment = {
             comment: editedComment,
             commentId: comment.id
         }
         // console.log(newComment)
-        dispatch(createEditedComment(newComment))
-        setShowModal(false)
+        const res = await dispatch(createEditedComment(newComment));
+        console.log(res)
+        if (res?.errors) {
+            setErrors(res.errors)
+        } else if (!res?.errors) {
+            setErrors([])
+            setShowModal(false)
+
+        }
     }
 
     const handleCommentDelete = (e, comment_id) => {
         e.preventDefault()
 
         dispatch(deleteComment(comment_id))
+
         setShowModal(false)
     }
 
     return(
         <div className="edit-comment-modal-div">
             <form className="edit-comment-modal-form" action="PUT" onSubmit={handleEditTweet}>
+                <div className='edit-comment-modal-errors'>
+                    { errors ? errors.map((error, ind) => (
+                        <div className='create-comment-errors-div' key={ind}>{error}</div>
+                    )) : null}
+                </div>
                 <textarea
                 value={editedComment}
                 className='edit-comment-modal-text-area'
