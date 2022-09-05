@@ -19,6 +19,10 @@ const LoginForm = () => {
     }
   };
 
+  const handleDemoUser = (e) => {
+    e.preventDefault();
+    dispatch(login('goose@aa.io', 'password'));
+  }
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -73,6 +77,7 @@ const LoginForm = () => {
               onChange={updatePassword}
             />
           </div>
+          <button className='login-button' onClick={handleDemoUser}>Demo User</button>
           <button className='login-button' type='submit'>Login</button>
         </form>
         </div>

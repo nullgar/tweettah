@@ -42,8 +42,8 @@
 }
 .login-button {
     background-color: #1b9bee;
-    /* margin: 12px 0 0 12px; */
-    margin: auto;
+    margin: 12px 0 0 12px;
+    /* margin: auto; */
     min-width: 100px;
     /* min-width: 0px; */
     min-height: 36px;
