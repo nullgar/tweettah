@@ -10,12 +10,12 @@ const EditComment = ({setShowModal, comment}) => {
     const handleEditTweet = async (e) => {
         e.preventDefault()
         const newComment = {
-            comment: editedComment,
+            comment: editedComment.trimStart(),
             commentId: comment.id
         }
-        // console.log(newComment)
+
         const res = await dispatch(createEditedComment(newComment));
-        console.log(res)
+
         if (res?.errors) {
             setErrors(res.errors)
         } else if (!res?.errors) {

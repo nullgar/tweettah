@@ -13,7 +13,7 @@ const CreateComment = ({tweetId}) => {
         e.preventDefault()
 
         const newTweet = {
-            comment: comment,
+            comment: comment.trimStart(),
             tweetId: Number(tweetId),
         }
 
