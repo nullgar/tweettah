@@ -67,6 +67,7 @@
     /* display: flex; */
     text-align: left;
     color: black;
+    overflow: hidden;
     /* justify-content: center; */
     align-items: center;
     overflow-wrap: break-word;
