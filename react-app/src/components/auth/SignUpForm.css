@@ -56,3 +56,10 @@
     color: white;
     cursor: pointer;
 }
+.signup-form-errors {
+    display: flex;
+    max-height: 26px;
+    justify-content: center;
+    color: red;
+    padding: 0%;
+}

@@ -27,13 +27,14 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    console.log('signup fire off', username, email, password)
-    if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+    // console.log('signup fire off', username, email, password)
+    // if (password === repeatPassword) {
+      const data = await dispatch(signUp(username, email, password, repeatPassword));
       if (data) {
+        console.log(data)
         setErrors(data)
       }
-    }
+    // }
   };
 
   const updateUsername = (e) => {
@@ -67,7 +68,7 @@ const SignUpForm = () => {
         <form className='signup-modal-form' onSubmit={onSignUp}>
           <div>
             {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
+              <div className='signup-form-errors' key={ind}>{error}</div>
             ))}
           </div>
           <div>
