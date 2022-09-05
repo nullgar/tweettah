@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import LoginFormModal from '../LoginFormModal';
 import SignUpFormModal from '../SignUpFromModal';
 import './SignUp.css'
 
@@ -21,7 +22,7 @@ const SignUp = () => {
       <div>
         <button onClick={() => setShowModal(true)}>Sign Up</button>
         <SignUpFormModal showModal={showModal} setShowModal={setShowModal} />
-        <p>Have an account! <Link to={'/login'}>Log In</Link></p>
+        <LoginFormModal showModal={showModal} setShowModal={setShowModal} />
       </div>
     </div>
   );

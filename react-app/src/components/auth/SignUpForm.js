@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
-import SignUpFormModal from '../SignUpFromModal';
 import './SignUpForm.css'
 
 const SignUpForm = () => {
@@ -28,6 +27,7 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
+    console.log('signup fire off', username, email, password)
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password));
       if (data) {
