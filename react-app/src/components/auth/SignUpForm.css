@@ -1,0 +1,68 @@
+.signup-modal-master-div {
+    min-width: 650px;
+    /* width: 100%; */
+    min-height: 650px;
+    /* padding: 3%; */
+}
+.signup-modal-inner-div {
+    width: 90%;
+    height: 90%;
+    margin: 5%;
+    max-width: 90%;
+    min-width: 90%;
+    max-height: 90%;
+    min-height: 90%;
+
+    /* height: 100%; */
+}
+.signup-modal-form {
+    display: flex;
+    flex-flow: column;
+    /* justify-content: center; */
+    align-items: center;
+    position: relative;
+}
+.signup-form-place-holder {
+	position: absolute;
+	margin-left: 1%;
+    color: black;
+    font-size: 15px;
+	/* z-index: 2; */
+	padding: 1%;
+	/* margin-top: 0.1rem; */
+
+}
+
+
+.signup-form-place-holder {
+	position: absolute;
+    margin-top: 4%;
+
+    color: black;
+    font-size: 15px;
+	z-index: 2;
+	padding: 1%;
+
+}
+.signup-form-input {
+    margin: 6% 0 6% 0;
+    width: 438px;
+    height: 60px;
+    font-size: 20px;
+}
+.signup-button {
+    background-color: #1b9bee;
+    /* margin: 12px 0 0 12px; */
+    margin: auto;
+    min-width: 100px;
+    /* min-width: 0px; */
+    min-height: 36px;
+    height: 10%;
+    /* padding-left: 16px;
+    padding-right: 16px; */
+    border-color: rgba(0, 0, 0, 0);
+    border-width: 1px;
+    border-radius: 9999px;
+    color: white;
+    cursor: pointer;
+}
