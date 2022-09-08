@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { getAllUsersFeedTweets } from "../../store/tweets";
 import CreateTweet from "../CreateTweet";
 import LoadingSpinner from "../Spinner";
-
+import './Feed.css'
 const Feed = () => {
     const dispatch = useDispatch()
     const tweets = useSelector(state => state.tweets)
@@ -24,10 +24,34 @@ const Feed = () => {
         <div>
 
             <CreateTweet />
-            {loaded ? <div>
-            {Object.values(tweets).map(tweet => (
-                <div key={tweet.id}>
-                    <Link to={`/${tweet.user_id}`}>{tweet.username}</Link>: {tweet.tweet}</div>
+            {loaded ? <div className="feed-master-div">
+            {Object.values(tweets).reverse().map(tweet => (
+                <div className="feed-inner-div" key={tweet.id}>
+                    <div className="feed-top-div">
+                        <div className="feed-user-image-div">
+                            <img className="feed-user-image" src={tweet.profile_pic} />
+                        </div>
+                        <div className="feed-user-info">
+                            <Link className="feed-user-link" to={`/${tweet.user_id}`}>{tweet.username}</Link>  <Link className="feed-user-handle" to={`/${tweet.user_id}`}>@{tweet.username}</Link>
+                        </div>
+
+                    </div>
+                    <div  className="feed-user-tweet" >
+                        <Link className="feed-user-tweet-link" to={`/${tweet.user_id}/${tweet.id}`}>
+                            {console.log(tweet)}
+                            {tweet.tweet}
+                        </Link>
+                    </div>
+                    <div className="feed-user-tweet-bottom-div">
+                        <Link className="feed-user-tweet-link" to={`/${tweet.user_id}/${tweet.id}`}>
+                            <i className="fa-regular fa-comment i-tag" />
+                        </Link>
+                        <Link className="feed-user-tweet-link" to={`/${tweet.user_id}/${tweet.id}`}>
+                            {Object.values(tweet.comments).length}
+                        </Link>
+                    </div>
+
+                    </div>
             ))}
             </div> : <LoadingSpinner />}
         </div>
