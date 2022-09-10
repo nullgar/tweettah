@@ -3,7 +3,7 @@
     /* justify-content: center; */
     /* align-items: center; */
     flex-flow: column;
-    margin: auto;
+    /* margin: auto; */
     width: 55%;
     min-width: 800px;
     height: 40%;

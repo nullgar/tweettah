@@ -9,7 +9,6 @@ import './Feed.css'
 const Feed = () => {
     const dispatch = useDispatch()
     const tweets = useSelector(state => state.tweets)
-    const [tweetLen, setTweetLen] = useState(0)
     const [tweetId, setTweetId] = useState(0)
     const [loaded, setLoaded] = useState(false)
     const [showModal, setShowModal] = useState(false);
@@ -20,7 +19,6 @@ const Feed = () => {
           }, 1000)
 
         return () => clearTimeout(clear)
-        console.log()
     }, [dispatch, tweetId])
 
 
