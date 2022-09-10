@@ -2,13 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getAllUsersFeedTweets } from "../../store/tweets";
+import CreateCommentModal from "../CreateCommentModal";
 import CreateTweet from "../CreateTweet";
 import LoadingSpinner from "../Spinner";
 import './Feed.css'
 const Feed = () => {
     const dispatch = useDispatch()
     const tweets = useSelector(state => state.tweets)
+    const [tweetLen, setTweetLen] = useState(0)
+    const [tweetId, setTweetId] = useState(0)
     const [loaded, setLoaded] = useState(false)
+    const [showModal, setShowModal] = useState(false);
     useEffect(() => {
         dispatch(getAllUsersFeedTweets())
         const clear = setTimeout(() => {
@@ -16,8 +20,8 @@ const Feed = () => {
           }, 1000)
 
         return () => clearTimeout(clear)
-
-    }, [dispatch])
+        console.log()
+    }, [dispatch, tweetId])
 
 
     return (
@@ -38,13 +42,13 @@ const Feed = () => {
                     </div>
                     <div  className="feed-user-tweet" >
                         <Link className="feed-user-tweet-link" to={`/${tweet.user_id}/${tweet.id}`}>
-                            {console.log(tweet)}
                             {tweet.tweet}
                         </Link>
                     </div>
                     <div className="feed-user-tweet-bottom-div">
                         <Link className="feed-user-tweet-link" to={`/${tweet.user_id}/${tweet.id}`}>
-                            <i className="fa-regular fa-comment i-tag" />
+                            <i className="fa-regular fa-comment i-tag" onClick={() => {setTweetId(tweet.id); setShowModal(true)}} />
+                            {/* <CreateCommentModal showModal={showModal} setShowModal={setShowModal} tweetId={tweetId} /> */}
                         </Link>
                         <Link className="feed-user-tweet-link" to={`/${tweet.user_id}/${tweet.id}`}>
                             {Object.values(tweet.comments).length}
