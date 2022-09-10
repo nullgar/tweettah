@@ -36,7 +36,7 @@ const SeeTweet = () => {
     return (
 
         loaded && tweet ?
-        <>
+        <div className="top-div">
         <div className="see-tweet-master-div-1">
             <div className="see-tweet-info-div">
                 <div className="see-tweat-image-div">
@@ -67,7 +67,7 @@ const SeeTweet = () => {
         </div>
         <CreateComment tweetId={tweetId}/>
         <SeeComments tweetId={tweetId} />
-        </>
+        </div>
         : <Spinner />
     )
 }
