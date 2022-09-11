@@ -12,6 +12,7 @@ import Feed from './components/Feed';
 import CreateTweet from './components/CreateTweet';
 import SeeTweet from './components/SeeTweet';
 import SignUp from './components/auth/SignUp';
+import BottomBar from './components/BottomBar/BottomBar';
 // import LoginFormModal from './components/LoginFormModal';
 
 
@@ -60,6 +61,7 @@ function App() {
           <CreateTweet />
         </ProtectedRoute>
       </Switch>
+      {userAuth ? <BottomBar /> : null}
     </BrowserRouter>
   );
 }

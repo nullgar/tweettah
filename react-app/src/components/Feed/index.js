@@ -23,7 +23,7 @@ const Feed = () => {
 
 
     return (
-        <div>
+        <div className="feed-hidden-div">
 
             <CreateTweet />
             {loaded ? <div className="feed-master-div">

@@ -1,0 +1,33 @@
+.about-links-master-div {
+    /* background-color: green; */
+    padding: 5%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    height: 520px;
+    min-height: 520px;
+    max-height: 520px;
+}
+.dev-image {
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+}
+.dev-name {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+    margin: 5%;
+
+}
+.dev-link {
+    padding-top: 10%;
+    text-decoration: none;
+    color: black;
+}
+.dev-link-con {
+    font-size: medium;
+}
