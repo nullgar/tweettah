@@ -45,7 +45,7 @@ const Feed = () => {
                     </div>
                     <div className="feed-user-tweet-bottom-div">
                         <Link className="feed-user-tweet-link" to={`/${tweet.user_id}/${tweet.id}`}>
-                            <i className="fa-regular fa-comment i-tag" onClick={() => {setTweetId(tweet.id); setShowModal(true)}} />
+                            <i className="fa-regular fa-comment i-tag"  />
                             {/* <CreateCommentModal showModal={showModal} setShowModal={setShowModal} tweetId={tweetId} /> */}
                         </Link>
                         <Link className="feed-user-tweet-link" to={`/${tweet.user_id}/${tweet.id}`}>

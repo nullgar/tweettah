@@ -1,0 +1,103 @@
+.user-profile-div {
+    max-width: 800px;
+    min-width: 800px;
+    width: 800px;
+}
+.user-info {
+    /* background-color: blue; */
+    border: 1px solid rgb(240, 240, 240);
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    padding: 5%;
+}
+.user-profile-img {
+    width: 133.5px;
+    height: 133.5px;
+    border-radius: 100px;
+    border: 5px white solid;
+}
+.user-profile-p {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 0;
+    font-weight: 400;
+}
+.user-profile-2p {
+    font-size: 15px;
+    font-weight: 400;
+    margin-top: 0;
+    color: #536471;
+}
+.tweet-container {
+    /* background-color: brown; */
+    /* display: flex; */
+    /* flex-flow: column; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* border: 1px solid rgb(240, 240, 240); */
+    max-width: 800px;
+    min-width: 800px;
+    width: 800px;
+    word-break: break-all;
+}
+.one-tweet {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    /* align-items: center; */
+    border: 1px solid rgb(240, 240, 240);
+    max-width: 800px;
+    min-width: 800px;
+    width: 800px;
+    min-height: 200px;
+    max-height: 200px;
+    height: 200px;
+    /* padding: 10%; */
+    /* border: 0; */
+    /* margin: 0; */
+}
+.one-tweet-top {
+    display: flex;
+}
+.one-tweet-bottom {
+    display: flex;
+    flex-flow: row;
+    padding: 2%;
+    padding-left: 4%;
+}
+.user-profile-tweet-image-div {
+    padding: 2%;
+}
+.user-profile-tweet-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+}
+.user-tweet-link-div {
+    padding: 2%;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    /* justify-content: center; */
+
+}
+.user-tweet-link {
+
+    text-decoration: none;
+
+    color: black;
+    width: 90%;
+    word-break: break-all;
+}
+.user-spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 800px;
+    min-width: 800px;
+    width: 800px;
+}
+.user-comment-div {
+    display: flex;
+}

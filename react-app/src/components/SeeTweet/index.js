@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Redirect, useParams } from "react-router-dom";
 import { getAllTweetsComments } from "../../store/comments";
 import { getSingleUserTweets } from "../../store/tweets";
 import CreateComment from "../CreateComment";
@@ -21,6 +21,7 @@ const SeeTweet = () => {
     const tweet = tweets[tweetId]
 
 
+
     useEffect(() => {
 
         dispatch(getSingleUserTweets(userId))
@@ -33,6 +34,7 @@ const SeeTweet = () => {
 
     }, [])
 
+    if (!tweet) return <Redirect to='/' />;
     return (
 
         loaded && tweet ?
@@ -68,7 +70,7 @@ const SeeTweet = () => {
         <CreateComment tweetId={tweetId}/>
         <SeeComments tweetId={tweetId} />
         </div>
-        : <Spinner />
+        : <div className="spinner-container"><Spinner /></div>
     )
 }
 

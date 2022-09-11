@@ -57,9 +57,9 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <Feed />
         </ProtectedRoute>
-        <ProtectedRoute path='/new' exact={true}>
+        {/* <ProtectedRoute path='/new' exact={true}>
           <CreateTweet />
-        </ProtectedRoute>
+        </ProtectedRoute> */}
       </Switch>
       {userAuth ? <BottomBar /> : null}
     </BrowserRouter>
