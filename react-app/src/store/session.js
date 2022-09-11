@@ -1,6 +1,7 @@
 // constants
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
+const TOGGLE_FOLLOW = 'session/TOGGLE_FOLLOW'
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -11,7 +12,24 @@ const removeUser = () => ({
   type: REMOVE_USER,
 })
 
+const follow = (following) => ({
+  type: TOGGLE_FOLLOW,
+	following,
+})
 const initialState = { user: null };
+
+export const toggleFollow = (userToFollow) => async (dispatch) => {
+	const res = await fetch(`/api/users/${userToFollow}/follow`,
+		{
+			method: "POST",
+		}
+	);
+	if (res.ok) {
+		const data = await res.json();
+    console.log(data,'!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+		dispatch(follow(data));
+	}
+};
 
 export const authenticate = () => async (dispatch) => {
   const response = await fetch('/api/auth/', {
@@ -99,11 +117,25 @@ export const signUp = (username, email, password, repeatPassword) => async (disp
 }
 
 export default function reducer(state = initialState, action) {
+  let followingList = {};
   switch (action.type) {
     case SET_USER:
       return { user: action.payload }
     case REMOVE_USER:
       return { user: null }
+    case TOGGLE_FOLLOW:
+      const newState = { ...state };
+
+			if (action.following.length > 0) {
+				action.following.forEach((following) => {
+					followingList[following.following_id] = following;
+				});
+				newState.user.following = followingList;
+			} else {
+				newState.user.following = {};
+			}
+
+			return newState;
     default:
       return state;
   }

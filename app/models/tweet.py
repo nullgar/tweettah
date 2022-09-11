@@ -1,5 +1,7 @@
+from typing import Dict, List
 from .db import db
 from .user import User
+from .comment import Comment
 from sqlalchemy import func
 from datetime import datetime, timezone
 
@@ -20,7 +22,15 @@ class Tweet(db.Model):
 
 
     def to_dict(self):
+
         tweet_user = User.query.get(self.user_id)
+        query = Comment.query.filter(Comment.tweet_id == self.id)
+        arr = {}
+        for i in query:
+            if i not in arr:
+                arr[i.id] = i.to_dict()
+
+
         return {
             'id': self.id,
             'user_id': self.user_id,
@@ -28,5 +38,6 @@ class Tweet(db.Model):
             'profile_pic': tweet_user.profile_pic,
             'tweet': self.tweet,
             'created_at': self.created_at,
-            'updated_at': self.updated_at
+            'updated_at': self.updated_at,
+            'comments': arr
         }

@@ -12,6 +12,7 @@ import Feed from './components/Feed';
 import CreateTweet from './components/CreateTweet';
 import SeeTweet from './components/SeeTweet';
 import SignUp from './components/auth/SignUp';
+import BottomBar from './components/BottomBar/BottomBar';
 // import LoginFormModal from './components/LoginFormModal';
 
 
@@ -56,10 +57,11 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <Feed />
         </ProtectedRoute>
-        <ProtectedRoute path='/new' exact={true}>
+        {/* <ProtectedRoute path='/new' exact={true}>
           <CreateTweet />
-        </ProtectedRoute>
+        </ProtectedRoute> */}
       </Switch>
+      {userAuth ? <BottomBar /> : null}
     </BrowserRouter>
   );
 }

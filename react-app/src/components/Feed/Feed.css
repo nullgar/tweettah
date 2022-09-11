@@ -1,0 +1,99 @@
+.feed-hidden-div {
+    width: 800px;
+}
+
+.feed-master-div {
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    flex-flow: column;
+    /* margin: auto; */
+    width: 55%;
+    min-width: 800px;
+    height: 40%;
+    min-height: 300px;
+    height: -moz-fit-content;
+    height: fit-content;
+    border: 1px solid rgb(240, 240, 240);
+    box-sizing: border-box;
+    position: relative;
+}
+.feed-inner-div {
+    display: flex;
+    width: 100%;
+    word-wrap: break-word;
+    border: 0 solid black;
+    box-sizing: border-box;
+    border: 1px solid rgb(240, 240, 240);
+    display: inline;
+    /* margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px; */
+    padding-bottom: 2%;
+    font-weight: 400;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    line-height: 20px;
+    line-height: 20px;
+    max-height: max-content;
+    min-height: max-content;
+    height: max-content;
+}
+.feed-user-image-div {
+    justify-content: start;
+    /* position: absolute; */
+    /* top: 0%; */
+    margin-left: 2%;
+    margin-top: 2%;
+}
+.feed-top-div {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+.feed-user-image {
+    width: 55px;
+    height: 55px;
+    border-radius: 250px;
+    display: inline;
+}
+.feed-user-info {
+    /* margin: auto; */
+    margin-left: 2%;
+}
+.feed-user-link {
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
+}
+.feed-user-handle {
+    color: rgba(0, 0, 0, .70);
+    text-decoration: none;
+}
+.feed-user-tweet {
+    padding-left: 12%;
+    padding-right: 12%;
+}
+.feed-user-tweet-link {
+    text-decoration: none;
+    color: black;
+}
+
+.feed-user-tweet-bottom-div {
+
+    display: flex;
+    /* background-color: red; */
+    margin: 3% 0 0 12%;
+    /* margin-left: 12%; */
+    width: 200px;
+}
+.i-tag {
+    margin-right: 20px;
+    color: rgba(0, 0, 0, .70);
+}
