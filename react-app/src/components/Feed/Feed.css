@@ -34,14 +34,15 @@
     padding-left: 0px;
     padding-right: 0px;
     padding-top: 0px; */
+    padding-bottom: 2%;
     font-weight: 400;
     white-space: pre-wrap;
     word-wrap: break-word;
     line-height: 20px;
     line-height: 20px;
-    max-height: 200px;
-    min-height: 200px;
-    height: 200px;
+    max-height: max-content;
+    min-height: max-content;
+    height: max-content;
 }
 .feed-user-image-div {
     justify-content: start;
