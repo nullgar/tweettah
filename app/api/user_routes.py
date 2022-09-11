@@ -19,6 +19,9 @@ def user(id):
     user = User.query.get(id)
     return user.to_dict()
 
+
+
+
 @user_routes.route('/<int:id>/follow', methods=["POST"])
 @login_required
 def toggle_follow(id):
@@ -50,9 +53,10 @@ def toggle_follow(id):
             )
 
             db.engine.execute(unFollow)
-            return jsonify(f'Unfollowed {user_to_follow_id}')
+            updatedUser = User.query.get(current_user_id).to_dict()
+            return jsonify(updatedUser['following'])
     newFollow = following.insert().values(follow)
     db.engine.execute(newFollow)
+    updatedUser = User.query.get(current_user_id).to_dict()
 
-
-    return jsonify(f'Followed {user_to_follow_id}')
+    return jsonify(updatedUser['following'])
