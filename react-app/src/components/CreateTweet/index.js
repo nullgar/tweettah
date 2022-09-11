@@ -36,7 +36,7 @@ const CreateTweet = () => {
         <div className="create-tweet-master-div">
 
             <div className="create-tweat-image-div">
-                <img src={profile_pic} className='create-tweet-image' />
+                <img src={profile_pic} className='create-tweet-image' alt="" />
             </div>
             <div className="create-tweet-inner-div">
                 <div className="create-tweet-errors-div">

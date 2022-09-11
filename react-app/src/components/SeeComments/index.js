@@ -26,7 +26,7 @@ const SeeComments = () => {
         <div className="see-comments-master-div">
             {Object.values(comments).length > 0 ? Object.values(comments).reverse().map(comment => (
                 <div className="see-comments-inner-div" key={comment.id}>
-                    <img className="comment-user-image" src={comment.profile_pic} />
+                    <img className="comment-user-image" src={comment.profile_pic} alt='' />
                     <div className="see-comments-info-div">
                         <div>{comment.username}</div>
                         <div className="see-comments-p">{comment.comment}</div>

@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Modal } from '../../context/Modal';
-import LoginForm from '../auth/LoginForm';
 import SignUpForm from '../auth/SignUpForm';
 import './SignUpFormModal.css'
 
