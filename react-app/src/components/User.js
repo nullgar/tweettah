@@ -42,7 +42,7 @@ function User() {
     <div className='user-profile-div'>
         <div className='user-info'>
           <div>
-            <img className='user-profile-img' src={user.profile_pic} />
+            <img className='user-profile-img' src={user.profile_pic} alt='' />
           </div>
           <p className='user-profile-p'>{user.username}</p>
           <p className='user-profile-2p'>@{user.username}</p>
@@ -53,7 +53,7 @@ function User() {
             <div className='one-tweet' key={tweet.id}>
               <div className='one-tweet-top'>
                 <div className='user-profile-tweet-image-div'>
-                  <img className='user-profile-tweet-image' src={tweet.profile_pic} />
+                  <img className='user-profile-tweet-image' src={tweet.profile_pic} alt='' />
                 </div>
                 <div className='user-tweet-link-div'>
                   <Link className='user-tweet-link' to={`/${user.id}/${tweet.id}`}>{tweet.tweet}</Link>

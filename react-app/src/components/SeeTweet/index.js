@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useParams } from "react-router-dom";
-import { getAllTweetsComments } from "../../store/comments";
 import { getSingleUserTweets } from "../../store/tweets";
 import CreateComment from "../CreateComment";
 import EditTweet from "../EditTweet";
@@ -32,7 +31,7 @@ const SeeTweet = () => {
         return () => clearTimeout(clear)
 
 
-    }, [])
+    }, [dispatch])
 
     if (!tweet) return <Redirect to='/' />;
     return (
@@ -42,7 +41,7 @@ const SeeTweet = () => {
         <div className="see-tweet-master-div-1">
             <div className="see-tweet-info-div">
                 <div className="see-tweat-image-div">
-                    <img src={tweet.profile_pic} className='see-tweet-image' />
+                    <img src={tweet.profile_pic} className='see-tweet-image' alt="" />
                 </div>
                 <div className="see-tweet-info-inner-div">
                     <span>{tweet.username}</span>
@@ -58,13 +57,13 @@ const SeeTweet = () => {
             {/* <p>{tweet.created_at.split(' ').slice(0, 4).join(' ')}</p> */}
             </div>
 
-            {tweet.user_id == user.id ? <i
+            {tweet.user_id === user.id ? <i
             onClick={e => setShow(!show)}
             className="fa-solid fa-ellipsis see-tweet-edit-icon">
             </i> : null}
         </div>
         <div className="see-tweet-edit-div">
-            {show && tweet.user_id == user.id ? <EditTweet setShow={setShow} tweet={tweet}/> : null}
+            {show && tweet.user_id === user.id ? <EditTweet setShow={setShow} tweet={tweet}/> : null}
 
         </div>
         <CreateComment tweetId={tweetId}/>

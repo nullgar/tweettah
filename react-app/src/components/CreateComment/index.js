@@ -31,7 +31,7 @@ const CreateComment = ({tweetId}) => {
     return (
         profile_pic ?
         <div className="create-comment-master-div">
-            <img className="create-comment-image" src={profile_pic}/>
+            <img className="create-comment-image" src={profile_pic} alt='profile-pic'/>
             <form className="create-comment-form" action="POST" onSubmit={handleComment}>
                 <div>
                     { errors ? errors.map((error, ind) => (

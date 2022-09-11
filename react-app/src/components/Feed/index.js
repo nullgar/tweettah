@@ -2,16 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getAllUsersFeedTweets } from "../../store/tweets";
-import CreateCommentModal from "../CreateCommentModal";
 import CreateTweet from "../CreateTweet";
 import LoadingSpinner from "../Spinner";
 import './Feed.css'
 const Feed = () => {
     const dispatch = useDispatch()
     const tweets = useSelector(state => state.tweets)
-    const [tweetId, setTweetId] = useState(0)
     const [loaded, setLoaded] = useState(false)
-    const [showModal, setShowModal] = useState(false);
     useEffect(() => {
         dispatch(getAllUsersFeedTweets())
         const clear = setTimeout(() => {
@@ -19,7 +16,7 @@ const Feed = () => {
           }, 1000)
 
         return () => clearTimeout(clear)
-    }, [dispatch, tweetId])
+    }, [dispatch])
 
 
     return (
@@ -31,7 +28,7 @@ const Feed = () => {
                 <div className="feed-inner-div" key={tweet.id}>
                     <div className="feed-top-div">
                         <div className="feed-user-image-div">
-                            <img className="feed-user-image" src={tweet.profile_pic} />
+                            <img className="feed-user-image" src={tweet.profile_pic} alt=''/>
                         </div>
                         <div className="feed-user-info">
                             <Link className="feed-user-link" to={`/${tweet.user_id}`}>{tweet.username}</Link>  <Link className="feed-user-handle" to={`/${tweet.user_id}`}>@{tweet.username}</Link>

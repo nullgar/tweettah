@@ -2,7 +2,6 @@
     display: flex;
     align-items: center;
     flex-flow: row;
-    /* margin: auto; */
     padding: 2.5%;
     padding-top: 7%;
     width: 55%;
@@ -10,16 +9,13 @@
     height: 40%;
     min-height: 300px;
     height: fit-content;
-    /* background-color: red; */
     border: 1px solid  rgb(240, 240, 240);
     box-sizing: border-box;
     position: relative;
 }
 
 .create-tweet-inner-div {
-    /* position: relative; */
     flex-flow: column;
-    /* min-width: 800px; */
     min-height: 180px;
     width: 100%;
     display: flex;
@@ -27,13 +23,10 @@
 }
 .create-tweat-image-div {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     position: absolute;
     top: 0%;
     margin-top: 2%;
-    /* flex-flow: column; */
-    /* margin-bottom: 10%; */
-
 }
 
 .create-tweet-image{
@@ -58,36 +51,24 @@
 
 }
 
-/* .create-tweet-text-area:empty:before {
-    content: attr(placeholder);
-    opacity: 0.6;
-} */
-
 .create-tweet-text-area{
-    /* display: flex; */
     text-align: left;
     color: black;
     overflow: hidden;
-    /* justify-content: center; */
     align-items: center;
     overflow-wrap: break-word;
-    /* transform: translateY(50%); */
     border-bottom: 1px solid  rgb(240, 240, 240);
     padding-bottom: 5%;
     margin-left: 2%;
-    /* border: 0 solid white; */
     width: 83%;
     min-width: 0px;
-    /* height: fit-content; */
     resize: none;
     word-wrap: break-word;
     line-height: 24px;
     font-size: 23px;
-    /* position: relative; */
     top: 10px;
     border: 1px solid  white;
     border-radius: 10px;
-    /* overflow: hidden; */
 
 }
 .create-tweet-text-area:active,
@@ -104,13 +85,11 @@
 
     font-size: 24px;
     word-wrap: break-word;
-    /* transform: translateY(50%); */
 }
 .create-tweet-submit-button {
     background-color: #1b9bee;
     margin-left: 12px;
     min-width: 36px;
-    /* min-width: 0px; */
     min-height: 36px;
     height: 10%;
     padding-left: 16px;
@@ -120,15 +99,12 @@
     border-radius: 9999px;
     color: white;
     cursor: pointer;
-    /* position: relative;
-    bottom: 50%;
-    left: 50%; */
 }
 
 .create-tweet-submit-div {
     display: flex;
     margin-top: 4%;
-    justify-content: end;
+    justify-content: flex-end;
     width: 95%;
 }
 

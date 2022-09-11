@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Modal } from '../../context/Modal';
 import CreateComment from '../CreateComment';
 
@@ -11,7 +11,7 @@ function CreateCommentModal({showModal, setShowModal, tweetId}) {
   return (
     <>
       {/* <button onClick={() => setShowModal(true)}>Comment img</button> */}
-      {console.log(tweetId)}
+      {/* {console.log(tweetId)} */}
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
             <CreateComment tweetId={Number(tweetId)} />
