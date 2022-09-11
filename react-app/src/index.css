@@ -5,12 +5,12 @@ html {
 body {
     margin: 0;
     background-color: #ffffff;
-    /* overscroll-behavior: none; */
+    overscroll-behavior: none;
     height: auto;
 }
 * {
-    font-family: 'Montserrat', sans-serif;
-    font-family: 'Roboto', sans-serif;
+    /* font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto', sans-serif; */
 }
 #root {
     height: 100%;
