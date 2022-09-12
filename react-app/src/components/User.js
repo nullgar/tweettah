@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory, useLocation, useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import { getSingleUserTweets } from '../store/tweets';
 import Spinner from './Spinner';
 import './User.css'
@@ -10,23 +10,23 @@ function User() {
   const [loaded, setLoaded] = useState(false)
   const dispatch = useDispatch()
   const history = useHistory()
-  const userId = useLocation().pathname.split('')[1]
-  // const { userId }  = useParams();
-  console.log(userId)
+  const { userId }  = useParams();
   const tweets = useSelector(state => state.tweets)
   useEffect(() => {
     if (!userId) {
       return;
     }
     (async () => {
-      const response = await fetch(`/api/users/${userId}`);
+      const response = await fetch(`/api/users/${userId}`)
       if (response.ok) {
         const user = await response.json();
-        dispatch(getSingleUserTweets(userId))
+        await dispatch(getSingleUserTweets(userId))
         setUser(user);
-      } else if (response.status === 404){
-        return history.push('/');
+      } else {
+        return history.push('/')
+
       }
+
     })();
 
     const clear = setTimeout(() => {

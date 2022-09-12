@@ -40,7 +40,7 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <Feed />
         </ProtectedRoute>
-        <ProtectedRoute to={/^\/\d+/} exact={true} >
+        <ProtectedRoute path='/:userId' exact={true} >
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/:userId/:tweetId' exact={true} >
