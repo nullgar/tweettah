@@ -1,5 +1,5 @@
 .feed-hidden-div {
-    width: 800px;
+    width: 50%;
 }
 
 .feed-master-div {
@@ -9,7 +9,7 @@
     flex-flow: column;
     /* margin: auto; */
     width: 55%;
-    min-width: 800px;
+    min-width: 100%;
     height: 40%;
     min-height: 300px;
     height: -moz-fit-content;
