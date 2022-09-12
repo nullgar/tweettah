@@ -18,10 +18,13 @@ function User() {
     }
     (async () => {
       const response = await fetch(`/api/users/${userId}`)
-      if (!response.ok) return history.push('/');
-      const user = await response.json();
-      dispatch(getSingleUserTweets(userId))
-      setUser(user);
+      if (response.ok) {
+        const user = await response.json();
+        dispatch(getSingleUserTweets(userId))
+        setUser(user);
+      } else {
+        return history.push('/');
+      }
     })();
 
     const clear = setTimeout(() => {
