@@ -34,7 +34,7 @@ function User() {
   }, [dispatch, userId]);
 
   if (!user) {
-    return null;
+    return history.push('/');
   }
 
   return (
