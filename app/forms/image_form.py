@@ -12,7 +12,7 @@ class ImageForm(FlaskForm):
         Length(
             min=1,
             max=350,
-            message="Url need to be between 1 an 350 characters!"
+            message="Url needs to be between 1 an 350 characters!"
         )])
 
 

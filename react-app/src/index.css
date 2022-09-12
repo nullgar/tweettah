@@ -1,6 +1,7 @@
 /* TODO Add site wide styles */
 html {
     height: auto;
+    overscroll-behavior: none;
 
 }
 body {

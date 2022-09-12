@@ -20,9 +20,8 @@ const SignUpForm = () => {
     e.preventDefault();
     // console.log('signup fire off', username, email, password)
     // if (password === repeatPassword) {
-      const data = await dispatch(signUp(username.trimStart(), email.trimStart(), password.trimStart(), repeatPassword.trimStart()));
+      const data = await dispatch(signUp(username.trimStart().toLocaleLowerCase(), email.trimStart(), password.trimStart(), repeatPassword.trimStart()));
       if (data) {
-        console.log(data)
         setErrors(data)
       }
     // }
