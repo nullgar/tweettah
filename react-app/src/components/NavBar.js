@@ -18,12 +18,12 @@ const NavBar = () => {
           Home
           </NavLink>
         </div >
-        <div className='nav-bar-divs'>
+        {/* <div className='nav-bar-divs'>
           <NavLink className='nav-bar-link' to={`/${curret_user}`} exact={true}>
           <i className="fa-solid fa-user icon"></i>
           User Profile
           </NavLink>
-        </div>
+        </div> */}
         <div className='nav-bar-divs'>
           <LogoutButton />
         </div>
