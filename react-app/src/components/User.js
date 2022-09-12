@@ -17,8 +17,8 @@ function User() {
       return;
     }
     (async () => {
-      const response = await fetch(`/api/users/${userId}`);
-      if (!response.ok) return history.push('/')
+      const response = await fetch(`/api/users/${userId}`)
+      if (!response.ok) return history.push('/');
       const user = await response.json();
       dispatch(getSingleUserTweets(userId))
       setUser(user);
