@@ -9,6 +9,10 @@ def seed_users():
         username='Toucan', email='toucan@aa.io', password='password', profile_pic='https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Ramphastos_toco_Whipsnade_Zoo.jpg/500px-Ramphastos_toco_Whipsnade_Zoo.jpg')
     chirpy = User(
         username='Chirpy', email='chirpy@aa.io', password='password', profile_pic='https://lafeber.com/pet-birds/wp-content/uploads/2018/06/Zebra-Finch.jpg')
+    hawk = User(
+        username='Hawk', email='chirpy@aa.io', password='password', profile_pic='https://lafeber.com/pet-birds/wp-content/uploads/2018/06/Zebra-Finch.jpg')
+    falco = User(
+        username='Falco', email='chirpy@aa.io', password='password', profile_pic='https://lafeber.com/pet-birds/wp-content/uploads/2018/06/Zebra-Finch.jpg')
 
     db.session.add(goose)
     db.session.add(toucan)

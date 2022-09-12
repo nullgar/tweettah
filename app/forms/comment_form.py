@@ -11,7 +11,7 @@ class CommentForm(FlaskForm):
         Length(
             min=1,
             max=150,
-            message="Comments needs to be between 1 - 150 characters!"
+            message="Comments need to be between 1 - 150 characters!"
         )
     ])
 
