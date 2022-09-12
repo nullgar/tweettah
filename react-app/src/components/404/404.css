@@ -1,0 +1,20 @@
+
+.page-404-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 800px;
+}
+.link-404 {
+    text-decoration: none;
+    color: red;
+}
+.h2-404 {
+    text-decoration: none;
+    color: red;
+}
+.p-404 {
+    text-decoration: none;
+    color: red;
+}
