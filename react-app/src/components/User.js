@@ -6,24 +6,24 @@ import Spinner from './Spinner';
 import './User.css'
 
 function User() {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState();
   const [loaded, setLoaded] = useState(false)
   const dispatch = useDispatch()
   const history = useHistory()
   const { userId }  = useParams();
   const tweets = useSelector(state => state.tweets)
   useEffect(() => {
-    if (!userId) {
-      return;
-    }
+    // if (!userId) {
+    //   return history.push('/');
+    // }
     (async () => {
       const response = await fetch(`/api/users/${userId}`)
-      if (response.ok) {
+      if (response.status !== 404) {
         const user = await response.json();
         await dispatch(getSingleUserTweets(userId))
         setUser(user);
       } else {
-        return history.push('/')
+        history.push('/')
 
       }
 

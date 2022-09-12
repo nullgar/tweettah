@@ -20,7 +20,7 @@ def user(id):
     if user:
         return user.to_dict()
     else:
-        return {"errors":'User Not Found'}, 404
+        return {"error": "User Not Found"},404
 
 
 
