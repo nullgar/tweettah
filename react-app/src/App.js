@@ -9,6 +9,7 @@ import Feed from './components/Feed';
 import SeeTweet from './components/SeeTweet';
 import SignUp from './components/auth/SignUp';
 import BottomBar from './components/BottomBar/BottomBar';
+import Page404 from './components/404';
 
 
 
@@ -45,6 +46,9 @@ function App() {
 
         <ProtectedRoute path='/' exact={true} >
           <Feed />
+        </ProtectedRoute>
+        <ProtectedRoute>
+          <Page404/>
         </ProtectedRoute>
       </Switch>
       {userAuth ? <BottomBar /> : null}
