@@ -40,7 +40,7 @@ const EditTweet = ({tweet, setShow}) => {
         e.preventDefault()
 
         const res = dispatch(deleteTweet(tweetId))
-        if (res) history.push(`/${user.id}`)
+        if (res) history.push(`/`)
     }
     return (
         <div className="tweet-edit-master-div">

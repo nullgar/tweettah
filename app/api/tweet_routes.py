@@ -58,11 +58,15 @@ def get_current_user_tweets_for_feed():
 def get_a_users_tweets(user_id):
     users_tweets = {}
     query = Tweet.query.filter(Tweet.user_id == user_id)
-    for tweet in query:
-        if tweet not in users_tweets:
-            users_tweets[tweet.id] = tweet.to_dict()
+    if query:
+        for tweet in query:
+            if tweet not in users_tweets:
+                users_tweets[tweet.id] = tweet.to_dict()
+        return users_tweets
 
-    return users_tweets
+    elif not query:
+        return {'errors': 'Page not found' }, 404
+
 
 @tweet_routes.route('/<int:user_id>/<int:tweet_id>')
 @login_required
