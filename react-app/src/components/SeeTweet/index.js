@@ -34,7 +34,7 @@ const SeeTweet = () => {
     }, [dispatch])
 
     if (!tweet) return <Redirect to='/' />;
-    if (!userId) return history.push('/');
+    // if (!userId) return history.push('/');
     return (
 
         loaded && tweet ?
