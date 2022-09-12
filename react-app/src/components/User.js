@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, Redirect, useHistory, useParams } from 'react-router-dom';
 import { getSingleUserTweets } from '../store/tweets';
 import Page404 from './404';
-import Spinner from './Spinner';
+// import Spinner from './Spinner';
 import './User.css'
 
 function User() {
@@ -25,9 +25,9 @@ function User() {
     // }
     (async () => {
       const response = await fetch(`/api/users/${userId}`)
-      if (response?.status !== 404) {
+      if (response.ok) {
         const user = await response?.json();
-        await dispatch(getSingleUserTweets(userId))
+        dispatch(getSingleUserTweets(userId))
         setUser(user);
         setLoaded(true)
       }
