@@ -28,7 +28,7 @@ const SeeTweet = () => {
 
     }, [dispatch])
 
-
+    // console.log(tweet)
     return (
 
         loaded && tweet ?
