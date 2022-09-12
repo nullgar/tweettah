@@ -34,19 +34,19 @@ function App() {
 
       {userAuth ? <NavBar /> : null}
       <Switch>
-        <Route path='/sign-up' bounces={false} exact={true}>
+        <ProtectedRoute path='/sign-up' bounces={false} exact={true}>
           <SignUp />
-        </Route>
-        <ProtectedRoute path='/:userId' exact={true} >
+        </ProtectedRoute>
+        <ProtectedRoute path='/' exact={true} >
+          <Feed />
+        </ProtectedRoute>
+        <ProtectedRoute to={/^\/\d+/} exact={true} >
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/:userId/:tweetId' exact={true} >
           <SeeTweet />
         </ProtectedRoute>
 
-        <ProtectedRoute path='/' exact={true} >
-          <Feed />
-        </ProtectedRoute>
         <ProtectedRoute>
           <Page404/>
         </ProtectedRoute>
