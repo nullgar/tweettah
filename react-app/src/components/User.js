@@ -22,7 +22,7 @@ function User() {
         const user = await response.json();
         dispatch(getSingleUserTweets(userId))
         setUser(user);
-      } else {
+      } else if (response.status === 404){
         return history.push('/');
       }
     })();
@@ -36,13 +36,12 @@ function User() {
 
   }, [dispatch, userId]);
 
-  if (!user) {
-    return history.push('/');
-  }
+
 
   return (
     loaded && user && tweets ?
     <div className='user-profile-div'>
+      {console.log(user)}
         <div className='user-info'>
           <div>
             <img className='user-profile-img' src={user.profile_pic} alt='' />
