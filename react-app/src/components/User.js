@@ -1,39 +1,44 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { Link, Redirect, useHistory, useParams } from 'react-router-dom';
 import { getSingleUserTweets } from '../store/tweets';
+import Page404 from './404';
 import Spinner from './Spinner';
 import './User.css'
 
 function User() {
   const [user, setUser] = useState();
   const [loaded, setLoaded] = useState(false)
+  const [trigger, setTrigger] = useState(false)
   const dispatch = useDispatch()
   const history = useHistory()
   const { userId }  = useParams();
   const tweets = useSelector(state => state.tweets)
+
+  if (!userId) history.push('/')
+  // if (trigger) <Redirect to='/' />
   useEffect(() => {
+
+
     // if (!userId) {
     //   return history.push('/');
     // }
     (async () => {
       const response = await fetch(`/api/users/${userId}`)
-      if (response.status !== 404) {
-        const user = await response.json();
+      if (response?.status !== 404) {
+        const user = await response?.json();
         await dispatch(getSingleUserTweets(userId))
         setUser(user);
-      } else {
-        history.push('/')
-
+        setLoaded(true)
       }
 
     })();
 
-    const clear = setTimeout(() => {
-      setLoaded(true)
-    }, 1000)
+    // const clear = setTimeout(() => {
+    //   setLoaded(true)
+    // }, 1000)
 
-    return () => clearTimeout(clear)
+    // return () => clearTimeout(clear)
 
 
   }, [dispatch, userId]);
@@ -78,7 +83,7 @@ function User() {
             ))}
         </div>
     </div>
-    : <div className='user-spinner-container'><Spinner /></div>
+    : <div className='user-spinner-container'><Page404 /></div>
   );
 }
 export default User;

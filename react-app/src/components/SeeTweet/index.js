@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useParams } from "react-router-dom";
 import { getSingleUserTweets } from "../../store/tweets";
+import Page404 from "../404";
 import CreateComment from "../CreateComment";
 import EditTweet from "../EditTweet";
 import SeeComments from "../SeeComments";
@@ -33,8 +34,7 @@ const SeeTweet = () => {
 
     }, [dispatch])
 
-    if (!tweet) return <Redirect to='/' />;
-    // if (!userId) return history.push('/');
+
     return (
 
         loaded && tweet ?
@@ -70,7 +70,7 @@ const SeeTweet = () => {
         <CreateComment tweetId={tweetId}/>
         <SeeComments tweetId={tweetId} />
         </div>
-        : <div className="spinner-container"><Spinner /></div>
+        : <div className="spinner-container"><Page404/></div>
     )
 }
 
