@@ -11,6 +11,9 @@ const AboutLinks = () => {
                 <a className="dev-link" href="https://github.com/nullgar" target="_blank" rel="noreferrer" ><i className="devicon-github-original"> Github</i></a>
             </div>
             <div className="dev-link-con">
+                <a className="dev-link" href="https://github.com/nullgar/tweettah/wiki" target="_blank" rel="noreferrer" ><i className="devicon-github-original"> Tweettah Wiki</i></a>
+            </div>
+            <div className="dev-link-con">
             <a className="dev-link" href="https://www.linkedin.com/in/jon-aguilar/" target="_blank" rel="noreferrer" ><i className="devicon-linkedin-plain"> linkedin</i></a>
             </div>
         </div>

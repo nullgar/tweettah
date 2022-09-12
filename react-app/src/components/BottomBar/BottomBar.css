@@ -1,8 +1,8 @@
 .bottom-bar-div{
     /* background-color: red; */
-    width: 523px;
-    min-width: 523px;
-    max-width: 523px;
+    width: 20%;
+    min-width: 20%;
+    max-width: 20%;
     position: sticky;
     left: 0%;
     top: 0%;

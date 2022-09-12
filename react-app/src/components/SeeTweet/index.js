@@ -23,14 +23,8 @@ const SeeTweet = () => {
 
 
     useEffect(() => {
-
         dispatch(getSingleUserTweets(userId))
-        const clear = setTimeout(() => {
-            setLoaded(true)
-        }, 1000)
-
-        return () => clearTimeout(clear)
-
+        setLoaded(true)
 
     }, [dispatch])
 

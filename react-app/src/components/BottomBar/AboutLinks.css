@@ -24,10 +24,11 @@
 
 }
 .dev-link {
-    padding-top: 10%;
     text-decoration: none;
     color: black;
 }
 .dev-link-con {
     font-size: medium;
+    margin-top: 1%;
+    margin-bottom: 1%;
 }

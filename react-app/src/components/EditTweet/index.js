@@ -50,7 +50,7 @@ const EditTweet = ({tweet, setShow}) => {
                     )) : null}
             </div>
 
-            <form action="PUT">
+            <form className="edit-form" action="PUT">
                 <textarea
                 className='tweet-edit-text-area'
                 type="text"

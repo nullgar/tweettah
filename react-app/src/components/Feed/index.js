@@ -31,7 +31,7 @@ const Feed = () => {
                             <img className="feed-user-image" src={tweet.profile_pic} alt=''/>
                         </div>
                         <div className="feed-user-info">
-                            <Link className="feed-user-link" to={`/${tweet.user_id}`}>{tweet.username}</Link>  <Link className="feed-user-handle" to={`/${tweet.user_id}`}>@{tweet.username}</Link>
+                            <Link className="feed-user-link" to={`/${tweet.user_id}/${tweet.id}`}>{tweet.username}</Link>  <Link className="feed-user-handle" to={`/${tweet.user_id}/${tweet.id}`}>@{tweet.username}</Link>
                         </div>
 
                     </div>
