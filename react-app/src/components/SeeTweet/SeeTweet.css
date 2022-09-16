@@ -28,8 +28,9 @@
     display: flex;
     flex-flow: column;
     align-items: flex-start;
+    word-break: break-all;
     /* margin: auto; */
-    padding: 2.5%;
+    padding: 5%;
     width: 50%;
     min-width: 100%;
     max-width: 100%;
