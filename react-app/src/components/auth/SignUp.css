@@ -10,7 +10,9 @@
     min-width: 50vw;
     min-height: 100vh;
     height: 100%;
-    background-size:contain;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     background-image:url('../../images/logo.png');
     background-color: blue;
 }

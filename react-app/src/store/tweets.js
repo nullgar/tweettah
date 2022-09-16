@@ -44,7 +44,6 @@ export const getAllUsersFeedTweets = () => async (dispatch) => {
 
 export const getSingleUserTweets = (userId) => async (dispatch) => {
     const res = await fetch(`/api/tweet/${userId}`);
-    console.log(res)
     if (res.ok) {
         const tweets = await res.json();
         if (tweets.errors) {
