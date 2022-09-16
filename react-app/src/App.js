@@ -40,15 +40,15 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <Feed />
         </ProtectedRoute>
-        {/* <ProtectedRoute path='/:userId' exact={true} >
+        <ProtectedRoute path='/:userId' exact={true} >
           <User />
-        </ProtectedRoute> */}
+        </ProtectedRoute>
         <ProtectedRoute path='/:userId/:tweetId' exact={true} >
           <SeeTweet />
         </ProtectedRoute>
 
         <ProtectedRoute>
-          <Page404/>
+          <Page404 />
         </ProtectedRoute>
       </Switch>
       {userAuth ? <BottomBar /> : null}
