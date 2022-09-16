@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, Redirect, useHistory, useParams } from 'react-router-dom';
 import { getSingleUserTweets } from '../store/tweets';
 import Page404 from './404';
+import Spinner from './Spinner';
 // import Spinner from './Spinner';
 import './User.css'
 
@@ -15,7 +16,7 @@ function User() {
   const { userId }  = useParams();
   const tweets = useSelector(state => state.tweets)
 
-  if (!userId) history.push('/')
+
   // if (trigger) <Redirect to='/' />
   useEffect(() => {
 
@@ -24,31 +25,35 @@ function User() {
     //   return history.push('/');
     // }
     (async () => {
-      const response = await fetch(`/api/users/${userId}`)
+      const response = await fetch(`/api/users/${userId}`);
       if (response.ok) {
         const user = await response?.json();
         dispatch(getSingleUserTweets(userId))
         setUser(user);
-        setLoaded(true)
+
       }
 
     })();
 
-    // const clear = setTimeout(() => {
-    //   setLoaded(true)
-    // }, 1000)
+    const clear = setTimeout(() => {
+      setLoaded(true)
+    }, 1000)
 
-    // return () => clearTimeout(clear)
+    return () => clearTimeout(clear)
 
 
   }, [dispatch, userId]);
 
+  if (loaded && (!userId || !Number(userId) || !user)) {
+    console.log('Redirect')
+    return <Page404 />
+  }
 
 
   return (
     loaded && user && tweets ?
     <div className='user-profile-div'>
-      {console.log(user)}
+
         <div className='user-info'>
           <div>
             <img className='user-profile-img' src={user.profile_pic} alt='' />
@@ -83,7 +88,7 @@ function User() {
             ))}
         </div>
     </div>
-    : <div className='user-spinner-container'><Page404 /></div>
+    : <div className='user-spinner-container'><Spinner /></div>
   );
 }
 export default User;

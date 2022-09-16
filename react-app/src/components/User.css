@@ -1,7 +1,7 @@
 .user-profile-div {
-    max-width: 800px;
-    min-width: 800px;
-    width: 800px;
+    max-width: 100%;
+    min-width: 100%;
+    width: 100%;
 }
 .user-info {
     /* background-color: blue; */
