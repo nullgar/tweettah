@@ -1,6 +1,6 @@
 .user-profile-div {
     max-width: 100%;
-    min-width: 100%;
+    /* min-width: 100%; */
     width: 100%;
 }
 .user-info {
@@ -10,6 +10,9 @@
     flex-flow: column;
     justify-content: center;
     padding: 5%;
+    max-width: 90%;
+    /* min-width: 100%; */
+    width: 90%;
 }
 .user-profile-img {
     width: 133.5px;
@@ -17,6 +20,7 @@
     border-radius: 100px;
     border: 5px white solid;
 }
+
 .user-profile-p {
     font-size: 20px;
     margin-top: 20px;
@@ -36,9 +40,9 @@
     /* justify-content: center; */
     /* align-items: center; */
     /* border: 1px solid rgb(240, 240, 240); */
-    max-width: 800px;
-    min-width: 800px;
-    width: 800px;
+    max-width: 100%;
+    /* min-width: 100%; */
+    width: 100%;
     word-break: break-all;
 }
 .one-tweet {
@@ -47,9 +51,9 @@
     justify-content: center;
     /* align-items: center; */
     border: 1px solid rgb(240, 240, 240);
-    max-width: 800px;
-    min-width: 800px;
-    width: 800px;
+    max-width: 100%;
+    /* min-width: 100%; */
+    width: 100%;
     min-height: 200px;
     max-height: 200px;
     height: 200px;
@@ -94,9 +98,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 800px;
-    min-width: 800px;
-    width: 800px;
+    max-width: 100%;
+    /* min-width: 100%; */
+    width: 100%;
 }
 .user-comment-div {
     display: flex;
