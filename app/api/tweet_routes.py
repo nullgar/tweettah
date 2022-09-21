@@ -24,17 +24,17 @@ def validation_errors_to_error_messages(validation_errors):
 def get_current_user_tweets_for_feed():
     user = current_user.to_dict()
     loadTweets = {}
-    query = Tweet.query.all()
-    for tweet in query:
-            if tweet not in loadTweets:
-                loadTweets[tweet.id] = tweet.to_dict()
-
-    # query = Tweet.query.filter(Tweet.user_id == user['id'])
-    # for follower in user['following']:
-    #     following_tweets = Tweet.query.filter(Tweet.user_id == follower['user_id'])
-    #     for tweet in following_tweets:
+    # query = Tweet.query.all()
+    # for tweet in query:
     #         if tweet not in loadTweets:
     #             loadTweets[tweet.id] = tweet.to_dict()
+
+    query = Tweet.query.filter(Tweet.user_id == user['id'])
+    for follower in user['following']:
+        following_tweets = Tweet.query.filter(Tweet.user_id == follower)
+        for tweet in following_tweets:
+            if tweet not in loadTweets:
+                loadTweets[tweet.id] = tweet.to_dict()
 
 
     # return user

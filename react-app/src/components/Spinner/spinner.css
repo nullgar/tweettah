@@ -1,6 +1,7 @@
 .spinner-div {
     display: flex;
     justify-content: center;
+
     padding: 5%;
 }
 .loading-div {

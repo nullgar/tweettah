@@ -21,16 +21,19 @@ function User() {
   useEffect(() => {
 
 
-    // if (!userId) {
-    //   return history.push('/');
-    // }
     (async () => {
+
+
       const response = await fetch(`/api/users/${userId}`);
+
+
       if (response.ok) {
         const user = await response?.json();
-        dispatch(getSingleUserTweets(userId))
-        setUser(user);
 
+        if (!user.error) {
+          dispatch(getSingleUserTweets(userId))
+          setUser(user);
+        }
       }
 
     })();

@@ -43,13 +43,20 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
     def to_dict(self):
+        to_return = {}
+        temp = [{"user_id": u.id, "user_name": u.username, "user_profile_pic": u.profile_pic} for u in self.followers]
+        for i in temp:
+            if i['user_id'] not in to_return:
+                print(i['user_id'])
+                to_return[i['user_id']] = i
         return {
             'id': self.id,
             'username': self.username,
             'profile_pic': self.profile_pic,
             'email': self.email,
             "followers": [{"user_id": u.id, "user_name": u.username, "user_profile_pic": u.profile_pic} for u in self.following],
-            "following": [{"user_id": u.id, "user_name": u.username, "user_profile_pic": u.profile_pic} for u in self.followers],
+            "following": to_return,
+            # "following": [{"user_id": u.id, "user_name": u.username, "user_profile_pic": u.profile_pic} for u in self.followers],
             "created_at": self.created_at,
             "updated_at": self.updated_at
         }
