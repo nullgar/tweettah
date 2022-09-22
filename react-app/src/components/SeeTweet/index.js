@@ -25,11 +25,18 @@ const SeeTweet = () => {
 
     useEffect(() => {
         dispatch(getSingleUserTweets(userId))
-        setLoaded(true)
+        const clear = setTimeout(() => {
+            setLoaded(true)
+          }, 1000)
+
+        return () => clearTimeout(clear)
 
     }, [dispatch])
 
-    if (!tweet) history.push('/404')
+    // if (!tweet) history.push('/404')
+    if (loaded && userId && !tweet) {
+        return <Page404 />
+      }
     // console.log(tweet)
     return (
 

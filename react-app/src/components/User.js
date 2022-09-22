@@ -42,7 +42,6 @@ function User() {
   }, [dispatch, userId]);
 
   if (loaded && (!userId || !Number(userId) || !user)) {
-    console.log('Redirect')
     return <Page404 />
   }
 

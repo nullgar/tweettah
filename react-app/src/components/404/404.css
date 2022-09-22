@@ -4,7 +4,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 50%;
+    min-width: 50%;
+    max-width: 50%;
 }
 .link-404 {
     text-decoration: none;
