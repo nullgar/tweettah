@@ -42,7 +42,7 @@ def get_current_user_tweets_for_feed():
         if tweet not in loadTweets:
             loadTweets[tweet.id] = tweet.to_dict()
 
-    if query:
+    if loadTweets:
         return loadTweets
     else:
         res = {

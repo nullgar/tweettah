@@ -11,6 +11,7 @@ const Feed = () => {
     const currentUser = useSelector(state => state.session.user)
     const [loaded, setLoaded] = useState(false)
     useEffect(() => {
+        setLoaded(false)
         dispatch(getAllUsersFeedTweets())
         const clear = setTimeout(() => {
             setLoaded(true)

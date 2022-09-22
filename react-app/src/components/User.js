@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Redirect, useHistory, useParams } from 'react-router-dom';
+import { toggleFollow } from '../store/session';
 import { getSingleUserTweets } from '../store/tweets';
 import Page404 from './404';
 import Spinner from './Spinner';
@@ -15,21 +16,14 @@ function User() {
   const history = useHistory()
   const { userId }  = useParams();
   const tweets = useSelector(state => state.tweets)
-
+  const currentUser = useSelector(state => state.session.user);
 
   // if (trigger) <Redirect to='/' />
   useEffect(() => {
-
-
     (async () => {
-
-
       const response = await fetch(`/api/users/${userId}`);
-
-
       if (response.ok) {
         const user = await response?.json();
-
         if (!user.error) {
           dispatch(getSingleUserTweets(userId))
           setUser(user);
@@ -52,6 +46,11 @@ function User() {
     return <Page404 />
   }
 
+  const handleUnfollow = (e, userId) => {
+    e.preventDefault();
+    console.log(userId)
+    dispatch(toggleFollow(userId))
+  }
 
   return (
     loaded && user && tweets ?
@@ -63,6 +62,7 @@ function User() {
           </div>
           <p className='user-profile-p'>{user.username}</p>
           <p className='user-profile-2p'>@{user.username}</p>
+          {currentUser.id !== user.id  ? currentUser.following[user.id] ? <button onClick={(e) => handleUnfollow(e, userId)}>Unfollow</button> : <button onClick={(e) => handleUnfollow(e, userId)}>Follow</button> : null}
         </div>
         <div className='tweet-container'>
 
