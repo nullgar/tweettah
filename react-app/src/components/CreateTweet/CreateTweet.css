@@ -17,7 +17,7 @@
 
 .create-tweet-inner-div {
     flex-flow: column;
-    min-height: 180px;
+    min-height: 20%;
     width: 100%;
     /* display: flex;
     justify-content: center; */
