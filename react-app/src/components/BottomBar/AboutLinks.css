@@ -1,13 +1,12 @@
 .about-links-master-div {
     /* background-color: green; */
-    padding: 5%;
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center;
-    height: 520px;
-    min-height: 520px;
-    max-height: 520px;
+    height: 50vh;
+    min-height: 50vh;
+    max-height: 50vh;
 }
 .dev-image {
     height: 50px;

@@ -1,7 +1,7 @@
 .signup-modal-master-div {
-    min-width: 650px;
+    min-width: 40rem;
     /* width: 100%; */
-    min-height: 650px;
+    min-height: 40rem;
     /* padding: 3%; */
 }
 .signup-modal-inner-div {
@@ -41,20 +41,34 @@
     font-size: 20px;
 }
 .signup-button {
-    background-color: #1b9bee;
-    /* margin: 12px 0 0 12px; */
+    /* background-color: #1b9bee;
     margin: auto;
     min-width: 100px;
-    /* min-width: 0px; */
     min-height: 36px;
     height: 10%;
-    /* padding-left: 16px;
-    padding-right: 16px; */
+    border-color: rgba(0, 0, 0, 0);
+    border-width: 1px;
+    border-radius: 9999px;
+    color: white;
+    cursor: pointer; */
+    margin: 2% 0 0 0;
+    width: 300px;
+    height: 40px;
+    background-color: #1b9bee;
+    min-width: 300px;
+    max-width: 100px;
+    min-height: 40px;
+    height: 10%;
+    padding-left: 16px;
+    padding-right: 16px;
     border-color: rgba(0, 0, 0, 0);
     border-width: 1px;
     border-radius: 9999px;
     color: white;
     cursor: pointer;
+}
+.signup-button:hover{
+    background-color: #188bd8;
 }
 .signup-form-errors {
     display: flex;

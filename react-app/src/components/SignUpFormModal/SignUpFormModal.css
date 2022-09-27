@@ -16,3 +16,6 @@
     cursor: pointer;
     margin: 2%;
 }
+.signup-form-modal-button:hover {
+    background-color: #188bd8;
+}

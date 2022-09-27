@@ -1,11 +1,14 @@
 .bottom-bar-div{
     /* background-color: red; */
     width: 30%;
+    height: 100vh;
+    height: 100vh !important;
     /* min-width: 20%; */
     /* max-width: 20%; */
     position: sticky;
     left: 0%;
     top: 0%;
-    height: 100vh;
-    border: 1px solid rgb(240, 240, 240);
+    height: 100%;
+    border-left: 1px solid rgb(240, 240, 240);
+
 }

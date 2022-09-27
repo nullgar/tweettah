@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleFollow } from "../../store/session";
-import Spinner from "../Spinner";
+import './FollowBox.css';
 
 const FollowBox = () => {
     const [users, setUsers] = useState([]);
@@ -28,20 +28,30 @@ const FollowBox = () => {
 
         // window.open('https://www.google.com', 'width=300,height=300', 'popup=true')
     }
-    // console.log(currentUser['following'])
+    console.log(users)
     return (
-        users ?
-        <div>
+        Object.values(users).length - 1 !== Object.values(currentUser['following']).length ?
+        <div className="follow-box-master-div">
+            <h3 className="follow-box-master-h3">Users to Follow!</h3>
+            {Object.values(users).map(user => (
 
-            { Object.values(users).map(user => (
 
-                !currentUser['following'][user.id] && user.id !== currentUser.id ? <div key={user.id}>
-                    <div>{user.username}</div>
-                    <div><button onClick={(e) => handleFollow(e, user.id)}>Follow</button></div>
-                </div> : null
+                    !currentUser['following'][user.id] && user.id !== currentUser.id ? <div key={user.id}>
+                    <div className="user-to-follow-div">
+                        <div className="follow-box-p-div">
+                            <p>{user.username}</p>
+                        </div>
+                        <div className="follow-box-button-div">
+                            <button onClick={(e) => handleFollow(e, user.id)}>Follow</button>
+                        </div>
+                    </div>
+                    </div> : null
+
             ))}
 
-        </div> : <Spinner />
+        </div> : <div className="follow-box-master-div-no-user">
+            <p>No Users to follow!</p>
+        </div>
     )
 }
 

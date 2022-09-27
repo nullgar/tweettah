@@ -23,6 +23,8 @@ const CreateTweet = () => {
         } else if (res) {
             setErrors([])
             setTweet('')
+            const area = document.querySelector('.create-tweet-text-area');
+            area.style.height = '39px';
         }
     }
 
