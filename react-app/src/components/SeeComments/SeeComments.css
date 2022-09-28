@@ -70,7 +70,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40vh;
+    height: 56vh;
+    border-left: 1px solid rgb(240, 240, 240);
 }
 .comment-user-image {
     margin: 3%;

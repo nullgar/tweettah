@@ -16,8 +16,8 @@
     /* align-items: center; */
     height: 100vh;
     flex-flow: column;
-    -ms-overflow-style: none; /* for Internet Explorer, Edge */
-    scrollbar-width: none; /* for Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
     overflow-y: scroll;
     overflow: auto;
     /* margin: auto; */
@@ -34,7 +34,7 @@
     position: relative;
 }
 .feed-master-div::-webkit-scrollbar {
-    display: none; /* for Chrome, Safari, and Opera */
+    display: none;
   }
 .feed-inner-div {
     display: flex;

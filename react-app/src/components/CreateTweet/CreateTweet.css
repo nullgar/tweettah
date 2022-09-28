@@ -1,15 +1,12 @@
 .create-tweet-master-div{
     display: flex;
-    /* align-items: center; */
     flex-flow: row;
     padding: 20px;
+    padding-left: 50px;
     padding-top: 40px;
     width: 55%;
     min-width: 100%;
-    min-height: 20vh;
-
-    /* min-height: 300px; */
-    /* height: fit-content; */
+    height: fit-content;
     border: 1px solid  rgb(240, 240, 240);
     box-sizing: border-box;
     position: relative;
