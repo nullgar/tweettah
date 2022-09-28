@@ -101,6 +101,9 @@
     color: white;
     cursor: pointer;
 }
+.create-tweet-submit-button:hover{
+    background-color: #188bd8;
+}
 
 .create-tweet-submit-div {
     display: flex;

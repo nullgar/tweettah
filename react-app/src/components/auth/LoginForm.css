@@ -31,7 +31,6 @@
 .login-form-place-holder {
 	position: absolute;
     margin-top: 4%;
-
     color: black;
     font-size: 15px;
 	z-index: 2;
@@ -45,16 +44,6 @@
     font-size: 20px;
 }
 .login-button {
-    /* background-color: #1b9bee;
-    margin: 10% 0 0 0;
-    min-width: 100px;
-    min-height: 36px;
-    height: 10%;
-    border-color: rgba(0, 0, 0, 0);
-    border-width: 1px;
-    border-radius: 9999px;
-    color: white;
-    cursor: pointer; */
     margin: 10% 0 0 0;
     width: 300px;
     height: 40px;

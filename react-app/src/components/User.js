@@ -51,6 +51,9 @@ function User() {
     dispatch(toggleFollow(userId))
   }
 
+  // const hoverFollowingButton () => {
+
+  // }
   return (
     loaded && user && tweets ?
     <div className='user-profile-div'>
@@ -61,7 +64,20 @@ function User() {
           </div>
           <p className='user-profile-p'>{user.username}</p>
           <p className='user-profile-2p'>@{user.username}</p>
-          {currentUser.id !== user.id  ? currentUser.following[user.id] ? <button onClick={(e) => handleUnfollow(e, userId)}>Unfollow</button> : <button onClick={(e) => handleUnfollow(e, userId)}>Follow</button> : null}
+          {currentUser.id !== user.id  ? currentUser.following[user.id] ?
+          <button
+          className='user-unfollow-button'
+          onClick={(e) => handleUnfollow(e, userId)}
+          onMouseEnter={ (e) => {
+            e.target.innerHTML = 'Unfollow'
+            }
+          }
+          onMouseLeave={ (e) => {
+            e.target.innerHTML = 'Following'
+            }
+          }
+          >Following
+          </button> : <button className='user-follow-button' onClick={(e) => handleUnfollow(e, userId)}>Follow</button> : null}
         </div>
         <div className='tweet-container'>
 
