@@ -42,7 +42,9 @@ const FollowBox = () => {
                             <p>{user.username}</p>
                         </div>
                         <div className="follow-box-button-div">
-                            <button onClick={(e) => handleFollow(e, user.id)}>Follow</button>
+                            <button
+                            className="follow-box-follow-button"
+                            onClick={(e) => handleFollow(e, user.id)}>Follow</button>
                         </div>
                     </div>
                     </div> : null
