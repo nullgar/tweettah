@@ -16,7 +16,7 @@
     /* overflow-y: scroll; */
     height: fit-content;
     /* background-color: red; */
-    border: 1px solid  rgb(240, 240, 240);
+    /* border: 1px solid  rgb(240, 240, 240); */
     /* border-right: 1px solid  rgb(240, 240, 240); */
     box-sizing: border-box;
     position: relative;
@@ -39,7 +39,8 @@
     padding: 16px;
 
     /* background-color: brown; */
-    border: 1px solid  rgb(240, 240, 240);
+    border-bottom: 1px solid  rgb(240, 240, 240);
+    border-left: 1px solid  rgb(240, 240, 240);
 
 }
 .see-comments-info-div {
@@ -69,7 +70,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: 40vh;
 }
 .comment-user-image {
     margin: 3%;

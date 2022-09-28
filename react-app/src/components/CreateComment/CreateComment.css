@@ -9,10 +9,10 @@
     width: 100%;
     min-width: 100%;
     max-width: 100%;
-    min-height: 15rem;
+    /* min-height: 150px; */
     height: fit-content;
     /* background-color: red; */
-    border: 1px solid  rgb(240, 240, 240);
+    border-bottom: 1px solid  rgb(240, 240, 240);
     box-sizing: border-box;
     position: relative;
 }
