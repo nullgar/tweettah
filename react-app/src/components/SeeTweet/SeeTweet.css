@@ -1,7 +1,9 @@
 .top-div {
     display: flex;
     flex-flow: column;
-    height: 100vh !important;
+    position: relative;
+    height: 100% !important;
+    overflow: auto;
     /* margin-left: 2.5%;
     margin-top: 2%; */
     min-width: 50%;
@@ -99,5 +101,6 @@
     width: 50%;
     min-width: 50%;
     max-width: 50%;
-
+    border-left: 1px solid  rgb(240, 240, 240);
+    border-right: 1px solid  rgb(240, 240, 240);
 }

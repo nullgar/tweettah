@@ -66,6 +66,8 @@
     border-radius: 9999px;
     color: white;
     cursor: pointer;
+    font-size: large;
+    font-weight: bolder;
 }
 .signup-button:hover{
     background-color: #188bd8;

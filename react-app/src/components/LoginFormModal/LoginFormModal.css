@@ -15,6 +15,8 @@
     color: #1b9bee;
     cursor: pointer;
     margin: 2%;
+    font-size: large;
+    font-weight: bolder;
 }
 
 .login-form-modal-button:hover {
