@@ -18,7 +18,6 @@ function User() {
   const tweets = useSelector(state => state.tweets)
   const currentUser = useSelector(state => state.session.user);
 
-  // if (trigger) <Redirect to='/' />
   useEffect(() => {
     (async () => {
       const response = await fetch(`/api/users/${userId}`);
@@ -39,7 +38,7 @@ function User() {
     return () => clearTimeout(clear)
 
 
-  }, [dispatch, userId]);
+  }, [dispatch, userId, currentUser]);
 
   if (loaded && (!userId || !Number(userId) || !user)) {
     return <Page404 />
@@ -47,7 +46,6 @@ function User() {
 
   const handleUnfollow = (e, userId) => {
     e.preventDefault();
-    console.log(userId)
     dispatch(toggleFollow(userId))
   }
 
@@ -64,6 +62,10 @@ function User() {
           </div>
           <p className='user-profile-p'>{user.username}</p>
           <p className='user-profile-2p'>@{user.username}</p>
+          <div>
+            <p>Following: {Object.values(user.following).length}</p>
+            <p>Followers: {Object.values(user.followers).length}</p>
+          </div>
           {currentUser.id !== user.id  ? currentUser.following[user.id] ?
           <button
           className='user-unfollow-button'
@@ -79,6 +81,7 @@ function User() {
           >Following
           </button> : <button className='user-follow-button' onClick={(e) => handleUnfollow(e, userId)}>Follow</button> : null}
         </div>
+
         <div className='tweet-container'>
 
           {Object.values(tweets).map(tweet => (

@@ -14,8 +14,6 @@ const FollowBox = () => {
             if (response.ok) {
               const users = await response?.json();
               setUsers(users)
-
-
             }
 
         })();
@@ -28,7 +26,6 @@ const FollowBox = () => {
 
         // window.open('https://www.google.com', 'width=300,height=300', 'popup=true')
     }
-    console.log(users)
     return (
         Object.values(users).length - 1 !== Object.values(currentUser['following']).length ?
         <div className="follow-box-master-div">
