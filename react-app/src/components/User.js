@@ -62,9 +62,9 @@ function User() {
           </div>
           <p className='user-profile-p'>{user.username}</p>
           <p className='user-profile-2p'>@{user.username}</p>
-          <div>
-            <p>Following: {Object.values(user.following).length}</p>
-            <p>Followers: {Object.values(user.followers).length}</p>
+          <div className='user-stats-div'>
+            <div className='user-stats'><p className='user-stats-p'>{Object.values(user.following).length}</p>  Following</div>
+            <div className='user-stats'><p className='user-stats-p'>{Object.values(user.followers).length}</p>  Followers</div>
           </div>
           {currentUser.id !== user.id  ? currentUser.following[user.id] ?
           <button

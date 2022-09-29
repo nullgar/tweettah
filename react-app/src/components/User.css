@@ -26,6 +26,19 @@
 
 
 }
+.user-stats-div {
+    display: flex;
+}
+.user-stats {
+    display: flex;
+    padding-right: 1%;
+    margin-left: 10px;
+    font-weight: normal;
+}
+.user-stats-p {
+    font-weight: bolder;
+    margin: 0 5px 0 0;
+}
 .user-profile-img {
     width: 133.5px;
     height: 133.5px;
@@ -123,6 +136,7 @@
     height: 10%;
     padding-left: 16px;
     padding-right: 16px;
+    margin-top: 10px;
     border-color: rgba(0, 0, 0, 0);
     border-width: 1px;
     border-radius: 9999px;
@@ -143,6 +157,7 @@
     height: 10%;
     padding-left: 16px;
     padding-right: 16px;
+    margin-top: 10px;
     border-color: rgb(0, 0, 0, .5);
     color: rgb(0, 0, 0);
     border-width: 1px;
