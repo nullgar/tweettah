@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { getSingleUserTweets } from "../../store/tweets";
 import Page404 from "../404";
 import CreateComment from "../CreateComment";
@@ -14,20 +14,29 @@ const SeeTweet = () => {
     const {userId, tweetId} = useParams()
     const [loaded, setLoaded] = useState(false)
     const [show, setShow] = useState(false)
+    const history = useHistory()
     // const [tweet, setTweet] = useState({})
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
-    const tweets = useSelector(state => state.tweets)
-    const tweet = tweets[tweetId]
+    const tweet = useSelector(state => state.tweets[tweetId])
+    // const tweet = tweets[tweetId]
 
 
 
     useEffect(() => {
         dispatch(getSingleUserTweets(userId))
-        setLoaded(true)
+        const clear = setTimeout(() => {
+            setLoaded(true)
+          }, 1000)
+
+        return () => clearTimeout(clear)
 
     }, [dispatch])
 
+    // if (!tweet) history.push('/404')
+    if (loaded && userId && !tweet) {
+        return <Page404 />
+      }
     // console.log(tweet)
     return (
 
@@ -64,7 +73,7 @@ const SeeTweet = () => {
         <CreateComment tweetId={tweetId}/>
         <SeeComments tweetId={tweetId} />
         </div>
-        : <div className="spinner-container"><Page404/></div>
+        : <div className="spinner-container"><Spinner /></div>
     )
 }
 

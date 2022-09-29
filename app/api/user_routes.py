@@ -13,6 +13,7 @@ def users():
     return {'users': [user.to_dict() for user in users]}
 
 
+
 @user_routes.route('/<int:id>')
 @login_required
 def user(id):
@@ -20,10 +21,26 @@ def user(id):
     if user:
         return user.to_dict()
     else:
-        return {"error": "User Not Found"},404
+        return {"error": "User Not Found"}
+
+
+@user_routes.route('/follow-box')
+@login_required
+def get_users_box():
+    current_user_id = current_user.id
+    user = {}
+    temp = User.query.all()
+    # temp = User.query.get(current_user_id)
+    for i in temp:
+        i = i.to_dict()
+        user[i['id']] = i
+    # temp = temp.to_dict()
 
 
 
+    if user:
+        return user
+    # return jsonify(user['following'])
 
 @user_routes.route('/<int:id>/follow', methods=["POST"])
 @login_required
@@ -49,7 +66,8 @@ def toggle_follow(id):
     user = User.query.get(current_user_id).to_dict()
     for check_if_following in user['following']:
 
-        if check_if_following['user_id'] == user_to_follow_id:
+
+        if check_if_following == user_to_follow_id:
             unFollow = delete(following).where(
             following.c.user_id==current_user_id,
             following.c.following_id==user_to_follow_id

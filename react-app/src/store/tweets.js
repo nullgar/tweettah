@@ -118,9 +118,8 @@ export const deleteTweet = (tweetId) => async (dispatch) => {
 const tweetReducer = (state = {}, action) => {
     switch (action.type) {
         case LOAD_USER_TWEETS:
-            const allTweets = {...state};
-            Object.values(action.tweets).forEach(tweet => (
-
+            const allTweets = {};
+            Object.values(action.tweets).map(tweet => (
                 allTweets[tweet.id] = tweet
             ))
             return allTweets;

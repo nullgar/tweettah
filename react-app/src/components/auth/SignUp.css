@@ -4,23 +4,42 @@
     height: 100%;
     min-width: 100%;
     min-height: 100%;
+    z-index: 0;
+}
+
+.svg-logo-div {
+
+    font-size: 25rem;
+    color: #ffff;
+    /* position: absolute; */
+    /* background-size: cover; */
+    /* font-size: 30rem; */
 }
 .signup-logo-div {
+
+    /* position: relative; */
     width: 50%;
     min-width: 50vw;
     min-height: 100vh;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-image:url('../../images/logo.png');
-    background-color: blue;
+    /* background-image:url('../../images/logo.png'); */
+    background-image:url('https://res.cloudinary.com/dglogyswk/image/upload/v1664255179/Tweettah/Screenshot_2022-09-07_at_6.39.21_PM_i23ooi.png');
+    /* background-color: blue; */
 }
 .signup-second-div {
     display: flex;
+    z-index: 1;
     flex-flow: column;
     margin-top: 8%;
     margin-left: 2%;
+    width: 50%;
+    background-color: #ffff;
 
 }
 .signup-main-title {

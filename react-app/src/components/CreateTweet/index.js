@@ -23,6 +23,8 @@ const CreateTweet = () => {
         } else if (res) {
             setErrors([])
             setTweet('')
+            const area = document.querySelector('.create-tweet-text-area');
+            area.style.height = '39px';
         }
     }
 
@@ -55,9 +57,10 @@ const CreateTweet = () => {
                     minLength={1}
                     maxLength={150}
                     onInput={(e) => {
-                        const area = document.querySelector('.create-tweet-text-area')
-                        area.setAttribute("style", "height:" + (0) + "px;overflow-y:hidden;");
-                        area.setAttribute("style", "height:" + (area.scrollHeight) + "px;overflow-y:hidden;");
+                        const area = document.querySelector('.create-tweet-text-area');
+                        area.style.height = '0px';
+                        area.style.height = area.scrollHeight + 'px';
+                        console.log(area.scrollHeight , area.style.height)
                     }}
                     >
 

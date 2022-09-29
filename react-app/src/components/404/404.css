@@ -4,7 +4,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 55%;
+    min-width: 55%;
+    max-width: 55%;
+    border-left: 1px solid rgb(240, 240, 240);
 }
 .link-404 {
     text-decoration: none;

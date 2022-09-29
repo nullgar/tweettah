@@ -8,7 +8,7 @@ import './NavBar.css'
 const NavBar = () => {
   const curret_user = useSelector(state => state.session.user.id)
   return (
-    <nav className='navbar-master'>
+    <div className='navbar-master'>
       <div className='nav-bar-main-div'>
         <div className='icon-nav-bar'>
         </div>
@@ -28,7 +28,7 @@ const NavBar = () => {
           <LogoutButton />
         </div>
       </div>
-    </nav>
+    </div>
   );
 }
 

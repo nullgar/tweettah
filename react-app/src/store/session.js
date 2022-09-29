@@ -124,17 +124,21 @@ export default function reducer(state = initialState, action) {
     case REMOVE_USER:
       return { user: null }
     case TOGGLE_FOLLOW:
-      const newState = { ...state };
+      const newState = { ...state , user: {...state.user, following: action.following} };
+      // newState.user.following = {...action.following}
+      // console.log('******************',newState.user)
 
-			if (action.following.length > 0) {
-				action.following.forEach((following) => {
-					followingList[following.following_id] = following;
-				});
-				newState.user.following = followingList;
-			} else {
-				newState.user.following = {};
-			}
+      // const updates = {...newState}
+			// if (Object.values(action.following).length > 0) {
+			// 	Object.values(action.following).forEach((following) => {
+			// 		followingList[following.user_id] = following;
+			// 	});
+			// 	newState.user.following = followingList;
 
+			// } else {
+			// 	newState.user.following = {};
+			// }
+      // console.log(newState)
 			return newState;
     default:
       return state;
