@@ -44,8 +44,13 @@ function User() {
     return <Page404 />
   }
 
-  const handleUnfollow = (e, userId) => {
+  const toggleUnfollow = (e, userId) => {
     e.preventDefault();
+    if (document.querySelector('.user-unfollow-button')) {
+      const tar = document.querySelector('.user-unfollow-button');
+      tar.className = 'user-follow-button';
+    }
+    // tar?.setAttribute('class', 'user-follow-button');
     dispatch(toggleFollow(userId))
   }
 
@@ -69,17 +74,26 @@ function User() {
           {currentUser.id !== user.id  ? currentUser.following[user.id] ?
           <button
           className='user-unfollow-button'
-          onClick={(e) => handleUnfollow(e, userId)}
+          onClick={(e) => toggleUnfollow(e, userId)}
           onMouseEnter={ (e) => {
             e.target.innerHTML = 'Unfollow'
+            const tar = document.querySelector('.user-unfollow-button');
+            tar.className = 'user-unfollow-button-active'
             }
           }
           onMouseLeave={ (e) => {
-            e.target.innerHTML = 'Following'
+            e.target.innerHTML = 'Following';
+            if (document?.querySelector('.user-unfollow-button-active')) {
+              const tar = document?.querySelector('.user-unfollow-button-active')
+              tar.className = 'user-unfollow-button';
+            }
+            // tar.style.color = 'rgb(0, 0, 0)';
+            // tar.style.backgroundColor = '#ffff';
+            // tar.style.borderColor = 'rgb(0, 0, 0)';
             }
           }
           >Following
-          </button> : <button className='user-follow-button' onClick={(e) => handleUnfollow(e, userId)}>Follow</button> : null}
+          </button> : <button className='user-follow-button' onClick={(e) => toggleUnfollow(e, userId)}>Follow</button> : null}
         </div>
 
         <div className='tweet-container'>
