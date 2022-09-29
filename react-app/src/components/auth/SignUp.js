@@ -18,7 +18,9 @@ const SignUp = () => {
   return (
     <div className='signup-master-div'>
 
-      <div className='signup-logo-div'></div>
+      <div className='signup-logo-div'>
+        <i className='fa-brands fa-twitter svg-logo-div'></i>
+      </div>
       <div className='signup-second-div'>
         <p className='signup-main-title'>Happening now</p>
         <p className='signup-second-title'>Join Tweettah today.</p>

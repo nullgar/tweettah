@@ -1,18 +1,43 @@
 .user-profile-div {
-    max-width: 100%;
-    /* min-width: 100%; */
-    width: 100%;
+    max-width: 55%;
+    min-width: 55%;
+    width: 55%;
+    min-height: 100vh;
+    height: 100vh;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overflow-y: scroll;
+    overflow: auto;
+    box-sizing: border-box;
+    word-break: break-all;
+    border: 1px solid rgb(240, 240, 240);
 }
+.user-profile-div::-webkit-scrollbar {
+    display: none;
+  }
 .user-info {
     /* background-color: blue; */
-    border: 1px solid rgb(240, 240, 240);
+    /* border: 1px solid rgb(240, 240, 240); */
     display: flex;
     flex-flow: column;
     justify-content: center;
     padding: 5%;
-    max-width: 90%;
     /* min-width: 100%; */
-    width: 90%;
+
+
+}
+.user-stats-div {
+    display: flex;
+}
+.user-stats {
+    display: flex;
+    padding-right: 1%;
+    margin-left: 10px;
+    font-weight: normal;
+}
+.user-stats-p {
+    font-weight: bolder;
+    margin: 0 5px 0 0;
 }
 .user-profile-img {
     width: 133.5px;
@@ -26,23 +51,19 @@
     margin-top: 20px;
     margin-bottom: 0;
     font-weight: 400;
+    margin-left: 10px;
 }
 .user-profile-2p {
     font-size: 15px;
     font-weight: 400;
-    margin-top: 0;
+    margin-top: 10px;
     color: #536471;
+    margin-left: 10px;
 }
 .tweet-container {
-    /* background-color: brown; */
-    /* display: flex; */
-    /* flex-flow: column; */
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* border: 1px solid rgb(240, 240, 240); */
-    max-width: 100%;
-    /* min-width: 100%; */
-    width: 100%;
+
+    border-top: 1px solid rgb(240, 240, 240);
+    box-sizing: border-box;
     word-break: break-all;
 }
 .one-tweet {
@@ -50,7 +71,7 @@
     flex-flow: column;
     justify-content: center;
     /* align-items: center; */
-    border: 1px solid rgb(240, 240, 240);
+    border-bottom: 1px solid rgb(240, 240, 240);
     max-width: 100%;
     /* min-width: 100%; */
     width: 100%;
@@ -98,10 +119,76 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 100%;
-    /* min-width: 100%; */
-    width: 100%;
+    max-width: 55%;
+    min-width: 55%;
+    width: 55%;
+    border-left: 1px solid rgb(240, 240, 240);
 }
 .user-comment-div {
     display: flex;
+}
+
+.user-follow-button {
+    background-color: #1b9bee;
+    min-width: 36px;
+    min-height: 36px;
+    max-width: max-content;
+    height: 10%;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-top: 10px;
+    border-color: rgba(0, 0, 0, 0);
+    border-width: 1px;
+    border-radius: 9999px;
+    color: white;
+    cursor: pointer;
+    font-size: large;
+    font-weight: bolder;
+}
+.user-follow-button:hover {
+    background-color: #188bd8;
+}
+
+.user-unfollow-button {
+    background-color: #fff;
+    min-width: 36px;
+    min-height: 36px;
+    max-width: max-content;
+    height: 10%;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-top: 10px;
+    border-color: rgb(0, 0, 0, .5);
+    color: rgb(0, 0, 0);
+    border-width: 1px;
+    border-radius: 9999px;
+    cursor: pointer;
+    font-size: large;
+    font-weight: bolder;
+}
+
+.user-no-tweets-container {
+    padding-top: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-unfollow-button-active{
+    min-width: 36px;
+    min-height: 36px;
+    max-width: max-content;
+    height: 10%;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-top: 10px;
+    border-width: 1px;
+    border-radius: 9999px;
+    cursor: pointer;
+    font-size: large;
+    font-weight: bolder;
+
+    background-color: rgb(244, 33, 46, .5);
+    color: rgb(244, 33, 46);
+    border-color: rgb(0, 0, 0, .0);
 }

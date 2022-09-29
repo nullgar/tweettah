@@ -7,23 +7,26 @@ import LoadingSpinner from "../Spinner";
 import './Feed.css'
 const Feed = () => {
     const dispatch = useDispatch()
-    const tweets = useSelector(state => state.tweets)
+    const tweets = useSelector(state => state.tweets);
+    const currentUser = useSelector(state => state.session.user)
     const [loaded, setLoaded] = useState(false)
     useEffect(() => {
+        setLoaded(false)
         dispatch(getAllUsersFeedTweets())
         const clear = setTimeout(() => {
             setLoaded(true)
           }, 1000)
 
         return () => clearTimeout(clear)
-    }, [dispatch])
+    }, [dispatch, currentUser])
 
 
     return (
         <div className="feed-hidden-div">
 
-            <CreateTweet />
+
             {loaded ? <div className="feed-master-div">
+            <CreateTweet />
             {Object.values(tweets).reverse().map(tweet => (
                 <div className="feed-inner-div" key={tweet.id}>
                     <div className="feed-top-div">
@@ -50,9 +53,10 @@ const Feed = () => {
                         </Link>
                     </div>
 
+
                     </div>
             ))}
-            </div> : <LoadingSpinner />}
+            </div> : <div className="feed-loading-div"><LoadingSpinner /></div>}
         </div>
     )
 }

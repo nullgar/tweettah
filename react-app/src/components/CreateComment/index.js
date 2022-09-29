@@ -24,6 +24,8 @@ const CreateComment = ({tweetId}) => {
         } else if (!res?.errors) {
             setComment('')
             setErrors([])
+            const area = document.querySelector('.create-comment-text-area')
+            area.setAttribute("style", "height:" + (28) + "px;overflow-y:hidden;");
 
         }
 
