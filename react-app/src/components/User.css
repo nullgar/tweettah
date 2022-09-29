@@ -8,20 +8,22 @@
     scrollbar-width: none;
     overflow-y: scroll;
     overflow: auto;
+    box-sizing: border-box;
+    word-break: break-all;
+    border: 1px solid rgb(240, 240, 240);
 }
 .user-profile-div::-webkit-scrollbar {
     display: none;
   }
 .user-info {
     /* background-color: blue; */
-    border: 1px solid rgb(240, 240, 240);
+    /* border: 1px solid rgb(240, 240, 240); */
     display: flex;
     flex-flow: column;
     justify-content: center;
     padding: 5%;
-    max-width: 90%;
     /* min-width: 100%; */
-    width: 90%;
+
 
 }
 .user-profile-img {
@@ -46,15 +48,9 @@
     margin-left: 10px;
 }
 .tweet-container {
-    /* background-color: brown; */
-    /* display: flex; */
-    /* flex-flow: column; */
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* border: 1px solid rgb(240, 240, 240); */
-    max-width: 100%;
-    /* min-width: 100%; */
-    width: 100%;
+
+    border-top: 1px solid rgb(240, 240, 240);
+    box-sizing: border-box;
     word-break: break-all;
 }
 .one-tweet {
@@ -62,7 +58,7 @@
     flex-flow: column;
     justify-content: center;
     /* align-items: center; */
-    border: 1px solid rgb(240, 240, 240);
+    border-bottom: 1px solid rgb(240, 240, 240);
     max-width: 100%;
     /* min-width: 100%; */
     width: 100%;
@@ -156,6 +152,12 @@
     font-weight: bolder;
 }
 
+.user-no-tweets-container {
+    padding-top: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .user-unfollow-button:hover{
     /* background-color: #188bd8; */
     background-color: rgb(244, 33, 46, .5);

@@ -83,8 +83,8 @@ function User() {
         </div>
 
         <div className='tweet-container'>
-
-          {Object.values(tweets).map(tweet => (
+          {Object.values(tweets).length ?
+          Object.values(tweets).map(tweet => (
             <div className='one-tweet' key={tweet.id}>
               <div className='one-tweet-top'>
                 <div className='user-profile-tweet-image-div'>
@@ -106,7 +106,8 @@ function User() {
                 </div>
               </div>
             </div>
-            ))}
+            )): <div className='user-no-tweets-container'>
+              <h2>User has no Tweets</h2></div>}
         </div>
     </div>
     : <div className='user-spinner-container'><Spinner /></div>
