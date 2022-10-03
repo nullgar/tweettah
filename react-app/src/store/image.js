@@ -1,6 +1,8 @@
+import tweetReducer from "./tweets";
+
 const LOAD_IMAGES = 'session/LOAD_IMAGES';
 const LOAD_SINGLE_USER_IMAGES = 'session/LOAD_SINGLE_USER_IMAGES';
-const CREATE_IMAGE = 'session/CREATE_TWEET';
+const CREATE_IMAGE = 'session/CREATE_IMAGE';
 const EDIT_IMAGE = 'session/EDIT_IMAGES';
 const DELETE_IMAGE = 'session/DELETE_IMAGES';
 
@@ -11,12 +13,12 @@ const buildImage = (image) => ({
 })
 
 
-export const createImage = (buildImage) => async (dispatch) => {
+export const createImage = (imageBuilt) => async (dispatch) => {
     const {
 		tweet_id,
         user_id,
         image
-	} = buildImage;
+	} = imageBuilt;
 
 	const formData = new FormData();
 	formData.append("tweet_id", tweet_id);
@@ -45,3 +47,15 @@ export const createImage = (buildImage) => async (dispatch) => {
     return res
     }
 }
+
+const imageReducer = (state, action) => {
+    switch (action.type) {
+        case CREATE_IMAGE:
+            const newImages = {}
+        default:
+            return state
+    }
+}
+
+
+export default tweetReducer;

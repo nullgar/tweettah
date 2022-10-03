@@ -25,6 +25,7 @@ const Feed = () => {
         <div className="feed-hidden-div">
 
 
+
             {loaded ? <div className="feed-master-div">
             <CreateTweet />
             {Object.values(tweets).reverse().map(tweet => (

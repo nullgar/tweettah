@@ -41,9 +41,6 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <Feed />
         </ProtectedRoute>
-        <ProtectedRoute path='/image' exact={true} >
-          <UploadPicture />
-        </ProtectedRoute>
         <ProtectedRoute path='/:userId' exact={true} >
           <User />
         </ProtectedRoute>

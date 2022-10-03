@@ -69,17 +69,19 @@ def upload_image():
 
         url = upload["url"]
 
-        post = Image(
+        payload = Image(
             url = url,
             tweet_id = form.data['tweet_id'],
             user_id = current_user.id
         )
-        db.session.add(post)
+        db.session.add(payload)
         db.session.commit()
 
-        newPost = post.to_dict()
-        newPost['post_user'] = User.query.get(newPost['user_id']).to_dict()
-        return newPost
+        newImage = payload.to_dict()
+        # If you need to add user for Image comment in below
+        # newImage['image_owner'] = User.query.get(newImage['user_id']).to_dict()
+        # print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~', newImage)
+        return newImage
 
 
 #Create an Image for a tweet
