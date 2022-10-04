@@ -70,7 +70,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 56vh;
+    height: 60vh;
     border-left: 1px solid rgb(240, 240, 240);
 }
 .comment-user-image {
@@ -79,4 +79,9 @@
     height: 50px;
     border-radius: 250px;
     display: inline;
+}
+.no-comments-spinner-div {
+    height: 60vh;
+    width: 100%;
+    border-left: 1px solid rgb(240, 240, 240);
 }

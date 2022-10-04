@@ -16,6 +16,9 @@ const CreateTweet = () => {
     const updateImage = (e) => {
         const file = e.target.files[0];
         setImage(file);
+        const unhide = document.querySelector('input[type="file" i]');
+        unhide.style.display = 'block'
+
     }
 
     const handleTweet = async (e) => {

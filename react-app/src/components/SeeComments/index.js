@@ -36,7 +36,7 @@ const SeeComments = () => {
                     </div>
                 </div>
             )) : <div className="see-comments-no-comment">No comments yet! Be the first to comment.</div>}
-        </div> : <Spinner />
+        </div> : <div className="no-comments-spinner-div"><Spinner /></div>
     )
 }
 

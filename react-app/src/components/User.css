@@ -10,7 +10,7 @@
     overflow: auto;
     box-sizing: border-box;
     word-break: break-all;
-    border: 1px solid rgb(240, 240, 240);
+    border-left: 1px solid rgb(240, 240, 240);
 }
 .user-profile-div::-webkit-scrollbar {
     display: none;

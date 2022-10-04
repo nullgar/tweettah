@@ -3,6 +3,9 @@
     flex-flow: column;
     /* position: relative; */
     height: 100vh !important;
+    min-height: 100vh !important;
+    border-left: 1px solid rgb(240, 240, 240);
+    border-right: 1px solid rgb(240, 240, 240);
     overflow: auto;
     -ms-overflow-style: none; /* for Internet Explorer, Edge */
     scrollbar-width: none; /* for Firefox */
@@ -28,8 +31,8 @@
     /* height: max-content; */
     height: 10%;
     /* background-color: red; */
-    border-left: 1px solid  rgb(240, 240, 240);
-    border-right: 1px solid  rgb(240, 240, 240);
+    /* border-left: 1px solid  rgb(240, 240, 240); */
+    /* border-right: 1px solid  rgb(240, 240, 240); */
     box-sizing: border-box;
     position: relative;
 }
@@ -47,9 +50,9 @@
     /* min-height: 200px;
     height: fit-content; */
     /* background-color: red; */
-    border-left: 1px solid  rgb(240, 240, 240);
-    border-bottom: 1px solid  rgb(240, 240, 240);
-    border-right: 1px solid  rgb(240, 240, 240);
+    /* border-left: 1px solid  rgb(240, 240, 240); */
+    /* border-bottom: 1px solid  rgb(240, 240, 240); */
+    /* border-right: 1px solid  rgb(240, 240, 240); */
     box-sizing: border-box;
     position: relative;
 }
