@@ -4,7 +4,7 @@
     /* position: relative; */
     height: 100vh !important;
     min-height: 100vh !important;
-    border-left: 1px solid rgb(240, 240, 240);
+    border-left: 2px solid rgb(240, 240, 240);
     border-right: 1px solid rgb(240, 240, 240);
     overflow: auto;
     -ms-overflow-style: none; /* for Internet Explorer, Edge */
@@ -51,7 +51,7 @@
     height: fit-content; */
     /* background-color: red; */
     /* border-left: 1px solid  rgb(240, 240, 240); */
-    /* border-bottom: 1px solid  rgb(240, 240, 240); */
+    border-bottom: 1px solid  rgb(240, 240, 240);
     /* border-right: 1px solid  rgb(240, 240, 240); */
     box-sizing: border-box;
     position: relative;
@@ -110,5 +110,5 @@
     min-width: 55%;
     max-width: 55%;
     border-left: 1px solid  rgb(240, 240, 240);
-    border-right: 0px solid  rgb(240, 240, 240);
+    /* border-right: 1px solid  rgb(240, 240, 240); */
 }

@@ -30,7 +30,7 @@ const CreateTweet = () => {
             image: image
         }
 
-        if (tweet) {
+        if (tweet && image) {
             const resImage = await dispatch(createImage(payload));
             console.log(resImage.ok)
             if (!resImage?.error) {

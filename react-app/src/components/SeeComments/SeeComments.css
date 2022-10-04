@@ -40,7 +40,7 @@
 
     /* background-color: brown; */
     border-bottom: 1px solid  rgb(240, 240, 240);
-    border-left: 1px solid  rgb(240, 240, 240);
+    /* border-left: 1px solid  rgb(240, 240, 240); */
 
 }
 .see-comments-info-div {
@@ -71,7 +71,7 @@
     justify-content: center;
     align-items: center;
     height: 60vh;
-    border-left: 1px solid rgb(240, 240, 240);
+    /* border-left: 1px solid rgb(240, 240, 240); */
 }
 .comment-user-image {
     margin: 3%;
@@ -83,5 +83,5 @@
 .no-comments-spinner-div {
     height: 60vh;
     width: 100%;
-    border-left: 1px solid rgb(240, 240, 240);
+    /* border-left: 1px solid rgb(240, 240, 240); */
 }
