@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createTweetComment } from "../../store/comments";
+import { createTweetComment } from "../../store/tweets";
+// import { createTweetComment } from "../../store/comments";
 import './CreateComment.css'
 
 
@@ -30,8 +31,8 @@ const CreateComment = ({tweetId, setShowModal}) => {
         } else if (!res?.errors) {
             setComment('')
             setErrors([])
-            const area = document.querySelector('.create-comment-text-area')
-            area.setAttribute("style", "height:" + (28) + "px;overflow-y:hidden;");
+            // const area = document.querySelector('.create-comment-text-area')
+            // area.setAttribute("style", "height:" + (28) + "px;overflow-y:hidden;");
         }
 
     }

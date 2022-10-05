@@ -1,5 +1,5 @@
 const LOAD_TWEETS_COMMENTS = 'session/LOAD_TWEETS_COMMENTS';
-const CREATE_TWEET_COMMENT = 'session/CREATE_TWEET_COMMENT';
+// const CREATE_TWEET_COMMENT = 'session/CREATE_TWEET_COMMENT';
 const EDIT_TWEET_COMMENT = 'session/EDIT_TWEET_COMMENT';
 const DELETE_TWEET_COMMENT = 'session/DELETE_TWEET_COMMENT';
 
@@ -8,10 +8,10 @@ const loadComments = (comments) => ({
     comments
 })
 
-const buildComment = (comment) => ({
-    type: CREATE_TWEET_COMMENT,
-    comment
-})
+// const buildComment = (comment) => ({
+//     type: CREATE_TWEET_COMMENT,
+//     comment
+// })
 
 const buildEditComment = (edited) => ({
     type: EDIT_TWEET_COMMENT,
@@ -34,31 +34,31 @@ export const getAllTweetsComments = (tweetId) => async (dispatch) => {
     // Verify if this is good
 }
 
-export const createTweetComment = (payload) => async (dispatch) => {
+// export const createTweetComment = (payload) => async (dispatch) => {
 
-    const res = await fetch(`/api/tweet/${payload.tweetId}/new-comment`, {
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            comment: payload.comment,
-            tweet_id: payload.tweetId,
-        })
+//     const res = await fetch(`/api/tweet/${payload.tweetId}/new-comment`, {
+//         method: 'POST',
+//         headers: {
+//             "Content-Type": "application/json"
+//         },
+//         body: JSON.stringify({
+//             comment: payload.comment,
+//             tweet_id: payload.tweetId,
+//         })
 
-    })
-    if (res.ok) {
-            const data = await res.json()
-            dispatch(buildComment(data))
+//     })
+//     if (res.ok) {
+//             const data = await res.json()
+//             dispatch(buildComment(data))
 
-    } else if (res.status < 500) {
-        const data = await res.json();
-        if (data) {
-            return data;
-        }
-    }
+//     } else if (res.status < 500) {
+//         const data = await res.json();
+//         if (data) {
+//             return data;
+//         }
+//     }
 
-}
+// }
 
 export const createEditedComment = (payload) => async (dispatch) => {
 
@@ -105,10 +105,10 @@ const commentReducer = (state = {}, action) => {
                 allComments[comment.id] = comment
             ))
             return allComments;
-        case CREATE_TWEET_COMMENT:
-            const allTweetComments = {...state};
-            allTweetComments[action.comment.id] = action.comment;
-            return allTweetComments;
+        // case CREATE_TWEET_COMMENT:
+        //     const allTweetComments = {...state};
+        //     allTweetComments[action.comment.id] = action.comment;
+        //     return allTweetComments;
         case EDIT_TWEET_COMMENT:
             const editedComments = {...state};
             editedComments[action.edited.id] = {...action.edited};

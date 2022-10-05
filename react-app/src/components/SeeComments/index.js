@@ -5,13 +5,13 @@ import { getAllTweetsComments } from "../../store/comments";
 import EditCommentModal from "../EditCommentModal";
 import Spinner from "../Spinner";
 import './SeeComments.css'
-const SeeComments = () => {
+const SeeComments = ({comments}) => {
     const {tweetId} = useParams()
     const dispatch = useDispatch()
     const [loaded, setLoaded] = useState(false);
     const [commentToEdit, setCommentToEdit] = useState({})
     const [showModal, setShowModal] = useState(false);
-    const comments = useSelector(state => state.comments)
+    // const comments = useSelector(state => state.comments)
     const userId = useSelector(state => state.session.user.id)
     useEffect(() => {
         dispatch(getAllTweetsComments(tweetId))

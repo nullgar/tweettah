@@ -65,6 +65,7 @@ const Feed = () => {
                             <CreateCommentModal showModal={commentShowModal} setShowModal={setCommentShowModal} tweetId={tweetToEdit} />
                         {/* </Link> */}
                         {/* <Link className="feed-user-tweet-link" to={`/${tweet.user_id}/${tweet.id}`}> */}
+                            {/* {Object.values(tweet.comments).length} */}
                             {Object.values(tweet.comments).length}
                         {/* </Link> */}
                         </div>

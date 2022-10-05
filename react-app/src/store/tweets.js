@@ -1,6 +1,7 @@
 const LOAD_USER_TWEETS = 'session/LOAD_USER_TWEETS';
 const LOAD_SINGLE_USER_TWEETS = 'session/LOAD_SINGLE_USER_TWEETS';
 const CREATE_TWEET = 'session/CREATE_TWEET';
+const CREATE_TWEET_COMMENT = 'session/CREATE_TWEET_COMMENT';
 const EDIT_TWEET = 'session/EDIT_TWEET';
 const DELETE_TWEET = 'session/DELETE_TWEET';
 
@@ -8,6 +9,12 @@ const DELETE_TWEET = 'session/DELETE_TWEET';
 const loadTweets = (tweets) => ({
     type: LOAD_USER_TWEETS,
     tweets
+})
+
+const buildComment = (comment, tweetId) => ({
+    type: CREATE_TWEET_COMMENT,
+    comment,
+    tweetId
 })
 
 const userTweets = (userTweets) => ({
@@ -115,6 +122,32 @@ export const deleteTweet = (tweetId) => async (dispatch) => {
         dispatch(buildDeleteTweet(tweetId))
     }
 }
+
+export const createTweetComment = (payload) => async (dispatch) => {
+
+    const res = await fetch(`/api/tweet/${payload.tweetId}/new-comment`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            comment: payload.comment,
+            tweet_id: payload.tweetId,
+        })
+
+    })
+    if (res.ok) {
+            const data = await res.json()
+            dispatch(buildComment(data, payload.tweetId))
+
+    } else if (res.status < 500) {
+        const data = await res.json();
+        if (data) {
+            return data;
+        }
+    }
+
+}
 const tweetReducer = (state = {}, action) => {
     switch (action.type) {
         case LOAD_USER_TWEETS:
@@ -142,6 +175,19 @@ const tweetReducer = (state = {}, action) => {
             const updatedTweets = {...state}
             delete updatedTweets[action.tweetId]
             return updatedTweets
+        case CREATE_TWEET_COMMENT:
+            const obj = {};
+            obj[action.comment.id] = {...action.comment};
+            // const allTweetComments = {...state, tweetId: {comments: {...state[action.tweetId].comments, obj}}};
+            // const allTweetComments = {...state, ...state[action.tweetId], ...action.comment}
+            // const allTweetComments = {...state, [action.tweetId]: {...state[action.tweetId].comments, ...state[action.tweetId].comments[action.comment] = action.comment}}
+            const allTweetComments = {...state, [action.tweetId]: {...state[action.tweetId]}}
+            // const allTweetComments = {...state, state[action.tweetId].comments[action.comment.id] = action.comment}
+            // console.log({...state[action.tweetId].comments[action.comment.id] = action.comment})
+            // console.log(allTweetComments)
+            // allTweetComments[action.tweetId]['comments'] = ...state.tweets.comments: {...action.comment};
+            // return state;
+            return allTweetComments;
         default:
             return state;
     }

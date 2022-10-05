@@ -74,7 +74,7 @@ const SeeTweet = () => {
 
         </div>
         <CreateComment tweetId={tweetId}/>
-        <SeeComments tweetId={tweetId} />
+        <SeeComments tweetId={tweetId} comments={tweet.comments} />
         </div>
         : <div className="spinner-container"><Spinner /></div>
     )
