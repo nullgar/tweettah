@@ -4,7 +4,7 @@ import { createTweetComment } from "../../store/comments";
 import './CreateComment.css'
 
 
-const CreateComment = ({tweetId}) => {
+const CreateComment = ({tweetId, setShowModal}) => {
     const dispatch = useDispatch();
     const [comment, setComment] = useState('');
     const [errors, setErrors] = useState([]);
@@ -21,12 +21,17 @@ const CreateComment = ({tweetId}) => {
 
         if (res?.errors) {
             setErrors(res.errors)
+        } else if (!res?.errors && setShowModal) {
+            setComment('')
+            setErrors([])
+            const area = document.querySelector('.create-comment-text-area')
+            area.setAttribute("style", "height:" + (28) + "px;overflow-y:hidden;");
+            setShowModal(false);
         } else if (!res?.errors) {
             setComment('')
             setErrors([])
             const area = document.querySelector('.create-comment-text-area')
             area.setAttribute("style", "height:" + (28) + "px;overflow-y:hidden;");
-
         }
 
     }
