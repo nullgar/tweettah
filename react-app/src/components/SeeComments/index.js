@@ -31,11 +31,11 @@ const SeeComments = ({comments}) => {
                         <div>{comment.username}</div>
                         <div className="see-comments-p">{comment.comment}</div>
 
-                        {<EditCommentModal showModal={showModal} setShowModal={setShowModal} comment={commentToEdit} />}
                         {userId === comment.user_id ? <i onClick={() => {setShowModal(true); setCommentToEdit(comment)}} className="fa-solid fa-ellipsis modal-click"></i> : null}
                     </div>
                 </div>
             )) : <div className="see-comments-no-comment">No comments yet! Be the first to comment.</div>}
+            {<EditCommentModal showModal={showModal} setShowModal={setShowModal} comment={commentToEdit} />}
         </div> : <div className="no-comments-spinner-div"><Spinner /></div>
     )
 }

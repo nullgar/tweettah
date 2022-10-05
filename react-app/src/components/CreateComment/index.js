@@ -52,11 +52,11 @@ const CreateComment = ({tweetId, setShowModal}) => {
                 maxLength='150'
                 className='create-comment-text-area'
                 onChange={e => setComment(e.target.value)}
-                onInput={() => {
-                    const area = document.querySelector('.create-comment-text-area')
-                    area.setAttribute("style", "height:" + (0) + "px;overflow-y:hidden;");
-                    area.setAttribute("style", "height:" + (area.scrollHeight) + "px;overflow-y:hidden;");
-                }}
+                // onInput={() => {
+                //     const area = document.querySelector('.create-comment-text-area')
+                //     area.setAttribute("style", "height:" + (0) + "px;overflow-y:hidden;");
+                //     area.setAttribute("style", "height:" + (area.scrollHeight) + "px;overflow-y:hidden;");
+                // }}
                 placeholder='Post Your Comment'
                 >
 

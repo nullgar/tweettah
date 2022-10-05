@@ -14,7 +14,7 @@ function CreateCommentModal({showModal, setShowModal, tweetId}) {
       {/* {console.log(tweetId)} */}
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-            <CreateComment setShowModal={setShowModal} tweetId={Number(tweetId)} />
+            <CreateComment setShowModal={setShowModal} tweetId={tweetId} />
         </Modal>
       )}
     </>
