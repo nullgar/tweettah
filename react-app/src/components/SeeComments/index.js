@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getAllTweetsComments } from "../../store/comments";
+
 import EditCommentModal from "../EditCommentModal";
 import Spinner from "../Spinner";
 import './SeeComments.css'
@@ -14,7 +15,7 @@ const SeeComments = ({comments}) => {
     // const comments = useSelector(state => state.comments)
     const userId = useSelector(state => state.session.user.id)
     useEffect(() => {
-        dispatch(getAllTweetsComments(tweetId))
+        // dispatch(getAllTweetsComments(tweetId))
         const clear = setTimeout(() => {
             setLoaded(true)
         }, 1000)
