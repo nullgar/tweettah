@@ -51,6 +51,7 @@ const Feed = () => {
                     </div>
                     <div  className="feed-user-tweet" >
                         <Link className="feed-user-tweet-link" to={`/${tweet.user_id}/${tweet.id}`}>
+
                             {tweet.tweet}
                         </Link>
                     </div>
@@ -60,7 +61,7 @@ const Feed = () => {
                             <i className="fa-regular fa-comment i-tag" onClick={() =>{
                                 setCommentShowModal(!commentShowModal);
                                 setTweetToEdit(tweet.id)
-                                }}  />
+                            }}  />
 
                             <CreateCommentModal showModal={commentShowModal} setShowModal={setCommentShowModal} tweetId={tweetToEdit} />
                         {/* </Link> */}
@@ -70,13 +71,13 @@ const Feed = () => {
                         {/* </Link> */}
                         </div>
 
-                        <i onClick={e => {
+                        {currentUser.id === tweet.user_id ? <i onClick={e => {
                             setShowModal(!showModal)
                             setTweetToEdit(tweet)
                         }}
                         className="fa-solid fa-ellipsis feed-ellipsis">
 
-                        </i>
+                        </i> : null}
                         <EditTweetModal setShowModal={setShowModal} showModal={showModal} tweet={tweetToEdit}/>
                     </div>
 

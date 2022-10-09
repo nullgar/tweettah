@@ -250,7 +250,10 @@ const tweetReducer = (state = {}, action) => {
             // const allTweetComments = {...state, tweetId: {comments: {...state[action.tweetId].comments, obj}}};
             // const allTweetComments = {...state, ...state[action.tweetId], ...action.comment}
             // const allTweetComments = {...state, [action.tweetId]: {...state[action.tweetId].comments, ...state[action.tweetId].comments[action.comment] = action.comment}}
-            const allTweetComments = {...state, [action.tweetId]: {...state[action.tweetId]}};
+            const allTweetComments = {...state, [action.tweetId]:
+                {...state[action.tweetId], comments:
+                    {...state[action.tweetId].comments, [action.comment.id]: {...action.comment}}
+                }};
             // const allTweetComments = {...state, state[action.tweetId].comments[action.comment.id] = action.comment}
             // console.log({...state[action.tweetId].comments[action.comment.id] = action.comment})
             // console.log(allTweetComments)
@@ -262,7 +265,8 @@ const tweetReducer = (state = {}, action) => {
                 ...state, [action.tweetId]:
                     {...state[action.tweetId], comments:
                         {...state[action.tweetId].comments, [action.commentId]:
-                            {...action.edited}}}};
+                            {...action.edited}
+                        }}};
             return editedTweetComments;
         case DELETE_TWEET_COMMENT:
             const updatedComments = {...state,
