@@ -17,7 +17,7 @@ const FollowBox = () => {
             }
 
         })();
-    }, [currentUser])
+    }, [])
 
     const handleFollow = (e, userId) => {
         e.preventDefault();

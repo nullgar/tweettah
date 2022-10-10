@@ -11,7 +11,7 @@ const Feed = () => {
     const dispatch = useDispatch()
     const tweets = useSelector(state => state.tweets);
     const currentUser = useSelector(state => state.session.user);
-    const commentLength = useSelector(state => state.comments);
+    // const commentLength = useSelector(state => state.comments);
     const [tweetToEdit, setTweetToEdit] = useState(null);
     const [showModal, setShowModal] = useState(false);
     const [commentShowModal, setCommentShowModal] = useState(false);
@@ -25,10 +25,10 @@ const Feed = () => {
 
         return () => clearTimeout(clear)
     }, [dispatch, currentUser])
-    useEffect(() => {
-        dispatch(getAllUsersFeedTweets())
+    // useEffect(() => {
+    //     dispatch(getAllUsersFeedTweets())
 
-    }, [dispatch, commentLength])
+    // }, [dispatch])
 
 
     return (
@@ -50,6 +50,7 @@ const Feed = () => {
 
                     </div>
                     <div  className="feed-user-tweet" >
+                        {/* {Object.values(tweet.images).length ? <img src={tweet.images} /> : null} */}
                         <Link className="feed-user-tweet-link" to={`/${tweet.user_id}/${tweet.id}`}>
 
                             {tweet.tweet}

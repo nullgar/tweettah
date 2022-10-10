@@ -36,7 +36,7 @@ class Tweet(db.Model):
         for i in images:
             if i not in imagesDict:
                 imagesDict[i.id] = i.to_dict()
-        print('this is what you are looking for -------------------------------',images)
+
         return {
             'id': self.id,
             'user_id': self.user_id,

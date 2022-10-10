@@ -11,7 +11,7 @@ const CreateTweet = () => {
     const [submitted, setSubmitted] = useState(false)
     const dispatch = useDispatch()
     const [errors, setErrors] = useState([]);
-    const profile_pic = useSelector(state => state.session.user.profile_pic)
+    const currentUser = useSelector(state => state.session.user)
 
     const updateImage = (e) => {
         const file = e.target.files[0];
@@ -24,22 +24,20 @@ const CreateTweet = () => {
     const handleTweet = async (e) => {
         e.preventDefault()
         /*Image upload happens here */
-        const payload = {
-            tweet_id: 4,
-            user_id: 1,
-            image: image
-        }
+
 
         if (tweet && image) {
+            const newTweet = {
+                tweet: tweet.trimStart()
+            }
+            const res = await dispatch(createTweet(newTweet))
+
             const resImage = await dispatch(createImage(payload));
-            console.log(resImage.ok)
+            console.log(resImage)
             if (!resImage?.error) {
                 const newTweet = {
                     tweet: tweet.trimStart()
                 }
-
-                const res = await dispatch(createTweet(newTweet))
-
                 if (res.errors) {
                     setErrors(res.errors)
                 } else if (res) {
@@ -77,11 +75,11 @@ const CreateTweet = () => {
 
 
     return (
-        profile_pic ?
+        currentUser ?
         <div className="create-tweet-master-div">
 
             <div className="create-tweat-image-div">
-                <img src={profile_pic} className='create-tweet-image' alt="" />
+                <img src={currentUser.profile_pic} className='create-tweet-image' alt="" />
             </div>
             <div className="create-tweet-inner-div">
                 <div className="create-tweet-errors-div">

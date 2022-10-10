@@ -16,7 +16,7 @@ const follow = (following) => ({
   type: TOGGLE_FOLLOW,
 	following,
 })
-const initialState = { user: null };
+// const initialState = { user: null };
 
 export const toggleFollow = (userToFollow) => async (dispatch) => {
 	const res = await fetch(`/api/users/${userToFollow}/follow`,
@@ -116,7 +116,7 @@ export const signUp = (username, email, password, repeatPassword) => async (disp
   }
 }
 
-export default function reducer(state = initialState, action) {
+export default function reducer(state = {}, action) {
   let followingList = {};
   switch (action.type) {
     case SET_USER:
@@ -124,9 +124,11 @@ export default function reducer(state = initialState, action) {
     case REMOVE_USER:
       return { user: null }
     case TOGGLE_FOLLOW:
-      const newState = { ...state , user: {...state.user, following: action.following} };
+      const newState = { ...state , user: {...state.user, following: {...action.following} }};
+      // const temp = {s}
+
       // newState.user.following = {...action.following}
-      // console.log('******************',newState.user)
+      console.log('******************', state)
 
       // const updates = {...newState}
 			// if (Object.values(action.following).length > 0) {
