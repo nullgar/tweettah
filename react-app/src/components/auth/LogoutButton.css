@@ -1,7 +1,13 @@
 .logout-button {
-    font-size: 20px;
-    background-color: red;
-    color: white;
-    border-color: white;
+    /* font-size: 20px; */
+    font-size: larger;
+    /* background-color: red; */
+    color: red;
+    margin-right: 10px;
+    /* border-color: white; */
+    cursor: pointer;
+}
+
+.logout-div {
     cursor: pointer;
 }

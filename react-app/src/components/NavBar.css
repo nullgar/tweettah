@@ -1,17 +1,34 @@
-.navbar-master {
+.over-div {
+
     display: flex;
-    flex-direction: column;
-    position: sticky;
-    top: 50%;
-    left: 0%;
-    height: 100%;
-    min-height: 100%;
-    min-height: 100% !important;
-    /* max-height: 100%; */
-    overflow: auto;
+    flex-flow: column;
     width: 15%;
     min-width: 15%;
     max-width: 15%;
+    height: 100vh;
+    min-height: 100vh;
+    min-height: 100vh !important;
+    /* overflow: auto; */
+    overflow: hidden;
+    background-color: white;
+
+}
+.navbar-master {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    /* bottom: 50%; */
+    left: 0%;
+    bottom: 40%;
+    /* height: 100%;
+    min-height: 100%;
+    min-height: 100% !important; */
+    /* max-height: 100%; */
+    overflow: hidden;
+    width: 14%;
+    min-width: 14%;
+    max-width: 14%;
+    justify-content: space-around;
     /* align-items: center;
     justify-content: center; */
     /* border-right: 1px solid rgb(240, 240, 240); */
@@ -24,7 +41,7 @@
     height: 100%;
     min-height: 100%;
     min-height: 100% !important;
-    overflow: auto;
+    /* overflow: auto; */
     /* margin: auto 0px auto 0px; */
     /* margin: auto; */
     /* min-height: 100%; */
@@ -35,18 +52,26 @@
     /* justify-content: flex-start; */
     /* justify-content: center; */
     /* border: 1px solid rgb(240, 240, 240); */
+    margin: 3%;
     align-items: center;
     /* justify-content: center; */
 }
 
 .nav-bar-divs {
-    padding: 12px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
 .nav-bar-link {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     text-decoration: none;
     color: black;
     font-size: 20px;
+
 }
 
 .icon-nav-bar {
@@ -60,4 +85,21 @@
 }
 .icon {
     margin-right: 10px;
+}
+
+.ip {
+    display: inline;
+    font-size: 20px;
+    cursor: pointer;
+    /* text-align: left; */
+    /* padding-left: 10px; */
+}
+
+.nav-user-profile-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 0%;
+
 }
