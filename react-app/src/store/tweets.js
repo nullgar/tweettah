@@ -6,6 +6,7 @@ const DELETE_TWEET = 'session/DELETE_TWEET';
 const CREATE_TWEET_COMMENT = 'session/CREATE_TWEET_COMMENT';
 const EDIT_TWEET_COMMENT = 'session/EDIT_TWEET_COMMENT';
 const DELETE_TWEET_COMMENT = 'session/DELETE_TWEET_COMMENT';
+const CREATE_IMAGE = 'session/CREATE_IMAGE';
 
 const loadTweets = (tweets) => ({
     type: LOAD_USER_TWEETS,
@@ -52,6 +53,12 @@ const builddeleteComment = (data, commentId, tweetId) => ({
     tweetId
 })
 
+/* Images */
+const buildImage = (image) => ({
+    type: CREATE_IMAGE,
+    image
+})
+
 export const getAllUsersFeedTweets = () => async (dispatch) => {
     const res = await fetch('/api/tweet/');
 
@@ -64,6 +71,7 @@ export const getAllUsersFeedTweets = () => async (dispatch) => {
         dispatch(loadTweets(tweets))
     }
 }
+
 
 export const getSingleUserTweets = (userId) => async (dispatch) => {
     const res = await fetch(`/api/tweet/${userId}`);
@@ -218,6 +226,42 @@ export const deleteComment = (comment) => async (dispatch) => {
     }
 }
 
+
+/* ------------------------------- Image --------------------------------------------------- */
+export const createImage = (imageBuilt) => async (dispatch) => {
+    const {
+		tweet_id,
+        user_id,
+        image
+	} = imageBuilt;
+
+	const formData = new FormData();
+	formData.append("tweet_id", tweet_id);
+	formData.append("user_id", user_id);
+	formData.append("image", image);
+
+
+
+	const response = await fetch('/api/image', {
+		method: "POST",
+		body: formData,
+	});
+
+	if (response.ok) {
+	 	const image = await response.json();
+        console.log('in action creator',image)
+		dispatch(buildImage(image));
+		return image;
+	} else {
+    // a real app would probably use more advanced
+    // error handling
+    const res = {
+        "message": "Image could not be uploaded",
+        "statusCode": 401
+    }
+    return res
+    }
+}
 /* ------------------------------- Reducer --------------------------------------------------- */
 const tweetReducer = (state = {}, action) => {
     switch (action.type) {
@@ -277,6 +321,13 @@ const tweetReducer = (state = {}, action) => {
             delete updatedComments[action.tweetId].comments[action.commentId];
             // const updatedComments = {...temp}
             return updatedComments;
+        case CREATE_IMAGE:
+            const newImages = {...state,
+                [action.image.tweet_id]: {...state[action.image.tweet_id],
+                    images: {[action.image.id]: action.image
+                }}}
+            console.log('-------------------------*********************',[action.image.id])
+            return newImages;
         default:
             return state;
     }

@@ -51,7 +51,9 @@ export const createImage = (imageBuilt) => async (dispatch) => {
 const imageReducer = (state, action) => {
     switch (action.type) {
         case CREATE_IMAGE:
-            const newImages = {}
+            const newImages = {...state, [action.image.id] : [action.image]}
+            console.log('-------------------------*********************',action.image)
+            return newImages;
         default:
             return state
     }

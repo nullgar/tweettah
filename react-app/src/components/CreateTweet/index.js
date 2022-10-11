@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createImage } from "../../store/image";
-import { createTweet } from "../../store/tweets";
+// import { createImage } from "../../store/image";
+import { createImage, createTweet, getAllUsersFeedTweets } from "../../store/tweets";
 import Spinner from "../Spinner";
 import UploadPicture from "../UploadPicture";
 import './CreateTweet.css'
@@ -23,6 +23,7 @@ const CreateTweet = () => {
 
     const handleTweet = async (e) => {
         e.preventDefault()
+        setSubmitted(true)
         /*Image upload happens here */
 
 
@@ -30,21 +31,27 @@ const CreateTweet = () => {
             const newTweet = {
                 tweet: tweet.trimStart()
             }
-            const res = await dispatch(createTweet(newTweet))
-
+            const res = await dispatch(createTweet(newTweet));
+            const payload = {
+                tweet_id: res.id,
+                user_id: currentUser.id,
+                image: image
+            }
             const resImage = await dispatch(createImage(payload));
-            console.log(resImage)
-            if (!resImage?.error) {
-                const newTweet = {
-                    tweet: tweet.trimStart()
-                }
+
+            if (resImage) {
+
                 if (res.errors) {
                     setErrors(res.errors)
                 } else if (res) {
                     setErrors([])
                     setTweet('')
+                    setImage(null)
+                    setSubmitted(false)
                     const area = document.querySelector('.create-tweet-text-area');
                     area.style.height = '39px';
+                    const hide = document.querySelector('input[type="file" i]');
+                    hide.style.display = 'none'
                 }
             }
         } else {
@@ -70,8 +77,9 @@ const CreateTweet = () => {
     }
 
     useEffect(() => {
-        return
-    }, [tweet])
+        dispatch(getAllUsersFeedTweets(currentUser.id));
+
+    }, [dispatch])
 
 
     return (
@@ -94,7 +102,7 @@ const CreateTweet = () => {
                     className="create-tweet-text-area"
                     value={tweet}
                     onChange={(e) => setTweet(e.target.value)}
-                    placeholder="What's happening?"
+                    placeholder={"What's happening?"}
                     minLength={1}
                     maxLength={150}
                     onInput={(e) => {
@@ -112,6 +120,12 @@ const CreateTweet = () => {
                 <label htmlFor='file-upload'>
                     <i
                     className="fa-regular fa-image image-upload-icon"
+                    onInput={() => {
+                        setImage(null)
+                        console.log('click')
+                        const hide = document.querySelector('input[type="file" i]');
+                        hide.style.display = 'inline-block'
+                    }}
                     />
                 </label>
                     <input
@@ -120,12 +134,17 @@ const CreateTweet = () => {
                     accept="image/*"
                     onChange={updateImage}
 
+
+
                 />
 
                 </div>
+                {submitted ? <p>Uploading... Please wait!</p> : null}
                 <div className="create-tweet-submit-div">
                     <button
-                        onClick={(e) => handleTweet(e)}
+                        onClick={(e) => {
+                            handleTweet(e)
+                        }}
                         disabled={submitted}
                         className="create-tweet-submit-button">
                             Tweet
