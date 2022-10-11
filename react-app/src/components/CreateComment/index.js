@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createTweetComment } from "../../store/comments";
+import { createTweetComment } from "../../store/tweets";
+// import { createTweetComment } from "../../store/comments";
 import './CreateComment.css'
 
 
-const CreateComment = ({tweetId}) => {
+const CreateComment = ({tweetId, setShowModal}) => {
     const dispatch = useDispatch();
     const [comment, setComment] = useState('');
     const [errors, setErrors] = useState([]);
@@ -21,12 +22,17 @@ const CreateComment = ({tweetId}) => {
 
         if (res?.errors) {
             setErrors(res.errors)
-        } else if (!res?.errors) {
+        } else if (!res?.errors && setShowModal) {
             setComment('')
             setErrors([])
             const area = document.querySelector('.create-comment-text-area')
             area.setAttribute("style", "height:" + (28) + "px;overflow-y:hidden;");
-
+            setShowModal(false);
+        } else if (!res?.errors) {
+            setComment('')
+            setErrors([])
+            // const area = document.querySelector('.create-comment-text-area')
+            // area.setAttribute("style", "height:" + (28) + "px;overflow-y:hidden;");
         }
 
     }
@@ -46,11 +52,11 @@ const CreateComment = ({tweetId}) => {
                 maxLength='150'
                 className='create-comment-text-area'
                 onChange={e => setComment(e.target.value)}
-                onInput={() => {
-                    const area = document.querySelector('.create-comment-text-area')
-                    area.setAttribute("style", "height:" + (0) + "px;overflow-y:hidden;");
-                    area.setAttribute("style", "height:" + (area.scrollHeight) + "px;overflow-y:hidden;");
-                }}
+                // onInput={() => {
+                //     const area = document.querySelector('.create-comment-text-area')
+                //     area.setAttribute("style", "height:" + (0) + "px;overflow-y:hidden;");
+                //     area.setAttribute("style", "height:" + (area.scrollHeight) + "px;overflow-y:hidden;");
+                // }}
                 placeholder='Post Your Comment'
                 >
 

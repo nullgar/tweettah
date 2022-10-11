@@ -10,6 +10,7 @@ import SeeTweet from './components/SeeTweet';
 import SignUp from './components/auth/SignUp';
 import BottomBar from './components/BottomBar/BottomBar';
 import Page404 from './components/404';
+import UploadPicture from './components/UploadPicture';
 
 
 
@@ -46,6 +47,8 @@ function App() {
         <ProtectedRoute path='/:userId/:tweetId' exact={true} >
           <SeeTweet />
         </ProtectedRoute>
+
+
 
         <ProtectedRoute>
           <Page404 />

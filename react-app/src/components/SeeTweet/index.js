@@ -4,7 +4,8 @@ import { useHistory, useParams } from "react-router-dom";
 import { getSingleUserTweets } from "../../store/tweets";
 import Page404 from "../404";
 import CreateComment from "../CreateComment";
-import EditTweet from "../EditTweet";
+import EditTweetModal from "../EditTweetModal";
+// import EditTweet from "../EditTweet";
 import SeeComments from "../SeeComments";
 import Spinner from "../Spinner";
 import './SeeTweet.css'
@@ -14,7 +15,8 @@ const SeeTweet = () => {
     const {userId, tweetId} = useParams()
     const [loaded, setLoaded] = useState(false)
     const [show, setShow] = useState(false)
-    const history = useHistory()
+    const history = useHistory();
+    const [showModal, setShowModal] = useState(false);
     // const [tweet, setTweet] = useState({})
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
@@ -62,16 +64,17 @@ const SeeTweet = () => {
             </div>
 
             {tweet.user_id === user.id ? <i
-            onClick={e => setShow(!show)}
+            onClick={e => setShowModal(!showModal)}
             className="fa-solid fa-ellipsis see-tweet-edit-icon">
             </i> : null}
         </div>
         <div className="see-tweet-edit-div">
-            {show && tweet.user_id === user.id ? <EditTweet setShow={setShow} tweet={tweet}/> : null}
+            {/* {show && tweet.user_id === user.id ? <EditTweet setShow={setShow} tweet={tweet}/> : null} */}
+            {tweet.user_id === user.id ? <EditTweetModal setShowModal={setShowModal} showModal={showModal} tweet={tweet}/> : null}
 
         </div>
         <CreateComment tweetId={tweetId}/>
-        <SeeComments tweetId={tweetId} />
+        <SeeComments tweetId={tweetId} comments={tweet.comments} />
         </div>
         : <div className="spinner-container"><Spinner /></div>
     )

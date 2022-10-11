@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createEditedComment, deleteComment } from "../../store/comments";
+// import { createEditedComment, deleteComment } from "../../store/comments";
+import { createEditedComment, deleteComment } from "../../store/tweets";
+
 import './EditComment.css'
 const EditComment = ({setShowModal, comment}) => {
     const [editedComment, setEditedComment] = useState(comment.comment)
@@ -11,7 +13,8 @@ const EditComment = ({setShowModal, comment}) => {
         e.preventDefault()
         const newComment = {
             comment: editedComment.trimStart(),
-            commentId: comment.id
+            commentId: comment.id,
+            tweetId: comment.tweet_id
         }
 
         const res = await dispatch(createEditedComment(newComment));
@@ -25,10 +28,11 @@ const EditComment = ({setShowModal, comment}) => {
         }
     }
 
-    const handleCommentDelete = (e, comment_id) => {
+
+    const handleCommentDelete = (e, comment) => {
         e.preventDefault()
 
-        dispatch(deleteComment(comment_id))
+        dispatch(deleteComment(comment))
 
         setShowModal(false)
     }
@@ -50,7 +54,7 @@ const EditComment = ({setShowModal, comment}) => {
                 >
                 </textarea>
                 <button className="edit-comment-modal-submit-button" onClick={e => handleEditTweet(e)}>Edit Comment</button>
-                <button className="edit-comment-modal-delete-button" onClick={(e) => handleCommentDelete(e, comment.id)}>Delete Comment</button>
+                <button className="edit-comment-modal-delete-button" onClick={(e) => handleCommentDelete(e, comment)}>Delete Comment</button>
             </form>
 
         </div>

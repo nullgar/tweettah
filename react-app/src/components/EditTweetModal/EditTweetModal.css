@@ -1,0 +1,77 @@
+.tweet-edit-master-div {
+    border-radius: 10px;
+    /* border: 1px solid  rgb(240, 240, 240); */
+    width: 55%;
+    min-width: 800px;
+    min-height: 500px;
+    /* height: 500px; */
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+}
+.edit-form{
+    width: 90%;
+    min-width: 100%;
+    max-width: 100%;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+}
+.modal-tweet-edit-text-area {
+    /* color: black; */
+    padding: 1%;
+    width: 80%;
+    height: 150px;
+    font-size: 23px;
+    resize: none;
+    border: 1px solid  rgb(154, 212, 241);
+    border-radius: 10px;
+    word-wrap: break-word;
+    margin-bottom: 5%;
+    padding: 3%;
+}
+
+.tweet-edit-buttons-div {
+    display: flex;
+    padding: 1%;
+    justify-content: space-around;
+}
+.tweet-edit-button{
+    background-color: #1b9bee;
+    margin-left: 12px;
+    min-width: 36px;
+    min-height: 36px;
+    height: 10%;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-color: rgba(0, 0, 0, 0);
+    border-width: 1px;
+    border-radius: 9999px;
+    color: white;
+    cursor: pointer;
+}
+
+.tweet-edit-delete-button {
+    background-color: red;
+    margin-left: 12px;
+    min-width: 36px;
+    min-height: 36px;
+    height: 10%;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-color: rgba(0, 0, 0, 0);
+    border-width: 1px;
+    border-radius: 9999px;
+    color: white;
+    cursor: pointer;
+}
+.edit-tweet-errors-div {
+    display: flex;
+    justify-content: center;
+    color: red;
+    border-color: red;
+    border-width: 1px;
+    margin-bottom: 5%;
+}

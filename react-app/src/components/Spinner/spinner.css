@@ -2,7 +2,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* width: 55%; */
+
+    /* border-left: 1px solid rgb(240, 240, 240); */
+    height: 60vh;
     padding: 5%;
 }
 .loading-div {

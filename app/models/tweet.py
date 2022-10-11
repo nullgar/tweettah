@@ -1,4 +1,6 @@
 from typing import Dict, List
+
+from app.models.image import Image
 from .db import db
 from .user import User
 from .comment import Comment
@@ -29,7 +31,11 @@ class Tweet(db.Model):
         for i in query:
             if i not in arr:
                 arr[i.id] = i.to_dict()
-
+        images = Image.query.filter(Image.tweet_id == self.id)
+        imagesDict = {}
+        for i in images:
+            if i not in imagesDict:
+                imagesDict[i.id] = i.to_dict()
 
         return {
             'id': self.id,
@@ -39,5 +45,6 @@ class Tweet(db.Model):
             'tweet': self.tweet,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
-            'comments': arr
+            'comments': arr,
+            'images': imagesDict
         }
