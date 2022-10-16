@@ -5,30 +5,43 @@ import { getAllUsersFeedTweets } from "../../store/tweets";
 import CreateCommentModal from "../CreateCommentModal";
 import CreateTweet from "../CreateTweet";
 import EditTweetModal from "../EditTweetModal";
+import Spinner from "../Spinner";
 import LoadingSpinner from "../Spinner";
 import './Feed.css'
 const Feed = () => {
     const dispatch = useDispatch()
     const tweets = useSelector(state => state.tweets);
     const currentUser = useSelector(state => state.session.user);
-    // const commentLength = useSelector(state => state.comments);
+
     const [tweetToEdit, setTweetToEdit] = useState(null);
+    const [mapping, setMapping] = useState([])
     const [showModal, setShowModal] = useState(false);
     const [commentShowModal, setCommentShowModal] = useState(false);
     const [loaded, setLoaded] = useState(false);
+    const [isFetched, setIsFetched] = useState(false)
+
+
+
+
     useEffect(() => {
-        setLoaded(false)
-        dispatch(getAllUsersFeedTweets())
+
+        dispatch(getAllUsersFeedTweets());
+
+        const fetch = async () =>  {
+
+            setIsFetched(true)
+        }
+        fetch()
+
         const clear = setTimeout(() => {
-            setLoaded(true)
-          }, 1000)
+
+
+            setLoaded(true);
+          }, 1500)
 
         return () => clearTimeout(clear)
-    }, [dispatch, currentUser])
-    // useEffect(() => {
-    //     dispatch(getAllUsersFeedTweets())
+    }, [dispatch])
 
-    // }, [dispatch])
 
 
     return (
@@ -36,7 +49,7 @@ const Feed = () => {
 
 
 
-            {loaded ? <div className="feed-master-div">
+            {tweets && isFetched && loaded ? <div className="feed-master-div">
             <CreateTweet />
             {Object.values(tweets).reverse().map(tweet => (
                 <div className="feed-inner-div" key={tweet.id}>
@@ -50,8 +63,10 @@ const Feed = () => {
 
                     </div>
                     <div  className="feed-user-tweet" >
-                        {/* {Object.values(tweet.images).length ? <img src={tweet.images} /> : null} */}
                         <Link className="feed-user-tweet-link" to={`/${tweet.user_id}/${tweet.id}`}>
+                            {tweet.images.length ? tweet.images.map((image) => (
+                                <img loading="eager" className="tweet-image" key={image.id} src={image?.url} />
+                            )): tweet.images.length === 0 ? null : <Spinner/>}
 
                             {tweet.tweet}
                         </Link>

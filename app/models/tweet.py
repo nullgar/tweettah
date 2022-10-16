@@ -32,10 +32,12 @@ class Tweet(db.Model):
             if i not in arr:
                 arr[i.id] = i.to_dict()
         images = Image.query.filter(Image.tweet_id == self.id)
-        imagesDict = {}
+        imagesDict = []
+
         for i in images:
             if i not in imagesDict:
-                imagesDict[i.id] = i.to_dict()
+                imagesDict.append(i.to_dict())
+            #     imagesDict[i.id] = i.to_dict()
 
         return {
             'id': self.id,

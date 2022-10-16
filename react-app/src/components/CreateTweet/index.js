@@ -76,10 +76,10 @@ const CreateTweet = () => {
 
     }
 
-    useEffect(() => {
-        dispatch(getAllUsersFeedTweets(currentUser.id));
+    // useEffect(() => {
+    //     dispatch(getAllUsersFeedTweets(currentUser.id));
 
-    }, [dispatch])
+    // }, [dispatch])
 
 
     return (

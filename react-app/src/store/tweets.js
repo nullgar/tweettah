@@ -324,8 +324,8 @@ const tweetReducer = (state = {}, action) => {
         case CREATE_IMAGE:
             const newImages = {...state,
                 [action.image.tweet_id]: {...state[action.image.tweet_id],
-                    images: {[action.image.id]: action.image
-                }}}
+                    images: [action.image]
+                }}
             console.log('-------------------------*********************',[action.image.id])
             return newImages;
         default:
