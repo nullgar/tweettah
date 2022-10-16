@@ -17,7 +17,7 @@ const LogoutButton = () => {
     </NavLink>
     </div>
   )
-  // <button className='logout-button' onClick={onLogout}>Logout</button>;
+
 };
 
 export default LogoutButton;
