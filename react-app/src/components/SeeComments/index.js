@@ -21,7 +21,6 @@ const SeeComments = () => {
         return () => clearTimeout(clear)
     }, [dispatch, tweetId])
 
-    //test
     return (
         comments && userId && loaded && commentToEdit ?
         <div className="see-comments-master-div">
